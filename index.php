@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<!-- Coding by CodingNepal | www.codingnepalweb.com -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
+    <title>SIMONKELOR</title>
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/forum.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
