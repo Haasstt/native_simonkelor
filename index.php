@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/forum.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
 
     <!-- Boxiocns CDN Link -->
@@ -111,6 +112,10 @@
     include_once 'documentation.php';
   }elseif(@$_GET['p'] == "forum"){
     include_once 'forum.php';
+  }elseif(@$_GET['p'] == "forum_add"){
+    include_once 'form_add_forum.php';
+  }elseif(@$_GET['p'] == "forum_komentar"){
+    include_once 'forum_komentar.php';
   }
   ?>
 
