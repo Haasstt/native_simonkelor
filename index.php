@@ -6,6 +6,7 @@
     <link rel="icon" href="assets/img/logo.png" type="image/png">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/forum.css">
+    <link rel="stylesheet" href="assets/css/realtime.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
 
     <!-- Boxiocns CDN Link -->
