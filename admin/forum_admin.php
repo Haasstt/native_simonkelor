@@ -19,7 +19,6 @@ include 'config/conn.php';
 	                $cari = $_POST['cari'];
                 }
             ?>
-        <a href="index.php?p=forum_add" class="button-add">Tambah Forum</a>
     </div>
 
     <div class="content-forum">

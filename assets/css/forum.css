@@ -77,18 +77,64 @@ border-radius: 8px 8px 0px 0px;
 .sampul-pesan{
     border-radius: 25px 25px 0px 0px;
     width: 100%;
-    max-height: 350px;
+    max-height: 360px;
     overflow: hidden;
 }
 .sampul-pesan img{
     width: 100%;
     height: auto;
+    position: relative;
+    display: inline-block;
+}
+
+.overlay {
+  padding: 10px;
+  width: 20%;
+  text-align: end;
+}
+
+.menu-list{
+    display: none;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.menu-list.show{
+    display: block;
+}
+.menu-list li, a{
+    padding: 10px;
+    text-decoration: none;
+    list-style: none;
+    color: #311e69;
+    font-size: 12pt;
+}
+.menu-list li:hover{
+    background-color: #412692;
+}
+.menu-list a:hover{
+    color: #ffffff;
+}
+.menu-button{
+    background-color:rgba(255, 255, 255, 0);
+    font-size: 16pt;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 10px;
+}
+.menu-button:hover{
+    background-color: rgb(221, 221, 221);
+    color: #fff;
 }
 .description{
     padding: 20px;
 }
 .box-info-upload{
+    display: flex;
+    justify-content: space-between;
     padding: 20px 0px;
+    width: 100%;
 }
 .name-upload{
     color: #3e3e3e;

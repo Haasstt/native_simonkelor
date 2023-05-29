@@ -57,13 +57,18 @@ body{
     display: flex;
     flex-direction: column;
 }
-.header-box-form .welcome{
+.header-box-form-regis{
+    padding: 30px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.welcome{
     padding: 10px 0px;
     font-size: 20pt;
     color: #311E69;
     font-weight: bolder;
 }
-.header-box-form .desc{
+.desc{
     font-size: 12pt;
     color: #311E69;
     font-weight: lighter;
@@ -101,6 +106,25 @@ body{
   border-bottom: #311E69 solid 2px;
 }
 
+.label-email-regis{
+  font-size: 10pt;
+  padding: 5px 0px;
+  color: #4D3A95;
+  font-weight: bolder;
+}
+
+.input-email-regis{
+  font-size: 8pt;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: 0; 
+  width: 100%;
+  appearance: none; 
+  padding: 8px 2px;
+  border-bottom: #311E69 solid 2px;
+}
+
 .group-form-footer{
   padding: 40px 0px;
   display: flex;
@@ -133,6 +157,7 @@ body{
 }
 
 .button-login{
+  font-size: 12pt;
   background-color: #4D3A95;
   color: #fff;
   padding: 20px;

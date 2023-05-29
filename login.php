@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+<?php 
+    session_start();
+    include 'config/conn.php';
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +31,7 @@
             <b class="welcome">Welcome Back!!</b>
             <b class="desc">Please enter your email and password</b>
         </div>
-        <form method="POST" class="form">
+        <form method="POST" class="form" enctype="multipart/form-data">
             <div class="group-form">
                 <label class="label-email-login" for="">Username</label>
                 <input class="input-email-login" type="email" name="email" placeholder="Username">
@@ -36,10 +41,38 @@
                 <input class="input-email-login" type="password" name="password" placeholder="************">
             </div>
             <div class="group-form-footer">
-            <input class="button-login" type="submit" value="Sign In">
-            <b>Don’t have an account? <span><a class="span" href="">Sign Up</a></span></b>
+            <input class="button-login" type="submit" name="login" value="Sign In">
+            <b>Don’t have an account? <span><a class="span" href="registrasi.php">Sign Up</a></span></b>
             </div>
         </form>
+
+<?php
+if (isset($_POST["login"])) {
+
+$email = $_POST["email"];
+$pass = mysqli_real_escape_string($koneksi,md5($_POST['password']));
+
+$sql = mysqli_query($koneksi,"SELECT * FROM users WHERE email='$email'");
+$cek_akun = mysqli_num_rows($sql);
+$data_akun = mysqli_fetch_assoc($sql);
+$password = $data_akun['password'];
+
+    if ($cek_akun>0) {
+        if ($pass == $password) {
+            $_SESSION['email']=$email;
+            $_SESSION['nama']=$data_akun['nama_user'];
+            $_SESSION['role']=$data_akun['role'];
+            
+            header('location:index.php');
+        }else{
+        echo"<script>
+                alert('password Anda salah');
+            </script>";
+        }
+    }
+    $error= true;
+}
+?>
         </div>
         </div>
     </div>

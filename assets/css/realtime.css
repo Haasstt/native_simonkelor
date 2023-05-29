@@ -4,15 +4,15 @@
     padding: 20px;
     display: grid;
     grid-template-columns: 2px 1px;
-    grid-gap: 30px;
-    min-height: 200px;
+    grid-gap: 500px;
+    min-height: 500px;
   }
   
   .graphBox .box{
     position: relative;
     background: #222;
     padding: 20px;
-    width: 100px;
+    width: 500px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.00);
     border-radius: 20px;
   }  

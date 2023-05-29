@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<?php 
+    session_start();
+?>
   <head>
     <meta charset="UTF-8">
     <title>SIMONKELOR</title>
@@ -16,74 +19,24 @@
    </head>
 <body>
   <div class="sidebar" id="sidebar">
-    <ul class="nav-links">
-      <div class="box-profile">
-        <img src="assets/img/1.png" alt="">
-        <h3>Nurafiif Almas</h3>
-        <p>Nurafiif Almas</p>
-      </div>
-      <li>
-        <a href="index.php?p=realtime">
-          <i class='bx bx-line-chart' ></i>
-          <span class="link_name">Realtime</span>
-        </a>
-      </li>
-      <li>
-        <div class="iocn-link">
-          <a href="#">
-            <i class='bx bx-collection' ></i>
-            <span class="link_name">Data User</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="sub-menu">
-          <li><a href="index.php?p=user_aktif">User Aktif</a></li>
-          <li><a href="index.php?p=user_nonaktif">User Non Aktif</a></li>
-        </ul>
-      </li>
-      <li>
-        <div class="iocn-link">
-          <a href="#">
-            <i class='bx bx-collection' ></i>
-            <span class="link_name">Data Pengolahan</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="sub-menu">
-          <li><a href="index.php?p=data_pembangkit">Pembangkit</a></li>
-          <li><a href="index.php?p=data_tegangan">Tegangan</a></li>
-          <li><a href="index.php?p=forcasting">Forcasting</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="index.php?p=data_operasi">
-          <i class='bx bx-collection' ></i>
-          <span class="link_name">Data Operasi</span>
-        </a>
-      </li>
-      <li>
-        <a href="index.php?p=documentation">
-          <i class='bx bx-collection' ></i>
-          <span class="link_name">Documentation</span>
-        </a>
-      </li>
-      <li>
-        <a href="index.php?p=forum">
-          <i class='bx bx-conversation' ></i>
-          <span class="link_name">Forum</span>
-        </a>
-      </li>
-      <hr>
-      <br>
-      <br>
-      <br>
-      <li>
-        <a href="index.php?p=logout">
-          <i class='bx bx-log-out' ></i>
-          <span class="link_name">Logout</span>
-        </a>
-      </li>
-    </ul>
+    <?php
+    if(isset($_SESSION['role'])){
+      if($_SESSION['role'] == 'Super Admin'){
+        include_once 'sidebar_navlink/superadmin.php';
+      }
+      elseif ($_SESSION['role'] == 'Admin Dispacher') {
+        include_once 'sidebar_navlink/dispacher.php';
+      }
+      elseif ($_SESSION['role'] == 'Admin Pembangkit') {
+        include_once 'sidebar_navlink/pembangkit.php';
+      }
+      elseif ($_SESSION['role'] == 'Pegawai') {
+        include_once 'sidebar_navlink/pegawai.php';
+      }
+    }else{
+      include_once 'sidebar_navlink/guest.php';
+    }
+    ?>
   </div>
   
   <div class="nav_responsive">
@@ -99,9 +52,9 @@
   }elseif(@$_GET['p'] == "realtime"){
     include_once 'realtime.php';
   }elseif(@$_GET['p'] == "user_aktif"){
-    include_once 'data_user_aktif.php';
+    include_once 'admin/super_admin/data_user_aktif.php';
   }elseif(@$_GET['p'] == "user_nonaktif"){
-    include_once 'data_user_nonaktif.php';
+    include_once 'admin/super_admin/data_user_nonaktif.php';
   }elseif(@$_GET['p'] == "data_pembangkit"){
     include_once 'pembangkit.php';
   }elseif(@$_GET['p'] == "data_tegangan"){
@@ -109,15 +62,22 @@
   }elseif(@$_GET['p'] == "forcasting"){
     include_once 'forcasting.php';
   }elseif(@$_GET['p'] == "data_operasi"){
-    include_once 'data_operasi.php';
-  }elseif(@$_GET['p'] == "documentation"){
-    include_once 'documentation.php';
-  }elseif(@$_GET['p'] == "forum"){
-    include_once 'forum.php';
-  }elseif(@$_GET['p'] == "forum_add"){
-    include_once 'form_add_forum.php';
-  }elseif(@$_GET['p'] == "forum_komentar"){
-    include_once 'forum_komentar.php';
+    include_once 'admin/super_admin/data_operasi.php';
+  }elseif(@$_GET['p'] == "documentation_superadmin"){
+    include_once 'admin/super_admin/documentation.php';
+  }
+
+  // forum
+  elseif(@$_GET['p'] == "forum_superadmin"){
+    include_once 'admin/super_admin/forum.php';
+  }
+  elseif(@$_GET['p'] == "forum_add"){
+    include_once 'admin/super_admin/form_add_forum.php';
+  }
+
+
+  elseif(@$_GET['p'] == "forum_komentar"){
+    include_once 'admin/forum_komentar.php';
   }
   ?>
 
