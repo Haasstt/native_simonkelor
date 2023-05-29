@@ -24,7 +24,7 @@ body{
 }
 
 .header-login img{
-    width: 70px;
+    width: 50px;
     padding: 0px 10px;
 }
 
@@ -42,13 +42,13 @@ body{
 .box-img1{
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 35%;
 }
 .box-form{
     background-color: #fff;
     padding: 0px 40px;
     display: flex;
-    width: 30%;
+    width: 25%;
     flex-direction: column;
     border-radius: 50px;
 }
@@ -82,15 +82,68 @@ body{
   margin-bottom: 10px
 }
 
+.label-email-login{
+  font-size: 10pt;
+  padding: 10px 0px;
+  color: #4D3A95;
+  font-weight: bolder;
+}
+
 .input-email-login{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    box-sizing: border-box;
+  font-size: 8pt;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: 0; 
+  width: 100%;
+  appearance: none; 
+  padding: 15px 2px;
+  border-bottom: #311E69 solid 2px;
+}
+
+.group-form-footer{
+  padding: 40px 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.group-form-footer{
+  padding: 40px 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.group-form-footer b{
+  padding: 10px 0px;
+  font-size: 10pt;
+  font-weight: lighter;
+}
+
+.group-form-footer .span{
+  font-weight: bold;
+  text-decoration: none;
+}
+.group-form-footer .span:hover{
+  font-weight: bold;
+  color: #7862c8;
+}
+
+.button-login{
+  background-color: #4D3A95;
+  color: #fff;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  width: 300px;
+}
+
+.button-login:hover{
+  background-color: #7862c8;
+  color: #161223;
 }
 
 @media screen and (max-width: 600px) {
@@ -99,6 +152,14 @@ body{
     }
     .box-img2{
         width: 100%;
+    }
+    .box-form{
+        background-color: #fff;
+        padding: 0px 40px;
+        display: flex;
+        width: 90%;
+        flex-direction: column;
+        border-radius: 50px;
     }
   }
   

@@ -26,16 +26,19 @@
             <b class="welcome">Welcome Back!!</b>
             <b class="desc">Please enter your email and password</b>
         </div>
-        <form action="" class="form">
+        <form method="POST" class="form">
             <div class="group-form">
-                <label for="">Username</label>
+                <label class="label-email-login" for="">Username</label>
                 <input class="input-email-login" type="email" name="email" placeholder="Username">
             </div>
             <div class="group-form">
-                <label for="">Username</label>
-                <input class="input-email-login" type="password" name="email" placeholder="Username">
+                <label class="label-email-login" for="">Password</label>
+                <input class="input-email-login" type="password" name="password" placeholder="************">
             </div>
-            <input type="submit" value="Tambahkan">
+            <div class="group-form-footer">
+            <input class="button-login" type="submit" value="Sign In">
+            <b>Don’t have an account? <span><a class="span" href="">Sign Up</a></span></b>
+            </div>
         </form>
         </div>
         </div>
