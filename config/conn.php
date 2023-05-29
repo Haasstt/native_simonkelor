@@ -2,11 +2,11 @@
 	$servername = "localhost";
 	$username  = "root";
 	$password = "";
-	$dbname = "db_simonkelor";
+	$dbname = "db_simonkelor_native";
 
-	$db = mysqli_connect($servername, $username, $password, $dbname);
+	$koneksi = mysqli_connect($servername, $username, $password, $dbname);
 
-	if (!$db) {
+	if (!$koneksi) {
 		die("Connection Failed". mysqli_connect_error());
 	}
  ?>

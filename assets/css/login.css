@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+body{
+    background-color: #311E69;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.main-login{
+    display: flex;
+    flex-direction: column;
+}
+.header-login{
+    display: flex;
+    padding: 50px 50px
+}
+
+.header-login img{
+    width: 70px;
+    padding: 0px 10px;
+}
+
+.header-login h3{
+    padding: 10px 0px;
+    color: rgb(255, 255, 255);
+}
+
+.content-login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+.box-img1{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.box-form{
+    background-color: #fff;
+    padding: 0px 40px;
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    border-radius: 50px;
+}
+.header-box-form{
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.header-box-form .welcome{
+    padding: 10px 0px;
+    font-size: 20pt;
+    color: #311E69;
+    font-weight: bolder;
+}
+.header-box-form .desc{
+    font-size: 12pt;
+    color: #311E69;
+    font-weight: lighter;
+}
+
+.form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.group-form{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px
+}
+
+.input-email-login{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+    .box-img1 {
+        display: none;
+    }
+    .box-img2{
+        width: 100%;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .sidebar {
+      display: none;
+    }
+    .topnav a, .nav_responsive{
+      display: flex;
+    }
+    .topnav.responsive, .icon{
+      display: block;
+      position: relative;
+    }
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
