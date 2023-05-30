@@ -1,18 +1,129 @@
-.graphBox{
+/* .graphBox{
     position: relative;
     width: 100%;
     padding: 20px;
-    display: grid;
-    grid-template-columns: 2px 1px;
-    grid-gap: 500px;
-    min-height: 500px;
+    min-height: 400px;
+    display: flex;
+    position: block;
+    width: 90%;
+    margin-left: 50px;
+    border: rgb(233, 233, 233) solid 2px;
+    border-radius: 10px;
+    margin-bottom: 30px;
   }
   
   .graphBox .box{
     position: relative;
-    background: #222;
+    background: #bc2929;
     padding: 20px;
-    width: 500px;
+    width: 100px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.00);
     border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: rgb(221, 221, 221);
+    border-bottom: rgb(233, 233, 233) solid 2px;
+    border-radius: 8px 8px 0px 0px;
   }  
+  
+  .polaroid {
+    position: block;
+    width: 90%;
+    margin-left: 50px;
+    border: rgb(233, 233, 233) solid 2px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    width: 500px;
+    height: 200px;
+    background: #bc2929;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+  }
+  
+  .polaroid .container {
+    padding: 10px;
+  } */
+  .main-realtime {
+    position: absolute;
+    top: 60px;
+    left: 260px;
+    min-height: calc(100vh - 60px);
+    background: #f3f3f3;
+}
+.cards-1{
+  width: 100%;
+  padding: 20px 20px;
+  display: flex;
+}
+.cards{
+    width: 100%;
+    padding: 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+.cards-4{
+  width: 100%;
+  padding: 20px 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+}
+.cards-4 .card{
+  padding: 20px;
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cards-1 .card{
+  padding: 20px;
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cards .card{
+    padding: 20px;
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cards-1 .card .card-name{
+  color: #888;
+  font-weight: 600;
+}
+
+.cards .card .card-name{
+  color: #888;
+  font-weight: 600;
+}
+
+.cards-4 .card .card-name{
+  color: #888;
+  font-weight: 600;
+}
+
+.cards-1 .card .card-2{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+.cards-1 .card .card-2 .content{
+  padding: 20px;
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+}
+
