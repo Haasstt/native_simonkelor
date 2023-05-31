@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <?php 
     session_start();
+    include 'config/conn.php';
 ?>
   <head>
     <meta charset="UTF-8">
@@ -74,13 +75,62 @@
   elseif(@$_GET['p'] == "forum_add"){
     include_once 'admin/super_admin/form_add_forum.php';
   }
+  elseif(@$_GET['p']=="forum_update"){    
+    $query=mysqli_query($koneksi,"SELECT * FROM forums WHERE id_pesan ='".$_GET['id']."'");
+    while ($data = mysqli_fetch_assoc($query)) {
+        include_once 'admin/super_admin/form_update_forum.php';
+    }  
+  }
+  elseif(@$_GET['p']=="forum_delete"){
+    $query=mysqli_query($koneksi,"SELECT * FROM forums WHERE id_pesan ='".$_GET['id']."'");
+    $foto_lama = mysqli_fetch_array($query);
+
+    if ($foto_lama['gambar'] == "default.jpeg") {
+      $query = mysqli_query($koneksi,"DELETE FROM forums WHERE id_pesan ='".$_GET['id']."'");
+    }else{
+      unlink('assets/img/'.$foto_lama['gambar']);
+      $query = mysqli_query($koneksi,"DELETE FROM forums WHERE id_pesan ='".$_GET['id']."'");
+    }
+    
+    if ($query) {
+        echo "<script>alert('Data telah dihapus')</script>";
+        echo "<script>location='index.php?p=forum_superadmin'</script>";
+    }else{
+        echo "<script>alert('erorr')</script>";
+    }    
+  }
 
 
   elseif(@$_GET['p'] == "forum_komentar"){
     include_once 'admin/forum_komentar.php';
   }
-  ?>
+  elseif(@$_GET['p'] == "delete_komentar_superadmin"){
+    $sql=mysqli_query($koneksi,"SELECT * FROM komentars WHERE id_komentar ='".$_GET['id']."'");
+    $data_komentar = mysqli_fetch_array($sql);
+    $query = mysqli_query($koneksi,"DELETE FROM komentars WHERE id_komentar='".$_GET['id']."'");
 
+    if ($query) {
+        echo "<script>alert('Data telah dihapus')</script>";
+        echo "<script>location='index.php?p=forum_superadmin'</script>";
+    }else{
+        echo "<script>alert('erorr')</script>";
+    }
+
+  }
+  elseif(@$_GET['p'] == "delete_komentar"){
+    $sql=mysqli_query($koneksi,"SELECT * FROM komentars WHERE id_komentar ='".$_GET['id']."'");
+    $data_komentar = mysqli_fetch_array($sql);
+    $query = mysqli_query($koneksi,"DELETE FROM komentars WHERE id_komentar='".$_GET['id']."'");
+
+    if ($query) {
+        echo "<script>alert('Data telah dihapus')</script>";
+        echo "<script>location='index.php?p=forum_komentar'</script>";
+    }else{
+        echo "<script>alert('erorr')</script>";
+    }
+
+  }
+  ?>
   </div>
 
 </body>

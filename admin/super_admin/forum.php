@@ -30,7 +30,7 @@ include 'config/conn.php';
                     WHERE 
                     nama_user like '%" . $cari . "%' OR judul_forum like '%" . $cari . "%' OR pesan like '%" . $cari . "%'");
         } else {
-            $query = mysqli_query($koneksi, "SELECT * FROM forums ORDER BY DATE(updated_at) DESC");
+            $query = mysqli_query($koneksi, "SELECT * FROM forums ORDER BY updated_at DESC");
         }
         while ($row = mysqli_fetch_assoc($query)) {
         ?>
@@ -57,15 +57,20 @@ include 'config/conn.php';
                             <button class="menu-button" title="Action" onclick="toggleMenuList(this)"><i class='bx bx-dots-vertical-rounded'></i></button>
 
                                 <ul id="menu-list" class="menu-list">
-                                    <li><a href="#"> <span><i class='bx bx-trash'></i></span> Delete</a></li>
-                                    <li><a href="#"> <span><i class='bx bx-edit-alt' ></i></span> Ubah Data</a></li>
+                                    <li><a onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="index.php?p=forum_delete&id=<?php echo $row['id_pesan'] ?>"> <span><i class='bx bx-trash'></i></span> Delete</a></li>
+                                    <li><a href="index.php?p=forum_update&id=<?php echo $row['id_pesan'] ?>"> <span><i class='bx bx-edit-alt' ></i></span> Ubah Data</a></li>
                                 </ul>
                         </div>
                     </div>
                     <h3 class="title-forum"><?php echo $row['judul_forum']; ?></h3>
                     <p class="message-forum"><?php echo $row['pesan']; ?></p>
                 </div>
-                <a href="index.php?p=forum_komentar" class="button-komentar">Komentar <span>(12)</span> </a>
+                <?php
+                $id_forum = $row['id_pesan'];
+                $sql = mysqli_query($koneksi,"SELECT * FROM komentars WHERE id_forum='$id_forum'");
+                $jumlah = mysqli_num_rows($sql);
+                ?>
+                <a href="index.php?p=forum_komentar&id=<?php echo $row['id_pesan'] ?>" class="button-komentar">Ruang Diskusi <span>(<?php echo $jumlah ?> Percakapan)</span> </a>
             </div>
         <?php
         }
@@ -74,3 +79,4 @@ include 'config/conn.php';
     </div>
 
 </div>
+

@@ -70,7 +70,8 @@ $query =  "INSERT INTO forums(nama_user , judul_forum, pesan, gambar) VALUES('$n
     }
     else
     {
-        header("location: index.php?p=forum_superadmin");
+        echo '<script>alert("Forum ditambahkan")</script>';
+        echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
         exit();
 
     }
