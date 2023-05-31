@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <?php 
     session_start();
+    include 'config/conn.php';
 ?>
   <head>
     <meta charset="UTF-8">
@@ -77,13 +78,103 @@
   elseif(@$_GET['p'] == "forum_add"){
     include_once 'admin/super_admin/form_add_forum.php';
   }
+  elseif(@$_GET['p']=="forum_update"){    
+    $query=mysqli_query($koneksi,"SELECT * FROM forums WHERE id_pesan ='".$_GET['id']."'");
+    while ($data = mysqli_fetch_assoc($query)) {
+        include_once 'admin/super_admin/form_update_forum.php';
+    }  
+  }
+  elseif(@$_GET['p']=="forum_delete"){
+    $query=mysqli_query($koneksi,"SELECT * FROM forums WHERE id_pesan ='".$_GET['id']."'");
+    $foto_lama = mysqli_fetch_array($query);
+
+    if ($foto_lama['gambar'] == "default.jpeg") {
+      $query = mysqli_query($koneksi,"DELETE FROM forums WHERE id_pesan ='".$_GET['id']."'");
+    }else{
+      unlink('assets/img/'.$foto_lama['gambar']);
+      $query = mysqli_query($koneksi,"DELETE FROM forums WHERE id_pesan ='".$_GET['id']."'");
+    }
+    
+    if ($query) {
+        echo "<script>alert('Data telah dihapus')</script>";
+        echo "<script>location='index.php?p=forum_superadmin'</script>";
+    }else{
+        echo "<script>alert('erorr')</script>";
+    }    
+  }
 
 
   elseif(@$_GET['p'] == "forum_komentar"){
     include_once 'admin/forum_komentar.php';
   }
-  ?>
+  elseif(@$_GET['p'] == "delete_komentar_superadmin"){
+    $sql=mysqli_query($koneksi,"SELECT * FROM komentars WHERE id_komentar ='".$_GET['id']."'");
+    $data_komentar = mysqli_fetch_array($sql);
+    $id_forum = $data_komentar['id_forum'];
+    $query = mysqli_query($koneksi,"DELETE FROM komentars WHERE id_komentar='".$_GET['id']."'");
 
+    if ($query) {
+        echo "<script>alert('Data telah dihapus')</script>";
+        echo '<script>window.location.href = "index.php?p=forum_komentar&id='.$id_forum.'";</script>';
+    }else{
+        echo "<script>alert('erorr')</script>";
+    }
+
+  }
+  elseif(@$_GET['p'] == "delete_komentar"){
+    $sql=mysqli_query($koneksi,"SELECT * FROM komentars WHERE id_komentar ='".$_GET['id']."'");
+    $data_komentar = mysqli_fetch_array($sql);
+    $id_forum = $data_komentar['id_forum'];
+    $query = mysqli_query($koneksi,"DELETE FROM komentars WHERE id_komentar='".$_GET['id']."'");
+
+    if ($query) {
+        echo "<script>alert('Data telah dihapus')</script>";
+        echo '<script>window.location.href = "index.php?p=forum_komentar&id='.$id_forum.'";</script>';
+
+    }else{
+        echo "<script>alert('erorr')</script>";
+    }
+
+  }
+  elseif(@$_GET['p'] == "dowload_file_komentar"){ 
+    $data = mysqli_query($koneksi,"SELECT * FROM komentars WHERE
+            id_komentar =" . $_REQUEST['id']);
+    
+    if ($row = mysqli_fetch_assoc($data))
+    {
+      $filename = $row['file'];
+      $filetype = $row['type_file'];
+      $filesize = $row['size'];
+    }
+     
+    header('Content-type: ' . $filetype);
+    header('Content-length: ' . $filesize);
+    header("Content-Transfer-Encoding: binary");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+    header('Content-Disposition: attachment; filename="' . $filename . '"');
+    exit();
+
+    // $data = mysqli_query($koneksi,"SELECT * FROM komentars WHERE
+    //         id_komentar =". $_REQUEST['id']);
+    
+    // if ($row = mysqli_fetch_assoc($data))
+    // {
+    //    $filename = $row['file'];
+    //    $filetype = $row['type'];
+    //    $file = $row['path'];
+    // }
+    //     header('Content-Description: File Transfer');
+    //     header('Content-type: ' . $filetype);
+    //     header('Content-Length: ' . filesize($file));
+    //     header("Content-Transfer-Encoding: binarynn");
+    //     header("Pragma: no-cache");
+    //     header("Expires: 0");
+    //     header('Content-Disposition: attachment; filename="' . $filename . '"');
+    //     exit();
+
+  }
+  ?>
   </div>
 
 </body>
