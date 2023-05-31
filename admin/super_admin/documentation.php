@@ -1,3 +1,330 @@
 <div class="header">
     <a>Documentation</a>
 </div>
+<div class="file_manager">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/87CEFA/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>                            
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/FF69B4/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/FFA07A/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/B0C4DE/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/9370DB/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>               
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/48D1CC/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/DA70D6/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/DB7093/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>                            
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/DDA0DD/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/FFC0CB/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/FA8072/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/4682B4/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>               
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/40E0D0/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/87CEFA/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/FA8072/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card-doc">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://www.bootdey.com/image/280x280/87CEFA/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
