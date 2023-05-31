@@ -1,6 +1,7 @@
 <div class="header">
     <a>Forum</a>
 </div>
+<!-- <script>alert("<?php echo $_GET['id'] ?>")</script> -->
 
 <div class="box-forum">
 
@@ -29,14 +30,18 @@
         <?php
         if (isset($_POST['simpan'])) {
             $cari = $_POST['cari'];
-            $query = mysqli_query($koneksi, "SELECT komentars.*, nama_user, id_user FROM komentars
+            $query = mysqli_query($koneksi, "SELECT komentars.*, nama_user, id_user, role FROM komentars
             JOIN users ON komentars.id_user = users.user_id
             WHERE 
+            komentars.id_forum = '".$_GET['id']."' AND
             users.nama_user like '%" . $cari . "%' OR 
-            komentars.komentar like '%" . $cari . "%' AND 
-            komentars.id_forum = '".$_GET['id']."'");
+            komentars.id_forum = '".$_GET['id']."' AND
+            komentars.komentar like '%" . $cari . "%'OR 
+            komentars.id_forum = '".$_GET['id']."' AND
+            komentars.file like '%" . $cari . "%'  
+            ");
         } else {
-            $query = mysqli_query($koneksi, "SELECT komentars.*, nama_user, id_user FROM komentars
+            $query = mysqli_query($koneksi, "SELECT komentars.*, nama_user, id_user, role FROM komentars
             JOIN users ON komentars.id_user = users.user_id
             WHERE komentars.id_forum = '".$_GET['id']."'
             ORDER BY komentars.created_at DESC
@@ -44,6 +49,8 @@
         }
         
         $cek_komentar = mysqli_num_rows($query);
+        $allowTypesfoto = array('jpg','png','jpeg','JPG','PNG','JPEG');
+        $allowTypesdok = array('doc', 'docx', 'xlx', 'xlsx', 'csv', 'ppt', 'pptx', 'pdf', 'DOC', 'DOCX', 'XLX', 'XLSX', 'CSV', 'PPT', 'PPTX', 'PDF');
         if ($cek_komentar>0) {
         ?>
         <div class="page-message">
@@ -68,6 +75,30 @@
 
                 <div class="box-massage">
                 <div class="content-komentar">
+                    <?php
+                    if (in_array($data['type'], $allowTypesdok)) {
+                    ?>
+                    <div class="box-file">
+                        <div class="nama-file">
+                            <div class="box-logo-file">
+                                <img src="assets/img/icon_dokumen.png" alt="">
+                            </div>
+                            <span class="me"><?php echo $data['file']?></span>
+                        </div>
+                        <div class="box-download-me">
+                            <a href="#"><i class='bx bxs-download'></i></a>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    elseif (in_array($data['type'], $allowTypesfoto)) {
+                    ?>
+                    <div class="box-foto">
+                        <img src="assets/img/foto/<?php echo $data['file']?>" alt="">
+                    </div>
+                    <?php
+                    }
+                    ?>
                     <p class="me">
                         <?php echo $data['komentar'] ?>
                     </p>
@@ -83,9 +114,34 @@
             ?>
                 <div class="header-komentar">
                     <span class="user-name random-color"><?php echo $data['nama_user']?></span>
-                    <span class="user-role">Super Admin</span>
+                    <span class="user-role"><?php echo $data['role']?></span>
                 </div>
                 <div class="content-komentar">
+                    
+                <?php
+                    if (in_array($data['type'], $allowTypesdok)) {
+                    ?>
+                    <div class="box-file">
+                        <div class="nama-file">
+                            <div class="box-logo-file">
+                                <img src="assets/img/icon_dokumen.png" alt="">
+                            </div>
+                            <span class="me"><?php echo $data['file']?></span>
+                        </div>
+                        <div class="box-download-me">
+                            <a href="index.php?p=dowload_file_komentar&id=<?php echo $data['id_komentar']?>"><i class='bx bxs-download'></i></a>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    elseif (in_array($data['type'], $allowTypesfoto)) {
+                    ?>
+                    <div class="box-foto">
+                        <img src="assets/img/foto/<?php echo $data['file']?>" alt="">
+                    </div>
+                    <?php
+                    }
+                    ?>
                     <p>
                         <?php echo $data['komentar'] ?>
                     </p>
@@ -114,6 +170,7 @@
                 </div>
             </div>
         </div>
+            
         <?php
         }
         ?>
@@ -129,21 +186,111 @@
     </div>
 
     <div class="content-forum-komentar">
-        <form action="" class="form">
+        <form class="form" method="POST" enctype="multipart/form-data">
             <div class="group-form">
                 <label for="">Tulis Komentar</label>
-                <textarea name="keterangan" cols="30" rows="5"></textarea>
+                <textarea name="komentar" cols="30" rows="5"></textarea>
             </div>
             <div class="group-form">
                 <label for="">Pilih Dokumen <span class="text-secondary">(opsional)</span></label>
-                <p class="keterangan-form">*.doc, .docx, .excel, .pdf, .jpg, .png, .jpeg</p>
-                <input type="file">
+                <p class="keterangan-form">*support type .doc, .docx, .xlsx .csv, .pdf, .jpg, .png, .jpeg .ppt</p>
+                <input type="file" name="file">
             </div>
-            <input type="submit" value="Tambahkan">
+            <input name="Submit" type="submit" value="Tambahkan">
         </form>
+
+        <?php
+include('config/conn.php');
+
+if(isset($_POST['Submit'])){
+    // echo '<script>alert("disubmit")</script>';
+
+$id_forum = $_GET['id'];
+$id_user = $_SESSION['user_id'];
+$komentar = $_POST['komentar'];
+$file = $_FILES['file']['name'];
+$type = $_FILES['file']['type'];
+$size = $_FILES['file']['size'];
+$tmp = $_FILES['file']['tmp_name'];
+$pathfoto = "assets/img/foto/".$file; 
+$pathdoc = "assets/file/".$file; 
+$fileTypefoto = pathinfo($pathfoto, PATHINFO_EXTENSION);
+$fileTypedoc = pathinfo($pathdoc, PATHINFO_EXTENSION);
+
+//query
+if (empty($file)) {
+    $query =  "INSERT INTO komentars (id_forum, id_user, komentar) 
+    VALUES('$id_forum' , '$id_user' , '$komentar')";
+
+    $result = mysqli_query($koneksi, $query);
+
+    if(!$result){
+        die ("Query gagal dijalankan: ".mysqli_error($koneksi).
+            " - ".mysqli_error($koneksi));
+
+    }
+    else
+    {
+        echo '<script>alert("Forum ditambahkan")</script>';
+        echo '<script>window.location.href = "index.php?p=forum_komentar&id='.$id_forum.'";</script>';
+
+        exit();
+
+    }
+} else 
+{
+if(in_array($fileTypefoto, $allowTypesfoto)){
+move_uploaded_file($tmp, $pathfoto);
+$query =  "INSERT INTO komentars (id_forum, id_user, komentar, file, type, type_file, size) 
+VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$type', '$size')";
+
+    $result = mysqli_query($koneksi, $query);
+
+    if(!$result){
+        die ("Query gagal dijalankan: ".mysqli_error($koneksi).
+            " - ".mysqli_error($koneksi));
+
+    }
+    else
+    {
+        echo '<script>alert("Forum ditambahkan")</script>';
+        echo '<script>window.location.href = "index.php?p=forum_komentar&id='.$id_forum.'";</script>';
+        exit();
+
+    }
+ }
+ elseif(in_array($fileTypedoc, $allowTypesdok)){
+    move_uploaded_file($tmp, $pathdoc);
+    $query =  "INSERT INTO komentars (id_forum, id_user, komentar, file, type, type_file, size) 
+    VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypedoc', '$type', '$size')";
+    
+        $result = mysqli_query($koneksi, $query);
+    
+        if(!$result){
+            die ("Query gagal dijalankan: ".mysqli_error($koneksi).
+                " - ".mysqli_error($koneksi));
+    
+        }
+        else
+        {
+            echo '<script>alert("Forum ditambahkan")</script>';
+            echo '<script>window.location.href = "index.php?p=forum_komentar&id='.$id_forum.'";</script>';
+            exit();
+    
+        }
+     }
+}
+}
+
+mysqli_close($koneksi);
+?>
     </div>
 
 </div>
+
+
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

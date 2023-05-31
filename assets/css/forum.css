@@ -268,6 +268,43 @@ border-radius: 8px 8px 0px 0px;
     display: flex;
     flex-direction: column;
 }
+.box-foto{
+    max-width: 300px;
+    overflow: hidden;
+    margin: 0px 10px;
+    background-color: #000000;
+    margin: 10px 0px;
+}
+.box-file{
+    padding: 5px;
+    margin: 3px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #a8a8a8;
+    border-radius: 10px;
+}
+.box-file .nama-file{
+    display: flex;
+    align-items: center;
+}
+.box-logo-file{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    margin: 0px 10px;
+}
+.box-logo-file img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.box-foto img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .box-delete{
     display: flex;
     margin: 2px;
@@ -275,7 +312,27 @@ border-radius: 8px 8px 0px 0px;
     background-color: #a8a8a860;
     border-radius: 50%;
 }
+.box-download{
+    display: flex;
+    margin: 2px;
+    padding: 2px;
+    background-color: #a8a8a860;
+    border-radius: 50%;
+}
+.box-download-me{
+    display: flex;
+    margin: 2px 10px;
+    padding: 2px;
+    background-color: #a8a8a860;
+    border-radius: 50%;
+}
 .box-delete:hover{
+    background-color: #fff;
+}
+.box-download:hover{
+    background-color: #fff;
+}
+.box-download-me:hover{
     background-color: #fff;
 }
 .header-komentar{

@@ -62,6 +62,7 @@ $password = $data_akun['password'];
             $_SESSION['email']=$email;
             $_SESSION['nama']=$data_akun['nama_user'];
             $_SESSION['role']=$data_akun['role'];
+            $_SESSION['user_id']=$data_akun['user_id'];
             
             header('location:index.php');
         }else{
