@@ -45,11 +45,9 @@
     padding: 10px;
   } */
   .main-realtime {
-    position: absolute;
-    top: 60px;
-    left: 260px;
+    display: flex;
     min-height: calc(100vh - 60px);
-    background: #f3f3f3;
+    background: #aa1d1d;
 }
 .cards-1{
   width: 100%;
@@ -127,3 +125,7 @@
     justify-content: space-between;
 }
 
+.box-chart{
+  padding: 50px;
+  /* background-color: #aa1d1d; */
+}

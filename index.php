@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/documentation.css">
 
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -181,4 +182,4 @@
 </html>
 
 <script src="assets/js/index.js"></script>
-<!-- <script src="assets/js/langgam_beban.js"></script> -->
+<script src="assets/js/langgam_beban.js"></script>

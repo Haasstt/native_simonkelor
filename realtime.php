@@ -1,7 +1,7 @@
 <div class="header">
      <a>Realtime</a>
 </div>
-<div class="main-relatime">
+<!-- <div class="main-relatime">
             <div class="cards-4">
                 <div class="card">
                     <div class="card-name">Beban Pembangkit</div>
@@ -19,15 +19,17 @@
                     <div class="card-name">Biaya Energi</div>
                 </div>
             </div>
-</div>
+</div> -->
 <div class="main-relatime">
             <div class="cards-1">
                 <div class="card">
-                <div class="card-name">Langgam Beban Timor</div><hr>
-                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                <div class="card-name">Langgam Beban Timor</div>
+                <div class="box-chart">
+                <canvas id="myChart" style="width:100%;max-height:400px"></canvas>
+                </div>
                 </div>
             </div>
-            <div class="cards-1">
+            <!-- <div class="cards-1">
                 <div class="card">
                 <div class="card-name">Frequency Sistem Timor</div><hr>
                 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
@@ -50,7 +52,7 @@
                     <div class="content"></div>
                 </div>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="cards">
                 <div class="card">
                 <div class="card-name">Heyoo</div>
@@ -62,4 +64,7 @@
                 </div>
             </div> -->
 </div>
+
+
+
 
