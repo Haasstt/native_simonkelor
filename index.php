@@ -108,32 +108,36 @@
   elseif(@$_GET['p'] == "forum_komentar"){
     include_once 'admin/forum_komentar.php';
   }
-  elseif(@$_GET['p'] == "delete_komentar_superadmin"){
-    $sql=mysqli_query($koneksi,"SELECT * FROM komentars WHERE id_komentar ='".$_GET['id']."'");
-    $data_komentar = mysqli_fetch_array($sql);
-    $id_forum = $data_komentar['id_forum'];
-    $query = mysqli_query($koneksi,"DELETE FROM komentars WHERE id_komentar='".$_GET['id']."'");
-
-    if ($query) {
-        echo "<script>alert('Data telah dihapus')</script>";
-        echo '<script>window.location.href = "index.php?p=forum_komentar&id='.$id_forum.'";</script>';
-    }else{
-        echo "<script>alert('erorr')</script>";
-    }
-
-  }
   elseif(@$_GET['p'] == "delete_komentar"){
     $sql=mysqli_query($koneksi,"SELECT * FROM komentars WHERE id_komentar ='".$_GET['id']."'");
     $data_komentar = mysqli_fetch_array($sql);
     $id_forum = $data_komentar['id_forum'];
-    $query = mysqli_query($koneksi,"DELETE FROM komentars WHERE id_komentar='".$_GET['id']."'");
+    $file = $data_komentar['file'];
+    $path = $data_komentar['path'];
 
-    if ($query) {
-        echo "<script>alert('Data telah dihapus')</script>";
+    if ($file == NULL) {
+      
+      $query = mysqli_query($koneksi,"DELETE FROM komentars WHERE id_komentar='".$_GET['id']."'");
+
+      if ($query) {
+        echo "<script>alert('Pesan telah dihapus')</script>";
         echo '<script>window.location.href = "index.php?p=forum_komentar&id='.$id_forum.'";</script>';
 
-    }else{
+      }else{
         echo "<script>alert('erorr')</script>";
+      }
+    }
+    else{
+      unlink($path);
+      $query = mysqli_query($koneksi,"DELETE FROM komentars WHERE id_komentar='".$_GET['id']."'");
+
+      if ($query) {
+        echo "<script>alert('Pesan telah dihapus')</script>";
+        echo '<script>window.location.href = "index.php?p=forum_komentar&id='.$id_forum.'";</script>';
+
+      }else{
+        echo "<script>alert('erorr')</script>";
+      }
     }
 
   }
@@ -143,37 +147,30 @@
     
     if ($row = mysqli_fetch_assoc($data))
     {
-      $filename = $row['file'];
-      $filetype = $row['type_file'];
-      $filesize = $row['size'];
+      $file = $row['path'];
     }
-     
-    header('Content-type: ' . $filetype);
-    header('Content-length: ' . $filesize);
-    header("Content-Transfer-Encoding: binary");
-    header("Pragma: no-cache");
-    header("Expires: 0");
-    header('Content-Disposition: attachment; filename="' . $filename . '"');
-    exit();
-
-    // $data = mysqli_query($koneksi,"SELECT * FROM komentars WHERE
-    //         id_komentar =". $_REQUEST['id']);
     
-    // if ($row = mysqli_fetch_assoc($data))
-    // {
-    //    $filename = $row['file'];
-    //    $filetype = $row['type'];
-    //    $file = $row['path'];
-    // }
-    //     header('Content-Description: File Transfer');
-    //     header('Content-type: ' . $filetype);
-    //     header('Content-Length: ' . filesize($file));
-    //     header("Content-Transfer-Encoding: binarynn");
-    //     header("Pragma: no-cache");
-    //     header("Expires: 0");
-    //     header('Content-Disposition: attachment; filename="' . $filename . '"');
-    //     exit();
+    // Mengecek apakah file ada
+    if (file_exists($file)) {
+      // Mengatur header untuk tipe konten file
+      header('Content-Description: File Transfer');
+      header('Content-Type: application/octet-stream');
+      header('Content-Disposition: attachment; filename=' . basename($file));
+      header('Content-Transfer-Encoding: binary');
+      header('Expires: 0');
+      header('Cache-Control: must-revalidate');
+      header('Pragma: public');
+      header('Content-Length: ' . filesize($file));
 
+      // Membaca file dan menuliskannya ke output buffer
+      ob_clean();
+      flush();
+      readfile($file);
+      exit;
+    } else {
+      // File tidak ditemukan
+      echo "<script>alert('File tidak ditemukan.')</script>";
+    }
   }
   ?>
   </div>

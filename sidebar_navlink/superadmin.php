@@ -57,9 +57,6 @@
         </a>
       </li>
       <hr>
-      <br>
-      <br>
-      <br>
       <li>
         <a href="logout.php">
           <i class='bx bx-log-out' ></i>

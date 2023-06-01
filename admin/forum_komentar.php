@@ -1,9 +1,4 @@
-<div class="header">
-    <a>Forum</a>
-</div>
-<!-- <script>alert("<?php echo $_GET['id'] ?>")</script> -->
-
-<div class="box-forum">
+<div class="box-forum-komentar">
 
     <div class="header-forum-komentar">
 
@@ -70,7 +65,7 @@
             ?>
             <div class="box-me">
                 <div class="box-delete">
-                    <a onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="index.php?p=delete_komentar_superadmin&id=<?php echo $data['id_komentar'] ?>"><i class='bx bx-trash'></i></a>
+                    <a onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="index.php?p=delete_komentar&id=<?php echo $data['id_komentar'] ?>"><i class='bx bx-trash'></i></a>
                 </div>
 
                 <div class="box-massage">
@@ -86,7 +81,7 @@
                             <span class="me"><?php echo $data['file']?></span>
                         </div>
                         <div class="box-download-me">
-                            <a href="#"><i class='bx bxs-download'></i></a>
+                        <a href="index.php?p=dowload_file_komentar&id=<?php echo $data['id_komentar']?>"><i class='bx bxs-download'></i></a>
                         </div>
                     </div>
                     <?php
@@ -177,8 +172,26 @@
 
     </div>
 
-</div>
+    <form class="form-send">
+        <div>
+            <label for="send-file" class="file-input-label">
+                <i class='bx bxs-file-plus'></i>
+            </label>
+            <input id="send-file" class="visually-hidden" type="file">
+        </div>
+        <div class="group-form-komentar">
+            <input type="text" name="pesan">
+        </div>
+        <div>
+            <label for="send-file" class="file-input-label">
+                <i class="bx bx-send"></i>
+            </label>
+        </div>
+    <input id="send-komentar" class="send-komentar" name="Submit" type="submit">
+    </form>
 
+</div>
+<!-- 
 <div class="box-forum">
 
     <div class="header-forum">
@@ -198,6 +211,29 @@
             </div>
             <input name="Submit" type="submit" value="Tambahkan">
         </form>
+        
+<div class="box-kirim-komentar">
+  <form class="form-send" action="">
+    <div>
+    <input id="send-file" class="send-file visually-hidden" name="file" type="file">
+    <label for="send-file" class="file-input-label">
+      <i class="bx bx-send"></i>
+    </label>
+    </div>
+    
+    <div class="group-form-komentar">
+      <input type="text" name="pesan">
+    </div>
+
+    <div>
+    <label for="send-komentar" class="file-input-label">
+      <i class="bx bx-send"></i>
+    </label>
+    <input id="send-komentar" class="send-komentar" name="Submit" type="submit">
+    </div>
+  </form>
+</div>
+     -->
 
         <?php
 include('config/conn.php');
@@ -209,7 +245,6 @@ $id_forum = $_GET['id'];
 $id_user = $_SESSION['user_id'];
 $komentar = $_POST['komentar'];
 $file = $_FILES['file']['name'];
-$type = $_FILES['file']['type'];
 $size = $_FILES['file']['size'];
 $tmp = $_FILES['file']['tmp_name'];
 $pathfoto = "assets/img/foto/".$file; 
@@ -241,8 +276,8 @@ if (empty($file)) {
 {
 if(in_array($fileTypefoto, $allowTypesfoto)){
 move_uploaded_file($tmp, $pathfoto);
-$query =  "INSERT INTO komentars (id_forum, id_user, komentar, file, type, type_file, size) 
-VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$type', '$size')";
+$query =  "INSERT INTO komentars (id_forum, id_user, komentar, file, type, path, size) 
+VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$pathfoto', '$size')";
 
     $result = mysqli_query($koneksi, $query);
 
@@ -261,8 +296,8 @@ VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$type'
  }
  elseif(in_array($fileTypedoc, $allowTypesdok)){
     move_uploaded_file($tmp, $pathdoc);
-    $query =  "INSERT INTO komentars (id_forum, id_user, komentar, file, type, type_file, size) 
-    VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypedoc', '$type', '$size')";
+    $query =  "INSERT INTO komentars (id_forum, id_user, komentar, file, type, path, size) 
+    VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypedoc', '$pathdoc', '$size')";
     
         $result = mysqli_query($koneksi, $query);
     
@@ -284,9 +319,9 @@ VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$type'
 
 mysqli_close($koneksi);
 ?>
-    </div>
+    <!-- </div>
 
-</div>
+</div> -->
 
 
 
