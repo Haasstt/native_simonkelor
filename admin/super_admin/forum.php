@@ -1,11 +1,11 @@
 <?php
 include 'config/conn.php';
 ?>
-<div class="header">
+<div class="header-forum">
     <a>Forum</a>
 </div>
 <div class="box-forum">
-    <div class="header-forum">
+    <div class="header-forum-content">
 
         <div class="search-forum">
             <form class="form-search" method="POST" enctype="multipart/form-data">
