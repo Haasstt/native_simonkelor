@@ -1,4 +1,92 @@
-.file_manager .file a:hover .hover,
+.header-documentation, .page-dokumen{
+    padding: 20px 50px;
+}
+.page-documentation{
+    width: 100%;    
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.row-file{
+    display: flex;
+    justify-content: start;
+    padding: 20px;
+}
+.box-file{
+    width: 250px;
+    height: 250px;
+    background: #D9D9D9;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box-file i{
+    font-size: 7rem;
+    color: #8473ED;
+}
+.box-file i:hover{
+    color: #D9D9D9;
+}
+
+.box-file span{
+    text-align: center;
+    width: 150px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #311e69;
+}
+.box-file:hover{
+    background-color: #8473ED;
+}
+
+.header-dokumen{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.table-dokumen {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table-dokumen thead tr th, .table-dokumen tbody tr td {
+  text-align: center;
+  padding: 8px;
+}
+
+.table-dokumen thead tr th {
+  padding: 20px 0px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22px;
+  color: #311E69;
+  border-bottom: 2px solid #311E69;
+}
+.table-dokumen tbody tr td {
+    padding: 20px 0px;
+    border-bottom: 2px solid #311E69;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #525252;
+}
+.btn-action{
+    padding: 7px 12px;
+    border-radius: 4px;
+}
+.btn-delete{
+    background-color: #D9534F;
+    color: #fff;
+}
+.btn-edit{
+    background-color: #5BC0DE;
+    color: #fff;
+}
+
+/* .file_manager .file a:hover .hover,
 .file_manager .file .file-name small{
     display: block 
 }
@@ -88,4 +176,4 @@
 
 a:hover {
     text-decoration:none;
-}
+} */

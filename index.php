@@ -70,8 +70,26 @@
     include_once 'forcasting.php';
   }elseif(@$_GET['p'] == "data_operasi"){
     include_once 'admin/super_admin/data_operasi.php';
-  }elseif(@$_GET['p'] == "documentation_superadmin"){
+  }
+
+  //dokumentation admin
+  elseif(@$_GET['p'] == "documentation_superadmin"){
     include_once 'admin/super_admin/documentation.php';
+  }
+  elseif(@$_GET['p'] == "perencanaan"){
+    include_once 'admin/super_admin/documentation/perencanaan.php';
+  }
+  elseif(@$_GET['p'] == "evaluasi"){
+    include_once 'admin/super_admin/documentation/evaluasi.php';
+  }
+  elseif(@$_GET['p'] == "profil_kelistrikan"){
+    include_once 'admin/super_admin/documentation/profil_kelistrikan.php';
+  }
+  elseif(@$_GET['p'] == "pengoperasian"){
+    include_once 'admin/super_admin/documentation/pengoperasian.php';
+  }
+  elseif(@$_GET['p'] == "line_diagram"){
+    include_once 'admin/super_admin/documentation/singel_line_diagram.php';
   }
 
   // forum

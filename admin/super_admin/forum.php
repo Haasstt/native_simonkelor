@@ -6,8 +6,6 @@ include 'config/conn.php';
 </div>
 <div class="box-forum">  
     <div class="header-forum-content">
-        
-        <!-- <button class="submit-search" type="submit" name="simpan"><i class='bx bx-search'></i></button> -->
 
         <div class="search-forum">
             <form class="form-search" method="POST" enctype="multipart/form-data">
@@ -18,7 +16,7 @@ include 'config/conn.php';
 
         <div class="header-search-wrapper">
             <span class="search-main">
-                <i class="fa fa-search"></i>
+                <i class='bx bx-search'></i>
             </span>
             <div class="search-form-main clearfix">
                 <div class="search clearfix">
