@@ -20,13 +20,6 @@
     </div>
 
     <div class="main-left">
-        <div class="card-left">
-            <span class="card-name">Langgam Beban Timor</span>
-            <span class="card-value">Langgam Beban Timor</span>
-        </div>
-        <div class="card-left">
-            <span class="card-name">Langgam Beban Timor</span>
-            <span class="card-value">Langgam Beban Timor</span>
-        </div>
+        <div id="card_left"></div>
     </div>
 </div>

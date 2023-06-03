@@ -12,7 +12,12 @@ if (!$conn) {
 }
 
 // Query untuk mengambil data total_beban dari tabel beban_kit
-$sql = "SELECT * FROM monitoring_realtimes WHERE parameter LIKE 'PLTU%'";
+$sql = "SELECT * FROM monitoring_realtimes WHERE 
+parameter = 'Beban Pembangkit' OR 
+parameter = 'Frequency' OR
+parameter = 'Losses' OR 
+parameter ='Fuelmix'
+";
 $result = mysqli_query($conn, $sql);
 
 // Membuat variabel untuk menampung output

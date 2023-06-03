@@ -180,4 +180,5 @@
 </html>
 
 <script src="assets/js/langgam_beban.js"></script>
+<script src="assets/js/realtime_pembangkit.js"></script>
 <script src="assets/js/index.js"></script>
