@@ -4,7 +4,7 @@ include 'config/conn.php';
 <div class="header-forum">
     <a>Forum</a>
 </div>
-<div class="box-forum">
+<div class="box-forum">  
     <div class="header-forum-content">
 
         <div class="search-forum">
@@ -14,6 +14,26 @@ include 'config/conn.php';
             </form>
         </div>
 
+        <div class="header-search-wrapper">
+            <span class="search-main">
+                <i class='bx bx-search'></i>
+            </span>
+            <div class="search-form-main clearfix">
+                <div class="search clearfix">
+                    <form class="form-search" method="POST" enctype="multipart/form-data">
+                        <input class="input-search" name="cari" placeholder="Search..." autofocus required />
+                        <button class="submit-search" type="submit" name="simpan"><i class='bx bx-search'></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('.header-search-wrapper .search-main').click(function(){
+                $('.search-form-main').toggleClass('active-search');
+                $('.search').toggleClass('mobile');
+                $('.search-form-main .search-field').focus();
+            });
+        </script>
         <?php
         if (isset($_POST['simpan'])) {
             $cari = $_POST['cari'];

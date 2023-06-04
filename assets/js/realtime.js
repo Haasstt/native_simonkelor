@@ -1,3 +1,31 @@
+$.ajax({
+  url: 'fetch_data/fetch_data_realtime_beban_pembangkit.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
+  method: 'GET',
+  dataType: 'html',
+  success: function(data) {
+    // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+    $('#card_left').html(data);
+  console.log(data);
+  },
+  error: function(xhr, status, error) {
+    console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+  }
+});
+
+setInterval(function() {
+  $.ajax({
+    url: 'fetch_data/fetch_data_realtime_beban_pembangkit.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
+    method: 'GET',
+    dataType: 'html',
+    success: function(data) {
+      // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+      $('#card_left').html(data);
+    console.log(data);
+    }
+  });
+}, 1000);
+
+//langgam
   const chartData = {
     labels: [
       "00:00",
@@ -134,33 +162,86 @@
     }, 1000); // Mengambil data setiap 3 detik
   });
 
-  $.ajax({
-    url: 'fetch_data/fetch_data_realtime_beban_pembangkit.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
-    method: 'GET',
-    dataType: 'html',
-    success: function(data) {
-      // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
-      $('#card_left').html(data);
-    },
-    error: function(xhr, status, error) {
-      console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
-    }
-  });
-// Fungsi untuk mengambil dan memperbarui data monitoring secara real-time
-function fetchMonitoringData() {
-  $.ajax({
-    url: 'fetch_data/fetch_data_realtime_beban_pembangkit.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
-    method: 'GET',
-    dataType: 'html',
-    success: function(data) {
-      // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
-      $('#card_left').html(data);
-    },
-    error: function(xhr, status, error) {
-      console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
-    }
-  });
-}
+//chart
 
-// Memanggil fungsi fetchMonitoringData setiap 5 detik (atau interval waktu yang diinginkan)
-setInterval(fetchMonitoringData, 1000);
+const Color = d3.scaleOrdinal()
+  .range(['#F4BE37', '#5388D8', '#0D2535', '#FF9F40', '#888']);
+
+
+// Donut Chart
+const donutContainer = d3.select("#chart-donut");
+const donutWidth = 250;
+const donutHeight = 250;
+const donutRadius = Math.min(donutWidth, donutHeight) / 2;
+
+const innerRadius = 80;
+const outerRadius = Math.min(donutWidth, donutHeight) / 2;
+
+const donutSvg = donutContainer.append("svg")
+  .attr("width", donutWidth)
+  .attr("height", donutHeight)
+  .append("g")
+  .attr("transform", `translate(${donutWidth / 2}, ${donutHeight / 2})`);
+
+const donutData = [
+  { value: 40 },
+  { value: 10 },
+  { value: 30 },
+  { value: 20 }
+];
+
+const donutArc = d3.arc()
+  .innerRadius(innerRadius)
+  .outerRadius(outerRadius);
+
+const donutPie = d3.pie()
+  .value(d => d.value);
+
+const donutArcs = donutSvg.selectAll("arc")
+  .data(donutPie(donutData))
+  .enter()
+  .append("g");
+
+donutArcs.append("path")
+  .attr("d", donutArc)
+  .attr("fill", (d, i) => Color(i));
+
+// Pie Chart
+const pieContainer = d3.select("#chart-pie");
+const pieWidth = 250;
+const pieHeight = 250;
+const pieRadius = Math.min(pieWidth, pieHeight) / 2;
+
+const pieSvg = pieContainer.append("svg")
+  .attr("width", pieWidth)
+  .attr("height", pieHeight)
+  .append("g")
+  .attr("transform", `translate(${pieWidth / 2}, ${pieHeight / 2})`);
+
+const pieData = [
+  { value: 30 },
+  { value: 25 },
+  { value: 25 },
+  { value: 20 }
+];
+
+const pieArc = d3.arc()
+  .innerRadius(0)
+  .outerRadius(pieRadius);
+
+const piePie = d3.pie()
+  .value(d => d.value);
+
+const pieArcs = pieSvg.selectAll("arc")
+  .data(piePie(pieData))
+  .enter()
+  .append("g");
+
+pieArcs.append("path")
+  .attr("d", pieArc)
+  .attr("fill", (d, i) => Color(i));
+
+pieArcs.append("text")
+  .attr("transform", d => `translate(${pieArc.centroid(d)})`)
+  .attr("text-anchor", "middle")
+  .text(d => d.data.label);

@@ -342,6 +342,17 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
+@media screen and (max-width: 900px) {
+  .header{
+    padding: 10px 5px;
+  }
+  .header a{
+    color: #311e69;
+    font-size: 20pt;
+    font-weight: bold;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .sidebar {
     transform: translate(-260px);
@@ -367,11 +378,24 @@ input[type=submit]:hover {
     transition: 25ms;
     margin-left: 0;
   }
+  .header{
+    padding: 10px 5px;
+  }
+  .header a{
+    color: #311e69;
+    font-size: 20pt;
+    font-weight: bold;
+  }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 412px) {
   .sidebar {
-    display: none;
+    transform: translate(-260px);
+    transition: 1s;
+  }
+  .sidebar_open {
+    transform: translate(1px);
+    transition: 1s;
   }
   .topnav a, .nav_responsive{
     display: flex;
@@ -384,6 +408,10 @@ input[type=submit]:hover {
     position: absolute;
     right: 0;
     top: 0;
+  }
+  .main{
+    transition: 25ms;
+    margin-left: 0;
   }
 }
 /* body{

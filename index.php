@@ -16,6 +16,7 @@
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -69,8 +70,26 @@
     include_once 'forcasting.php';
   }elseif(@$_GET['p'] == "data_operasi"){
     include_once 'admin/super_admin/data_operasi.php';
-  }elseif(@$_GET['p'] == "documentation_superadmin"){
+  }
+
+  //dokumentation admin
+  elseif(@$_GET['p'] == "documentation_superadmin"){
     include_once 'admin/super_admin/documentation.php';
+  }
+  elseif(@$_GET['p'] == "perencanaan"){
+    include_once 'admin/super_admin/documentation/perencanaan.php';
+  }
+  elseif(@$_GET['p'] == "evaluasi"){
+    include_once 'admin/super_admin/documentation/evaluasi.php';
+  }
+  elseif(@$_GET['p'] == "profil_kelistrikan"){
+    include_once 'admin/super_admin/documentation/profil_kelistrikan.php';
+  }
+  elseif(@$_GET['p'] == "pengoperasian"){
+    include_once 'admin/super_admin/documentation/pengoperasian.php';
+  }
+  elseif(@$_GET['p'] == "line_diagram"){
+    include_once 'admin/super_admin/documentation/singel_line_diagram.php';
   }
 
   // forum
@@ -177,8 +196,8 @@
   </div>
 
 </body>
-</html>
+</html>                                       
 
-<script src="assets/js/langgam_beban.js"></script>
-<script src="assets/js/realtime_pembangkit.js"></script>
+<script src="assets/js/realtime.js"></script>
+<script src="assets/js/chart-pie.js"></script>
 <script src="assets/js/index.js"></script>
