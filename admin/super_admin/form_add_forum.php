@@ -36,7 +36,7 @@ $judul = $_POST['judul'];
 $keterangan = $_POST['keterangan'];
 $photo = $_FILES['photo']['name'];
 $tmp = $_FILES['photo']['tmp_name'];
-$path = "assets/img/".$photo;
+$path = "assets/img/img_forum/".$photo;
 
 //query
 if (empty($photo)) {

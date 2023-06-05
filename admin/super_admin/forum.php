@@ -56,7 +56,7 @@ include 'config/conn.php';
         ?>
             <div class="box-pesan">
                 <div class="sampul-pesan">
-                    <img src="assets/img/<?php echo $row['gambar']; ?>" alt="">
+                    <img src="assets/img/img_forum/<?php echo $row['gambar']; ?>" alt="">
                 </div>
                 <script>
                     function toggleMenuList(button) {
