@@ -145,7 +145,7 @@
   }
 
   //dokumentation admin
-  elseif(@$_GET['p'] == "documentation_superadmin"){
+  elseif(@$_GET['p'] == "documentation"){
     include_once 'admin/documentation.php';
   }
   elseif(@$_GET['p'] == "form_add_documentation"){
@@ -190,20 +190,21 @@
   }
 
   // forum
-  elseif(@$_GET['p'] == "forum_superadmin"){
-    include_once 'admin/super_admin/forum.php';
+  elseif(@$_GET['p'] == "forum"){
+    include_once 'admin/forum.php';
   }
   elseif(@$_GET['p'] == "forum_add"){
     include_once 'admin/super_admin/form_add_forum.php';
   }
-  elseif(@$_GET['p']=="forum_update"){    
+  elseif(@$_GET['p']=="forum_update"){
     $query=mysqli_query($koneksi,"SELECT * FROM forums WHERE id_pesan ='".$_GET['id']."'");
     while ($data = mysqli_fetch_assoc($query)) {
         include_once 'admin/super_admin/form_update_forum.php';
     }  
   }
-  elseif(@$_GET['p']=="forum_delete"){
-    $query=mysqli_query($koneksi,"SELECT * FROM forums WHERE id_pesan ='".$_GET['id']."'");
+  elseif(@$_GET['p']=="forum_delete"){   
+    if ($_SESSION['role'] == "Super Admin") {
+      $query=mysqli_query($koneksi,"SELECT * FROM forums WHERE id_pesan ='".$_GET['id']."'");
     $foto_lama = mysqli_fetch_array($query);
 
     if ($foto_lama['gambar'] == "default.jpeg") {
@@ -215,10 +216,14 @@
     
     if ($query) {
         echo "<script>alert('Data telah dihapus')</script>";
-        echo "<script>location='index.php?p=forum_superadmin'</script>";
+        echo "<script>location='index.php?p=forum'</script>";
     }else{
         echo "<script>alert('erorr')</script>";
-    }    
+    } 
+    }else {
+      echo "<script>alert('Mohon maaf hanya Super Admin yang berhak menghapus data ini')</script>";
+      echo "<script>location='index.php?p=forum'</script>";
+    }   
   }
 
 

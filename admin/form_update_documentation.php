@@ -1,5 +1,9 @@
 <?php
-        if ($_SESSION['role'] == 'Super Admin') {
+        if (
+            $_SESSION['role'] == 'Super Admin' OR
+            $_SESSION['role'] == 'Admin Dispacher' OR
+            $_SESSION['role'] == 'Admin Pembangkit'
+        ) {
     ?>
 <div class="header header-documentation">
     <a>Documentation > Form Update</a>
@@ -27,10 +31,10 @@
                 <label for="">Jenis Dokumen</label>
                 <select name="jenis" type="text" required>
                     <option value="<?php echo $data['jenis_dokumen'];?>" <?php if($data['jenis_dokumen'] == $data['jenis_dokumen']) echo 'selected="selected"';?>>
-                        Dokumen <?php echo $data['jenis_dokumen'];?>"
+                        Dokumen <?php echo $data['jenis_dokumen'];?>
                     </option>
                     <option value="perencanaan">Dokumen Perencanaan</option>
-                    <option value="evaluasi" >Dokumen Perencanaan Operasi</option>
+                    <option value="evaluasi" >Dokumen Evaluasi Operasi</option>
                     <option value="profil_kelistrikan">Dokumen Profil Kelistrikan</option>
                     <option value="sop_pengoperasian">Dokumen SOP Pengoperasian</option>
                     <option value="singel_line_diagram">Dokumen Single Line Diagram</option>
@@ -121,7 +125,7 @@ mysqli_close($koneksi);
 
 <?php
         }else {
-            echo '<script>alert("Mohon maaf halaman ini hanya dapat dilihat oleh Super Admin")</script>';
+            echo '<script>alert("Mohon maaf halaman ini hanya dapat dilihat oleh Admin")</script>';
             echo '<script>window.location.href = "Login.php";</script>';
         }
     ?>

@@ -1,3 +1,6 @@
+<?php
+if (isset($_SESSION['nama'])) {
+?>
 <div class="header header-documentation">
     <a>Documentation > Dokumen SOP Pengoperasian</a>
 </div>
@@ -16,7 +19,7 @@
     <?php
         }
     ?>
-    
+
     <div class="content-dokumen">
         <table class="table-dokumen">
             <thead>
@@ -87,3 +90,9 @@
     </div>
 </div>
 
+<?php
+        }else {
+            echo '<script>alert("Mohon maaf untuk membuka halaman ini Anda harus login dahulu")</script>';
+            echo '<script>window.location.href = "Login.php";</script>';
+        }
+    ?>

@@ -1,5 +1,9 @@
 <?php
-        if ($_SESSION['role'] == 'Super Admin') {
+        if (
+            $_SESSION['role'] == 'Super Admin' OR
+            $_SESSION['role'] == 'Admin Dispacher' OR
+            $_SESSION['role'] == 'Admin Pembangkit'
+        ) {
     ?>
 <div class="header header-documentation">
     <a>Documentation > Form Tambah</a>
@@ -73,7 +77,7 @@ mysqli_close($koneksi);
 
 <?php
         }else {
-            echo '<script>alert("Mohon maaf halaman ini hanya dapat dilihat oleh Super Admin")</script>';
+            echo '<script>alert("Mohon maaf halaman ini hanya dapat dilihat oleh Admin")</script>';
             echo '<script>window.location.href = "Login.php";</script>';
         }
     ?>

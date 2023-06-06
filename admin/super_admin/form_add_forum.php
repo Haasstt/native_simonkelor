@@ -1,6 +1,3 @@
-<?php
-        if ($_SESSION['role'] == 'Super Admin') {
-    ?>
 <div class="header">
     <a>Forum</a>
 </div>
@@ -33,6 +30,8 @@
 include('config/conn.php');
 
 if(isset($_POST['Submit'])){
+    
+    if ($_SESSION['role'] == 'Super Admin') {
 
 $nama = $_SESSION['nama'];
 $judul = $_POST['judul'];
@@ -55,7 +54,7 @@ if (empty($photo)) {
     else
     {
         echo '<script>alert("Forum ditambahkan")</script>';
-        echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
+        echo '<script>window.location.href = "index.php?p=forum";</script>';
         exit();
 
     }
@@ -80,6 +79,10 @@ $query =  "INSERT INTO forums(nama_user , judul_forum, pesan, gambar) VALUES('$n
     }
  }
 }
+}else {
+    echo '<script>alert("Mohon maaf hanya Super Admin yang berhak menambah data ini")</script>';
+    echo '<script>window.location.href = "index.php?p=forum";</script>';
+}
 }
 
 mysqli_close($koneksi);
@@ -88,10 +91,3 @@ mysqli_close($koneksi);
     </div>
 
 </div>
-
-<?php
-        }else {
-            echo '<script>alert("Mohon maaf halaman ini hanya dapat dilihat oleh Super Admin")</script>';
-            echo '<script>window.location.href = "Login.php";</script>';
-        }
-    ?>

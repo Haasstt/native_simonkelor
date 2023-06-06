@@ -1,3 +1,6 @@
+<?php
+if (isset($_SESSION['nama'])) {
+?>
 <div class="box-forum-komentar">
 
     <div class="header-forum-komentar">
@@ -323,3 +326,10 @@ mysqli_close($koneksi);
         });
     });
 </script>
+
+<?php
+        }else {
+            echo '<script>alert("Mohon maaf untuk membuka halaman ini Anda harus login dahulu")</script>';
+            echo '<script>window.location.href = "Login.php";</script>';
+        }
+    ?>

@@ -1,6 +1,3 @@
-<?php
-        if ($_SESSION['role'] == 'Super Admin') {
-    ?>
 <div class="header">
     <a>Forum</a>
 </div>
@@ -40,6 +37,8 @@
 include('config/conn.php');
 
 if(isset($_POST['Submit'])){
+    
+if ($_SESSION['role'] == "Super Admin") {
 
 $judul = $_POST['judul'];
 $keterangan = $_POST['keterangan'];
@@ -52,7 +51,7 @@ if (empty($photo)) {
 
     if ($data['judul_forum'] == $judul && $data['pesan'] == $keterangan) {
         echo '<script>alert("Anda tidak melakukan pengubahan data")</script>';
-        echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
+        echo '<script>window.location.href = "index.php?p=forum";</script>';
         exit();
     }
 			
@@ -71,7 +70,7 @@ if (empty($photo)) {
     else
     {
         echo '<script>alert("Forum berhasil diubah")</script>';
-        echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
+        echo '<script>window.location.href = "index.php?p=forum";</script>';
         exit();
 
     }
@@ -97,7 +96,7 @@ if($data['gambar'] == "default.jpeg"){
     else
     {
         echo '<script>alert("Forum berhasil diubah")</script>';
-        echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
+        echo '<script>window.location.href = "index.php?p=forum";</script>';
         exit();
 
     }
@@ -123,24 +122,24 @@ if($data['gambar'] == "default.jpeg"){
     else
     {
         echo '<script>alert("Forum berhasil diubah")</script>';
-        echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
+        echo '<script>window.location.href = "index.php?p=forum";</script>';
         exit();
 
     }
  }
 }
+
+}else {
+    echo '<script>alert("Mohon maaf hanya Super Admin yang berhak mengubah data ini")</script>';
+    echo '<script>window.location.href = "index.php?p=forum";</script>';
+}
+
 }
 
 mysqli_close($koneksi);
+
 ?>
 
     </div>
 
 </div>
-
-<?php
-        }else {
-            echo '<script>alert("Mohon maaf halaman ini hanya dapat dilihat oleh Super Admin")</script>';
-            echo '<script>window.location.href = "Login.php";</script>';
-        }
-    ?>

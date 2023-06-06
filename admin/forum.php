@@ -1,5 +1,6 @@
 <?php
 include 'config/conn.php';
+if (isset($_SESSION['nama'])) {
 ?>
 <div class="header-forum">
     <a>Forum</a>
@@ -99,4 +100,9 @@ include 'config/conn.php';
     </div>
 
 </div>
-
+<?php
+        }else {
+            echo '<script>alert("Mohon maaf untuk membuka halaman ini Anda harus login dahulu")</script>';
+            echo '<script>window.location.href = "Login.php";</script>';
+        }
+    ?>

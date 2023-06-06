@@ -27,13 +27,13 @@
         </ul>
       </li>
       <li>
-        <a href="index.php?p=documentation_superadmin">
+        <a href="index.php?p=documentation">
           <i class='bx bx-collection' ></i>
           <span class="link_name">Documentation</span>
         </a>
       </li>
       <li>
-        <a href="index.php?p=forum_superadmin">
+        <a href="index.php?p=forum">
           <i class='bx bx-conversation' ></i>
           <span class="link_name">Forum</span>
         </a>
