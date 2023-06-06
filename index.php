@@ -144,6 +144,50 @@
   elseif(@$_GET['p'] == "profile"){
     include_once 'admin/profile.php';
   }
+  elseif(@$_GET['p'] == "update_foto_profile"){
+    include_once 'admin/update_foto_profile.php';
+  }
+  elseif(@$_GET['p'] == "delete_foto_profil"){
+    $query=mysqli_query($koneksi,"SELECT * FROM users WHERE user_id ='".$_GET['id']."'");
+    $data_lama = mysqli_fetch_array($query);
+    $gambar = $data_lama['gambar'];
+    $path = $data_lama['path'];
+
+    if ($gambar == "default_profil.png") {
+      echo "<script>alert('Anda belum mengunggah foto profil')</script>";
+      echo '<script>window.location.href ="index.php?p=update_foto_profile";</script>';
+    }else{
+
+      $query = "UPDATE users SET 
+      gambar = 'default_profil.png',
+      path = ''
+      WHERE user_id ='".$data_lama['user_id']."'";
+        
+      $result = mysqli_query($koneksi, $query);
+        
+            if(!$result){
+                die ("Query gagal dijalankan: ".mysqli_error($koneksi).
+                    " - ".mysqli_error($koneksi));
+        
+            }
+            else
+            {
+              unlink($data_lama['path']);
+        
+              echo "<script>alert('Foto profil berhasil dihapus')</script>";
+              echo '<script>window.location.href ="index.php?p=profile";</script>';
+                exit();
+        
+            }
+    }
+
+  }
+  elseif(@$_GET['p'] == "update_data_profile"){
+    include_once 'admin/update_data_profile.php';
+  }
+  elseif(@$_GET['p'] == "update_password_profile"){
+    include_once 'admin/update_password_profile.php';
+  }
 
   //dokumentation admin
   elseif(@$_GET['p'] == "documentation"){

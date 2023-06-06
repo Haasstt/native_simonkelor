@@ -56,6 +56,27 @@
   height: 100%;
   padding: 0px 100px;
 }
+.cover-edit-foto{
+  height: 85%;
+  display: flex;
+  border: #f3f3f3 solid 2px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.cover-edit-data{
+  height: 95%;
+  display: flex;
+  border: #f3f3f3 solid 2px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.cover-edit-pass{
+  height: 75%;
+  display: flex;
+  border: #f3f3f3 solid 2px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
 .cover{
   height: 80%;
   display: flex;
@@ -118,6 +139,32 @@
   text-decoration: underline;
   
 }
+.cover-edit-foto .card-update-foto, .cover-edit-data .card-update-data,
+.cover-edit-pass .card-update-pass{
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-update-foto .foto-profile{
+  display: flex;
+  width: 200px;
+  height: 200px;
+  padding: 25px;
+  text-align: center;
+}
+.foto-profile img{
+  width: 100%;
+  border-radius: 50%;
+}
+.name-page-update{
+  width: 100%;
+  padding: 25px 25px;
+  color: #311e69;
+  font-size: 24px;
+  font-weight: 500;
+}
 
 
 
@@ -131,7 +178,7 @@
   .box-info-profil{
     padding: 0px 50px;
   }
-  .cover{
+  .cover, .cover-edit-foto, .cover-edit-data, .cover-edit-pass {
     height: 100%;
   }
   .content-right-profile{
@@ -164,7 +211,7 @@
   .box-foto-profil{
     padding-top: 0px;
   }
-  .name-page-profil span{
+  .name-page-profil span, .name-page-update span{
     font-size: 16px;
   }
   .underline{

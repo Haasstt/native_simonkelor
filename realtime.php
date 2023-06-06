@@ -1,10 +1,13 @@
 <div class="header">
     <a>Realtime</a>
+    <div id="date">
+        
+    </div>
 </div>
 
 <div class="main-realtime">
 
-    <div class="main-right">
+    <div class="main-right"> 
 
         <div class="card-langgam">
             <div class="header-card-langgam">
@@ -200,8 +203,8 @@
 
     </div>
 
-    <div class="main-left" id="card_left">
-        
+    <div class="main-left">
+        <div id="card_left"></div>
     </div>
 
 </div>

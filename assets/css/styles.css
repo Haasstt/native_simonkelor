@@ -239,13 +239,15 @@
 
 .header{
   display: flex;
-  justify-content: start;
-  padding: 50px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 0px;
 }
 .header a{
   color: #311e69;
   font-size: 20pt;
   font-weight: bold;
+  margin-left: 50px;
 }
 
 .card-realtime-success{

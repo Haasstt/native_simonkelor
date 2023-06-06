@@ -1,7 +1,7 @@
 <?php
         if ($_SESSION['role'] == 'Super Admin') {
     ?>
-<div class="header header-user-page">
+<div class="header">
     <a>User Account Aktif</a>
 </div>
 

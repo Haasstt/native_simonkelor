@@ -1,11 +1,18 @@
 
 <ul class="nav-links">
       <a href="index.php?p=profile">
+        <?php
+          $query = mysqli_query($koneksi, "SELECT * FROM users WHERE user_id =" . $_SESSION['user_id']);
+          while ($data = mysqli_fetch_assoc($query)) {
+        ?>
       <div class="box-profile">
-        <img src="assets/img/foto_profil/<?php echo $_SESSION['foto_profil'] ?>" alt="">
-        <h3><?php echo $_SESSION['role'] ?></h3>
-        <p><?php echo $_SESSION['nama'] ?></p>
+        <img src="assets/img/foto_profil/<?php echo $data['gambar'] ?>" alt="">
+        <h3><?php echo $data['role'] ?></h3>
+        <p><?php echo $data['nama_user'] ?></p>
       </div>
+      <?php
+      }
+      ?>
       </a>
       <li>
         <a href="index.php?p=realtime">
