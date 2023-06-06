@@ -1,7 +1,5 @@
 .main-realtime{
   display: flex;
-  justify-content: space-between;
-  /* align-items: center; */
   width: 100%;
 }
 .main-right{
@@ -373,6 +371,11 @@ flex-direction: column;
     .card-name, .card-value, .red, .blue, .biru-muda, .biru-tua, .orange, .kuning{
       font-size: 8px;
     }
+    
+.card-update{
+  padding: 5px 20px;
+  margin: 20px 0px;
+}
 }
 
 @media (max-width: 420px) {

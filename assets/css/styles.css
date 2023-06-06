@@ -422,10 +422,12 @@ input[type=submit]:hover {
     transition: 25ms;
     margin-left: 0;
   }
+  
   .header{
-    padding: 10px 5px;
+    padding: 0px 0px;
   }
   .header a{
+    margin-left: 0px;
     color: #311e69;
     font-size: 20pt;
     font-weight: bold;
