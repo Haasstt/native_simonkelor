@@ -220,7 +220,7 @@ if (isset($_POST['Submit'])) {
     $size = $_FILES['file']['size'];
     $tmp = $_FILES['file']['tmp_name'];
     $pathfoto = "assets/img/foto_komentar/" . $file;
-    $pathdoc = "assets/file/file_komentar/" . $file;
+    $pathdoc = "assets/file/ /" . $file;
     $fileTypefoto = pathinfo($pathfoto, PATHINFO_EXTENSION);
     $fileTypedoc = pathinfo($pathdoc, PATHINFO_EXTENSION);
 
