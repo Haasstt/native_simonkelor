@@ -39,6 +39,53 @@ flex-direction: column;
   width: 100%;
   border: none,
 }
+.header-langgam{
+  display: flex;
+  justify-content: space-between;
+}
+.legend-chart{
+  padding: 0px 20px;
+  display: flex;
+}
+.point{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.legend-chart{
+  padding: 0px 20px;
+  display: flex;
+  width: 25%;
+  justify-content: space-around;
+}
+.real, .predic{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 50%;
+}
+.real .point{
+  background-color: red;
+}
+.real span{
+  margin: 0px 5px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  color: #EA8F95;
+  }
+.predic span{
+    margin: 0px 5px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    color: #5041BC;
+  }
+.predic .point{
+  background-color: blue;
+}
 .card-left{
   margin: 10px 0px;
   width: 200px;
@@ -74,6 +121,7 @@ flex-direction: column;
   color: #FFFFFF;
 }
 .box-chart{
+
   padding-top: 30px;
 }
 .header-card-langgam{
@@ -114,6 +162,7 @@ flex-direction: column;
 }
 .orange{
   color: #FF9F40;
+
 }
 .cards-1 .card{
   padding: 20px;
