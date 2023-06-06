@@ -162,6 +162,14 @@ body{
   font-weight: bold;
   color: #7862c8;
 }
+.group-form-footer-regis .span{
+  font-weight: bold;
+  text-decoration: none;
+}
+.group-form-footer-regis .span:hover{
+  font-weight: bold;
+  color: #7862c8;
+}
 
 .button-login{
   font-size: 12pt;

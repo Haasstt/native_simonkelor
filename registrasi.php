@@ -18,7 +18,7 @@
                 <img src="assets/img/logo.png" alt="">
                 <h3>PT PLN UPK TIMOR</h3>
             </div>
-            <img src="assets/img/login.svg" alt="">
+            <img src="assets/img/register.svg" alt="">
         </div>
         
         <div class="box-form">

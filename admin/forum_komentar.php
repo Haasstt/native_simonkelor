@@ -219,8 +219,8 @@ if (isset($_POST['Submit'])) {
     $file = $_FILES['file']['name'];
     $size = $_FILES['file']['size'];
     $tmp = $_FILES['file']['tmp_name'];
-    $pathfoto = "assets/img/foto/" . $file;
-    $pathdoc = "assets/file/" . $file;
+    $pathfoto = "assets/img/foto_komentar/" . $file;
+    $pathdoc = "assets/file/file_komentar/" . $file;
     $fileTypefoto = pathinfo($pathfoto, PATHINFO_EXTENSION);
     $fileTypedoc = pathinfo($pathdoc, PATHINFO_EXTENSION);
 
@@ -241,7 +241,6 @@ if (isset($_POST['Submit'])) {
         }
     } else {
         if (in_array($fileTypefoto, $allowTypesfoto)) {
-            move_uploaded_file($tmp, $pathfoto);
             $query =  "INSERT INTO komentars (id_forum, id_user, komentar, file, type, path, size) 
 VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$pathfoto', '$size')";
 
@@ -251,12 +250,12 @@ VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$pathf
                 die("Query gagal dijalankan: " . mysqli_error($koneksi) .
                     " - " . mysqli_error($koneksi));
             } else {
+                move_uploaded_file($tmp, $pathfoto);
                 echo '<script>alert("Forum ditambahkan")</script>';
                 echo '<script>window.location.href = "index.php?p=forum_komentar&id=' . $id_forum . '";</script>';
                 exit();
             }
         } elseif (in_array($fileTypedoc, $allowTypesdok)) {
-            move_uploaded_file($tmp, $pathdoc);
             $query =  "INSERT INTO komentars (id_forum, id_user, komentar, file, type, path, size) 
     VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypedoc', '$pathdoc', '$size')";
 
@@ -266,6 +265,7 @@ VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$pathf
                 die("Query gagal dijalankan: " . mysqli_error($koneksi) .
                     " - " . mysqli_error($koneksi));
             } else {
+                move_uploaded_file($tmp, $pathdoc);
                 echo '<script>alert("Forum ditambahkan")</script>';
                 echo '<script>window.location.href = "index.php?p=forum_komentar&id=' . $id_forum . '";</script>';
                 exit();
