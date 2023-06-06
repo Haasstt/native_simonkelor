@@ -1,3 +1,6 @@
+<?php
+        if ($_SESSION['role'] == 'Super Admin') {
+    ?>
 <div class="header">
     <a>User Account Non Aktif</a>
 </div>
@@ -59,3 +62,10 @@
         </table>
     </div>
 </div>
+
+<?php
+        }else {
+            echo '<script>alert("Mohon maaf halaman ini hanya dapat dilihat oleh Super Admin")</script>';
+            echo '<script>window.location.href = "Login.php";</script>';
+        }
+    ?>
