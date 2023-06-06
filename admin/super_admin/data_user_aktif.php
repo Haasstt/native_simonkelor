@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <div class="header header-user-page">
     <a>User Account Aktif</a>
 </div>
@@ -132,42 +134,64 @@
 </head>
 
 <body>
+>>>>>>> 5b864424f1764d487dead81c331e15b058f6cd06
     <div class="header">
         <a>User Account Aktif</a>
     </div>
-    <div class="container">
-        <button class="btn btn-success text-white me-2" onClick="handleShow()">
-            Tambah Data
-        </button>
-        <?php
-        // Data pengguna statis
-        $pengguna = array(
-            array("ID" => 1, "Nama" => "John Doe", "Email" => "johndoe@example.com"),
-            array("ID" => 2, "Nama" => "Jane Smith", "Email" => "janesmith@example.com"),
-            array("ID" => 3, "Nama" => "Mike Johnson", "Email" => "mikejohnson@example.com"),
-        );
-
-        // Tampilkan data pengguna dalam tabel
-        echo "<table class='table'>";
-        echo "<tr>";
-        echo "<th>ID</th>";
-        echo "<th>Nama</th>";
-        echo "<th>Email</th>";
-        echo "</tr>";
-
-        foreach ($pengguna as $data) {
-            echo "<tr>";
-            echo "<td>" . $data['ID'] . "</td>";
-            echo "<td>" . $data['Nama'] . "</td>";
-            echo "<td>" . $data['Email'] . "</td>";
-            echo "</tr>";
-        }
-
-        echo "</table>";
-        ?>
+   
+<div class="page-dokumen">
+    <div class="header-dokumen">
+        <a href="index.php?p=forum_add" class="button-add"><i class='bx bx-plus' ></i> Baru</a>
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <div class="content-dokumen">
+        <table class="table-dokumen">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Dokumen</th>
+                    <th>type</th>
+                    <th>Tanggal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Perencanaan bulan ini.pdf</td>
+                    <td>pdf</td>
+                    <td>2023-12-06 10:10:10 </td>
+                    <td>
+                        <a class="btn-action btn-edit" href="#"> <span><i class='bx bx-edit-alt' ></i></span> Edit</a>
+                        <a class="btn-action btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="#"> <span><i class='bx bx-trash'></i></span> Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Perencanaan bulan ini.pdf</td>
+                    <td>pdf</td>
+                    <td>2023-12-06 10:10:10 </td>
+                    <td>
+                        <a class="btn-action btn-edit" href="#"> <span><i class='bx bx-edit-alt' ></i></span> Edit</a>
+                        <a class="btn-action btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="#"> <span><i class='bx bx-trash'></i></span> Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Perencanaan bulan ini.pdf</td>
+                    <td>pdf</td>
+                    <td>2023-12-06 10:10:10 </td>
+                    <td>
+                        <a class="btn-action btn-edit" href="#"> <span><i class='bx bx-edit-alt' ></i></span> Edit</a>
+                        <a class="btn-action btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="#"> <span><i class='bx bx-trash'></i></span> Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
+<<<<<<< HEAD
+=======
 </html>
 >>>>>>> a01d268efac4ab78ea63fe99300a45e25f627be0
+>>>>>>> 5b864424f1764d487dead81c331e15b058f6cd06
