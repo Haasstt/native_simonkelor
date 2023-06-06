@@ -1,12 +1,14 @@
 <?php
 if (isset($_SESSION['nama'])) {
+    $query = mysqli_query($koneksi,"SELECT * FROM users WHERE user_id =". $_SESSION['user_id']);
+    while ($data=mysqli_fetch_assoc($query)) {
 ?>
 <div class="box-page-profile">
 
     <div class="header-box-profile">
         <div class="judul-header">
             <span class="name">My Pofile</span>
-        </div>
+        </div> 
     </div>
 
     <div class="content-box-profile">
@@ -16,10 +18,10 @@ if (isset($_SESSION['nama'])) {
             <div class="box-foto-profil">
                 <div class="underline">
                     <div class="card-profile foto-page-profil">
-                        <img src="assets/img/foto_profil/default_profil.png" alt="">
+                        <img src="assets/img/foto_profil/<?php echo $data['gambar'] ?>" alt="">
                     </div>
                     <div class="name-page-profil">
-                        <span>Nurafiif Almas Azhari</span>
+                        <span><?php echo $data['nama_user'] ?></span>
                     </div>
                 </div>
 
@@ -57,16 +59,16 @@ if (isset($_SESSION['nama'])) {
                     </ul>
                     <ul class="end">
                         <li>
-                            <span>V3921024</span>
+                            <span><?php echo $data['nip'] ?></span>
                         </li>
                         <li>
-                            <span>Universitas Sebelas Maret</span>
+                            <span><?php echo $data['instansi'] ?></span>
                         </li>
                         <li>
-                            <span>nurafiifalmasazhari@gmail.com</span>
+                            <span><?php echo $data['email'] ?></span>
                         </li>
                         <li>
-                            <span>Super Admin</span>
+                            <span><?php echo $data['role'] ?></span>
                         </li>
                     </ul>
                 </div>
@@ -92,6 +94,7 @@ if (isset($_SESSION['nama'])) {
     </div>
 </div>
 <?php
+    }
         }else {
             echo '<script>alert("Mohon maaf untuk membuka halaman ini Anda harus login dahulu")</script>';
             echo '<script>window.location.href = "Login.php";</script>';
