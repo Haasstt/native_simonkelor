@@ -114,5 +114,8 @@
 </div>
 
 <?php
+        }else {
+            echo '<script>alert("Mohon maaf halaman ini hanya dapat dilihat oleh Super Admin")</script>';
+            echo '<script>window.location.href = "Login.php";</script>';
         }
     ?>
