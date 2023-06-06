@@ -14,7 +14,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="index.php?p=documentation_superadmin">
           <i class='bx bx-collection' ></i>
           <span class="link_name">Documentation</span>
         </a>
