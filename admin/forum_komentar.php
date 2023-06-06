@@ -97,7 +97,7 @@ if (isset($_SESSION['nama'])) {
                                         } elseif (in_array($data['type'], $allowTypesfoto)) {
                                         ?>
                                             <div class="box-foto">
-                                                <img src="assets/img/foto/<?php echo $data['file'] ?>" alt="">
+                                                <img src="assets/img/foto_komentar/<?php echo $data['file'] ?>" alt="">
                                             </div>
                                         <?php
                                         }
@@ -139,7 +139,7 @@ if (isset($_SESSION['nama'])) {
                                 } elseif (in_array($data['type'], $allowTypesfoto)) {
                                 ?>
                                     <div class="box-foto">
-                                        <img src="assets/img/foto/<?php echo $data['file'] ?>" alt="">
+                                        <img src="assets/img/foto_komentar/<?php echo $data['file'] ?>" alt="">
                                     </div>
                                 <?php
                                 }

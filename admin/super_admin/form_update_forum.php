@@ -24,7 +24,7 @@
             <div class="group-form">
                 <label for="">Sampul yang digunakan</label>
                 <div class="sampul-update">
-                    <img src="assets/img/<?php echo $data['gambar'];?>" alt="">
+                    <img src="assets/img/img_forum/<?php echo $data['gambar'];?>" alt="">
                 </div>
                 <label for="">Pilih sampul baru untuk diubah</label>
                 <p class="keterangan-form">* .jpg, .png, .jpeg</p>
