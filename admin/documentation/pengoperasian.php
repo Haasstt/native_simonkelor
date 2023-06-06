@@ -3,9 +3,20 @@
 </div>
 
 <div class="page-dokumen">
-    <div class="header-dokumen">
-        <a href="index.php?p=form_add_documentation" class="button-add"><i class='bx bx-plus' ></i> Baru</a>
-    </div>
+    
+    <?php
+        if ($_SESSION['role'] == 'Pegawai') {
+    ?>
+    <?php
+        }else{
+    ?>
+        <div class="header-dokumen">
+            <a href="index.php?p=form_add_documentation" class="button-add"><i class='bx bx-plus' ></i> Baru</a>
+        </div>
+    <?php
+        }
+    ?>
+    
     <div class="content-dokumen">
         <table class="table-dokumen">
             <thead>

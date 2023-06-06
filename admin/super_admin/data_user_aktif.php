@@ -1,3 +1,6 @@
+<?php
+        if ($_SESSION['role'] == 'Super Admin') {
+    ?>
 <div class="header header-user-page">
     <a>User Account Aktif</a>
 </div>
@@ -109,3 +112,7 @@
         </table>
     </div>
 </div>
+
+<?php
+        }
+    ?>
