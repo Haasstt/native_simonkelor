@@ -1,16 +1,22 @@
 <div class="box-forum-komentar">
 
     <div class="header-forum-komentar">
-
+        <?php 
+		$query = mysqli_query($koneksi,"SELECT * FROM forums WHERE id_pesan ='".$_GET['id']."'");
+        while ($r=mysqli_fetch_assoc($query)) {
+		?>
         <div class="box-name">
             <div class="img">
-                <img src="assets/img/default.jpeg" alt="" width="10px">
+                <img src="assets/img/img_forum/<?php echo $r['gambar']; ?>" alt="" width="10px">
             </div>
             <div class="judul-diskusi">
                 <span class="name">Ruang Diskusi</span>
-                <span class="type">(Rapat Bulanan)</span>
+                <span class="type">(<?php echo $r['judul_forum']; ?>)</span>
             </div>
         </div>
+		<?php  
+        }
+        ?>
 
         <div class="search-forum">
             <form class="form-search" method="POST" enctype="multipart/form-data">

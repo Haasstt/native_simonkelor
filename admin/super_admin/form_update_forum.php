@@ -42,7 +42,7 @@ $judul = $_POST['judul'];
 $keterangan = $_POST['keterangan'];
 $photo = $_FILES['photo']['name'];
 $tmp = $_FILES['photo']['tmp_name'];
-$path = "assets/img/".$photo;
+$path = "assets/img/img_forum/".$photo;
 
 //query
 if (empty($photo)) {
@@ -100,7 +100,7 @@ if($data['gambar'] == "default.jpeg"){
     }
  }else {
 
-    unlink('assets/img/'.$data['gambar']);
+    unlink('assets/img/img_forum/'.$data['gambar']);
 
     move_uploaded_file($tmp, $path);
 			
