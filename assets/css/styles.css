@@ -327,6 +327,16 @@ input[type=email]{
   box-sizing: border-box;
 }
 
+input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 input[type=submit] {
   width: 100%;
   background-color: #4CAF50;
@@ -340,6 +350,49 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #45a049;
+}
+.btn-delete{
+    background-color: #D9534F;
+    color: #fff;
+}
+.btn-edit{
+    background-color: #5BC0DE;
+    color: #fff;
+}
+.btn-unduh{
+    background-color: #8473ED;
+    color: #fff;
+}
+.btn-aktifkan{
+    background-color: #2CC285;
+    color: #fff;
+}
+.btn-delete:hover{
+    background-color: #eecbca;
+    color: #D9534F;
+}
+.btn-edit:hover{
+    background-color: #b7eafa;
+    color: #5BC0DE;
+}
+.btn-unduh{
+    background-color: #8473ED;
+    color: #fff;
+}
+.btn-aktifkan:hover{
+    background-color: #cae4da;
+    color: #2CC285;
+}
+
+@media screen and (max-width: 900px) {
+  .header{
+    padding: 10px 5px;
+  }
+  .header a{
+    color: #311e69;
+    font-size: 20pt;
+    font-weight: bold;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -367,11 +420,24 @@ input[type=submit]:hover {
     transition: 25ms;
     margin-left: 0;
   }
+  .header{
+    padding: 10px 5px;
+  }
+  .header a{
+    color: #311e69;
+    font-size: 20pt;
+    font-weight: bold;
+  }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 412px) {
   .sidebar {
-    display: none;
+    transform: translate(-260px);
+    transition: 1s;
+  }
+  .sidebar_open {
+    transform: translate(1px);
+    transition: 1s;
   }
   .topnav a, .nav_responsive{
     display: flex;
@@ -384,6 +450,10 @@ input[type=submit]:hover {
     position: absolute;
     right: 0;
     top: 0;
+  }
+  .main{
+    transition: 25ms;
+    margin-left: 0;
   }
 }
 /* body{

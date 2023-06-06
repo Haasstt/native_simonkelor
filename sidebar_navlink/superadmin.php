@@ -1,10 +1,12 @@
 
 <ul class="nav-links">
+      <a href="index.php?p=profile">
       <div class="box-profile">
-        <img src="assets/img/1.png" alt="">
+        <img src="assets/img/foto_profil/<?php echo $_SESSION['foto_profil'] ?>" alt="">
         <h3><?php echo $_SESSION['role'] ?></h3>
         <p><?php echo $_SESSION['nama'] ?></p>
       </div>
+      </a>
       <li>
         <a href="index.php?p=realtime">
           <i class='bx bx-line-chart' ></i>
@@ -24,26 +26,6 @@
           <li><a href="index.php?p=user_nonaktif">User Non Aktif</a></li>
         </ul>
       </li>
-      <!-- <li>
-        <div class="iocn-link">
-          <a href="#">
-            <i class='bx bx-collection' ></i>
-            <span class="link_name">Data Pengolahan</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="sub-menu">
-          <li><a href="index.php?p=data_pembangkit">Pembangkit</a></li>
-          <li><a href="index.php?p=data_tegangan">Tegangan</a></li>
-          <li><a href="index.php?p=forcasting">Forcasting</a></li>
-        </ul>
-      </li> -->
-      <li>
-        <a href="index.php?p=data_operasi">
-          <i class='bx bx-collection' ></i>
-          <span class="link_name">Data Operasi</span>
-        </a>
-      </li>
       <li>
         <a href="index.php?p=documentation_superadmin">
           <i class='bx bx-collection' ></i>
@@ -57,9 +39,6 @@
         </a>
       </li>
       <hr>
-      <br>
-      <br>
-      <br>
       <li>
         <a href="logout.php">
           <i class='bx bx-log-out' ></i>

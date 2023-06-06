@@ -1,7 +1,50 @@
-<div class="header">
+<div class="header header-documentation">
     <a>Documentation</a>
 </div>
-<div class="file_manager">
+
+<div class="page-documentation">
+    <div class="row-file">
+        <a href="index.php?p=perencanaan">
+            <div class="box-file-documentation">
+                <i class='bx bxs-folder-open'></i>
+                <span>Dokumen Perencanaan</span>
+            </div>
+        </a>
+        
+        <a href="index.php?p=evaluasi">
+            <div class="box-file-documentation">
+                <i class='bx bxs-folder-open'></i>
+                <span>Dokumen Evaluasi Operasi</span>
+            </div>
+        </a>
+
+        <a href="index.php?p=profil_kelistrikan">
+            <div class="box-file-documentation">
+                <i class='bx bxs-folder-open'></i>
+                <span>Dokumen Profil Kelistrikan</span>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="row-file">
+
+        <a href="index.php?p=sop_pengoperasian">
+            <div class="box-file-documentation">
+                <i class='bx bxs-folder-open'></i>
+                <span>Dokumen SOP Pengoperasian</span>
+            </div>
+        </a>
+        <a href="index.php?p=singel_line_diagram">
+            <div class="box-file-documentation">
+                <i class='bx bxs-folder-open'></i>
+                <span>Dokumen Single Line Diagram</span>
+            </div>
+        </a>
+
+    </div>
+</div>
+<!-- <div class="file_manager">
         <div class="container">
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-4 col-sm-12">
@@ -327,4 +370,4 @@
             </div>
             
         </div>
-    </div>
+    </div> -->
