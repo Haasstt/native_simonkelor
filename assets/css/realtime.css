@@ -10,7 +10,12 @@ padding: 0px 60px;
 /* background-color: rgba(76, 76, 76, 0.164); */
 }
 .card-name-right{
-  color: gray;
+  font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 22px;
+
+color: #04103B;
 }
 .main-left{
 display: flex;
@@ -24,6 +29,53 @@ flex-direction: column;
   border-radius: 10px;
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.header-langgam{
+  display: flex;
+  justify-content: space-between;
+}
+.legend-chart{
+  padding: 0px 20px;
+  display: flex;
+}
+.point{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.legend-chart{
+  padding: 0px 20px;
+  display: flex;
+  width: 25%;
+  justify-content: space-around;
+}
+.real, .predic{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 50%;
+}
+.real .point{
+  background-color: red;
+}
+.real span{
+  margin: 0px 5px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  color: #EA8F95;
+  }
+.predic span{
+    margin: 0px 5px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    color: #5041BC;
+  }
+.predic .point{
+  background-color: blue;
 }
 .card-left{
   margin: 10px 0px;
@@ -47,9 +99,10 @@ flex-direction: column;
   font-weight: 400;
   font-size: 10px;
   line-height: 15px;
-  color: #FFFFFF;}
+  color: #FFFFFF;
+}
 .box-chart{
-  padding: 10px 0px;
+  padding: 30px 0px 0px 0px;
 }
 .cards-1 .card{
   padding: 20px;

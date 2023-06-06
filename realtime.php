@@ -16,7 +16,24 @@
 <div class="main-realtime">
     <div class="main-right">
         <div class="card">
-            <div class="card-name-right">Langgam Beban Timor</div>
+            <div class="header-langgam">
+                <div class="card-name-right">
+                    <span>Langgam Beban Timor</span>
+                </div>
+                <div class="legend-chart">
+
+                    <div class="real">
+                        <div class="point"></div>
+                        <span>Realisasi</span>
+                    </div>
+
+                    <div class="predic">
+                        <div class="point"></div>
+                        <span>Prediksi</span>
+                    </div>
+
+                </div>
+            </div>
             <div class="box-chart">
                 <!-- <canvas id="myChart" style="width:100%;max-height:400px"></canvas> -->
                 <canvas id="chart"></canvas>

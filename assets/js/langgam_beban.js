@@ -21,6 +21,23 @@
 //   options: {}
 // });
 // Ambil elemen canvas
+// Fungsi untuk memperbarui data pada chart
+function updateChartData() {
+  $.ajax({
+    url: 'get_total_beban.php',
+    method: 'GET',
+    success: function(data) {
+      // Mengubah nilai data dengan hasil select dari database
+      chartData.datasets[0].data = data;
+
+      // Memperbarui chart
+      chart.update();
+    }
+  });
+}
+
+// Memperbarui data setiap 5 detik
+setInterval(updateChartData, 5000);
 
 const chartData = {
   labels: [
@@ -76,36 +93,19 @@ const chartData = {
   datasets: [
     {
       label: "Data Aktual",
-      data: [69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
-        59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.68 , 55.39 , 55.16 , 55.72 , 56.42 , 55.87 , 55.60 , 55.51 , 55.39 , 54.16 ,
-        54.85 , 55.25 , 57.03 , 60.61 , 68.81 , 81.01 , 85.76 , 84.47 , 83.23 , 82.42 , 81.08 , 79.41 , 77.64 , 75.76 , 73.64 , 73.09 ],
+      data: [],
       borderColor: "red",
       backgroundColor: "rgba(255, 0, 0, 0.2)",
-      borderWidth: 2, 
     },
     {
       label: "Data Prediksi",
-      data: [5, 15, 10, 20, 25],
-      borderColor: "blue",
-      backgroundColor: "rgba(0, 0, 255, 0.2)",
-      borderWidth: 2
+      data: [68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
+        59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.68 , 55.39 , 55.16 , 55.72 , 56.42 , 55.87 , 55.60 , 55.51 , 55.39 , 54.16 ,
+        54.85 , 55.25 , 57.03 , 60.61 , 68.81 , 81.01 , 85.76 , 84.47 , 83.23 , 82.42 , 81.08 , 79.41 , 77.64 , 75.76 , 73.64 , 73.09, 69.43],
+        borderColor: "blue",
+        backgroundColor: "rgba(0, 0, 255, 0.2)",
+        
     }
-    // {
-    //   backgroundColor: hexToRgba("#ff0000", 10),
-    //   borderColor: "#ff0000",
-    //   pointHoverBackgroundColor: "#ff0000",
-    //   borderWidth: 2,
-    //   data: realtimes_langgam,
-    //   fill: true,
-    // },
-    // {
-    //   backgroundColor: hexToRgba("#0000FF", 10),
-    //   borderColor: "#0000FF",
-    //   pointHoverBackgroundColor: "#0000FF",
-    //   borderWidth: 2,
-    //   data: realtimes_langgam_prediksi,
-    //   fill: true,
-    // },
   ]
 };
 
@@ -114,6 +114,11 @@ new Chart(ctx, {
   type: "line",
   data: chartData,
   options: {
+    maintainAspectRatio: false, 
+    aspectRatio: 0.8, 
+    legend: {
+      display: false // Menyembunyikan legenda
+    },
     scales: {
       x: {
         grid: {
@@ -123,16 +128,11 @@ new Chart(ctx, {
       y: {
         ticks: {
           beginAtZero: true,
-          maxTicksLimit: 10,
+          maxTicksLimit: 2,
           stepSize: Math.ceil(10 / 5),
           max: 5,
         },
       },
-    },
-    plugins: {
-      title: {
-        display: false
-      }
     },
     elements: {
       line: {
@@ -144,6 +144,9 @@ new Chart(ctx, {
         hoverRadius: 4,
         hoverBorderWidth: 3,
       },
+    },
+    animation: {
+      duration: 0 // Mengatur durasi animasi menjadi 0
     },
   }
 });
