@@ -21,9 +21,9 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="index.php?p=forcasting">
             <i class='bx bxs-notepad'></i>
-          <span class="link_name">Forcasting</span>
+          <span class="link_name">Forecasting</span>
         </a>
       </li>
       <li>

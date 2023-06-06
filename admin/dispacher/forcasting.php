@@ -1,3 +1,9 @@
 <div class="header">
-    <a>Forscasting</a>
+    <a>Forescasting</a>
+</div>
+
+<div class="page-forecasting">
+    <form action="">
+        <input type="submit" value="Forecasting">
+    </form>
 </div>

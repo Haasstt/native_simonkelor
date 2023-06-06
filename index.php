@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/realtime.css">
     <link rel="stylesheet" href="assets/css/documentation.css">
     <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="stylesheet" href="assets/css/forecasting.css">
 
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -135,7 +136,7 @@
   }elseif(@$_GET['p'] == "data_tegangan"){
     include_once 'tegangan.php';
   }elseif(@$_GET['p'] == "forcasting"){
-    include_once 'forcasting.php';
+    include_once 'admin/dispacher/forcasting.php';
   }elseif(@$_GET['p'] == "data_operasi"){
     include_once 'admin/super_admin/data_operasi.php';
   }
