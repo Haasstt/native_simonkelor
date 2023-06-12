@@ -12,6 +12,7 @@
     $data_beban = array(); // Array data beban
     $energi_harian = array();
     $energi_mingguan = array();
+    $energi_mingguan2 = array();
 
 // Isi array data beban dengan 1344 data (contoh data acak)
 $data_beban = [
@@ -1376,6 +1377,7 @@ for ($i = 1; $i <= 28; $i++) {
 }
 for ($i = 1; $i <= 4; $i++) {
     ${"energi_m" . $i} = 0;
+    ${"energi_m2" . $i} = 0;
 }
 for ($m = 1; $m <= 4; $m++) {
     for ($d = 1; $d <= 7; $d++) { 
@@ -1397,7 +1399,8 @@ for ($i = 0; $i < count($data_beban); $i++) {
 for ($i = 1; $i <= 28; $i++) {
     // Menambahkan nilai data_beban ke variabel penjumlahan yang sesuai
     ${"energi_d" . $i} /= 2;
-    ${"energi_d" . $i} = round(${"energi_d" . $i}, 2);
+    // ${"energi_d" . $i} = round(${"energi_d" . $i}, 2);
+    ${"energi_d" . $i} = ${"energi_d" . $i};
     $energi_harian[] = ${"energi_d" . $i};
 }
 
@@ -1407,9 +1410,12 @@ for ($i = 0; $i < count($energi_harian); $i++) {
     // Menambahkan nilai data_beban ke variabel penjumlahan yang sesuai
     $index = ceil(($i + 1) / $data_per_jumlah_mingguan); // Menghitung indeks variabel penjumlahan
     ${"energi_m" . $index} += $energi_harian[$i];
+    ${"energi_m2" . $index} += $energi_harian[$i];
 }
 for ($i = 1; $i <= 4; $i++) {
     $energi_mingguan[] = round(${"energi_m" . $i}, 2);
+    $energi_mingguan2[] = ${"energi_m2" . $i};
+    // $energi_mingguan[] = ${"energi_m" . $i};
 }
 
 //function forecasting
@@ -1452,7 +1458,8 @@ for ($i = 0; $i < count($energi_harian); $i++) {
         $hari = 1;
     }
     $index = ceil(($i + 1) / $data_per_jumlah_mingguan); 
-    ${"koef_d".$hari."_m".$index} = round($energi_harian[$i] / ${"energi_m" . $index}, 3);
+    ${"koef_d".$hari."_m".$index} = round($energi_harian[$i] / ${"energi_m2" . $index}, 6);
+    // ${"koef_d".$hari."_m".$index} = $energi_harian[$i] / ${"energi_m" . $index};
     $hari++;
 }
 
@@ -1463,7 +1470,7 @@ for ($d = 1; $d <= $data_per_jumlah_mingguan; $d++) {
     }
 }
 for ($i = 1; $i <= 7; $i++) {
-    ${"rata_koef_d".$i} =  ${"total_koef_d".$i} / 4;
+    ${"rata_koef_d".$i} =  round(${"total_koef_d".$i} / 4, 9);
 }
 
 //prediksi total energi per hari
@@ -1473,7 +1480,8 @@ for ($i = 1; $i <= 7; $i++) {
 }
 
 for ($i = 1; $i <= 7; $i++) {
-    ${"predic_energi_d".$i} = round($hasil_prediksi * (${"rata_koef_d".$i} / $total_koef_harian), 2);
+    // ${"predic_energi_d".$i} = round($hasil_prediksi * (${"rata_koef_d".$i} / $total_koef_harian), 2);
+    ${"predic_energi_d".$i} = $hasil_prediksi * (${"rata_koef_d".$i} / $total_koef_harian);
 }
 
 
@@ -1502,7 +1510,7 @@ echo "<br></br>Total Energi Per Minggu = [";
 echo '<div class="page-beban">'; 
 echo '<p>'; 
 for ($i = 1; $i <= 4; $i++) {
-    echo  ' energi_m'.$i.': '. ${"energi_m" . $i};
+    echo  ' energi_m'.$i.': '. round(${"energi_m" . $i}, 2);
 }
 echo '</p>';
 echo '</div>';  
@@ -1542,7 +1550,7 @@ echo "]";
 echo "<br></br>Prediksi energi harian = [";
 echo '<div class="page-beban">'; 
 for ($i = 1; $i <= 7; $i++) {
-echo ' ' . ${"predic_energi_d".$i};
+echo ' ' . round(${"predic_energi_d".$i}, 2);
 }
 echo '</p>';
 echo '</div>';  

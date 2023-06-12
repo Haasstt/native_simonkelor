@@ -186,6 +186,19 @@ body{
   color: #161223;
 }
 
+@media screen and (max-width: 920px) {
+  .content-login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  .box-form{
+    width: 50%;
+    margin: 0px 0px 30px 0px;
+  }
+}
 @media screen and (max-width: 600px) {
     .box-img1 {
         display: none;
