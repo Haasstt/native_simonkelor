@@ -22,10 +22,16 @@ $result = mysqli_query($conn, $sql);
 $output1 = '';
 
 while ($row = mysqli_fetch_assoc($result)) {
+
+    $dateString = $row['date'];
+    $timestamp = strtotime($dateString);
+
+    $formattedDate = date("d F Y", $timestamp); 
+    $formattedTime = date("H.i.s", $timestamp);
     
     $output1 .= ' <div class="card-update card-biru">';
     $output1 .= '<span class="card-name">Updated</span>';
-    $output1 .= '<span class="card-value date">' . $row['date'] . '</span>';
+    $output1 .= '<span class="card-value date">' .$formattedDate. ' pukul ' .$formattedTime.'</span>';
     $output1 .= '</div>';
 }
 

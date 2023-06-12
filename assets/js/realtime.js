@@ -176,6 +176,16 @@ setInterval(function() {
       }
     });
     
+    $.ajax({
+      url: 'fetch_data/fetch_data_langgam.php',
+      method: 'POST',
+      dataType: 'json',
+      success: function(data) {
+        chart.data.datasets[0].data = data;
+        chart.update();
+      }
+    });
+    
     setInterval(function() {
       $.ajax({
         url: 'fetch_data/fetch_data_langgam.php',
