@@ -1382,10 +1382,21 @@ for ($m = 1; $m <= 4; $m++) {
         ${"koef_d".$d."_m".$m} = 0;
     }
 }
+for ($m = 1; $m <= 28; $m++) {
+    for ($d = 1; $d <= 48; $d++) { 
+        ${"koef_j".$d."_d".$m} = 0;
+    }
+}
 for ($i = 1; $i <= 7; $i++) {
     ${"total_koef_d".$i} = 0;
+    ${"totalrata_koef_d".$i} = 0;
     ${"rata_koef_d".$i} = 0;
     ${"predic_energi_d".$i} = 0;
+    for ($a=1; $a <= 48 ; $a++) { 
+        ${"total_koef_d".$i."_j".$a} = 0;
+        ${"rata_koef_d".$i."_j".$a} = 0;
+        ${"d".$i."predicbeban_j".$a} = 0;
+    }
 }
 
 // Proses penjumlahan energi harian
@@ -1452,7 +1463,7 @@ for ($i = 0; $i < count($energi_harian); $i++) {
         $hari = 1;
     }
     $index = ceil(($i + 1) / $data_per_jumlah_mingguan); 
-    ${"koef_d".$hari."_m".$index} = round($energi_harian[$i] / ${"energi_m" . $index}, 3);
+    ${"koef_d".$hari."_m".$index} = $energi_harian[$i] / ${"energi_m" . $index};
     $hari++;
 }
 
@@ -1473,7 +1484,48 @@ for ($i = 1; $i <= 7; $i++) {
 }
 
 for ($i = 1; $i <= 7; $i++) {
-    ${"predic_energi_d".$i} = round($hasil_prediksi * (${"rata_koef_d".$i} / $total_koef_harian), 2);
+    ${"predic_energi_d".$i} = $hasil_prediksi * (${"rata_koef_d".$i} / $total_koef_harian);
+}
+
+//menghitung koef harian per 30 mmenit
+$x = 1;
+for ($i = 0; $i < count($data_beban); $i++) {
+    if ($x == 49) {
+        $x = 1;
+    }
+    $index = ceil(($i + 1) / $data_per_jumlah_harian); 
+    ${"koef_j".$x."_d".$index} = $data_beban[$i] / ${"energi_d" . $index};
+    $x++;
+}
+
+//rata - rata koef per 30 menit
+$a = 1;
+$x = 1;
+for ($a = 1; $a <= 7; $a++){
+for ($d = 1; $d <= $data_per_jumlah_harian; $d++) {
+    for ($i=$x; $i <= 28; $i += 7) {    
+    ${"total_koef_d".$a."_j".$d} += ${"koef_j".$d."_d".$i};
+        // echo 'no '.$d.' '.  round(${"koef_j".$d."_d".$i},3);
+    }
+} 
+$x++;
+}
+for ($i = 1; $i <= 7; $i++) {
+    for ($a=1; $a <= 48 ; $a++) { 
+       ${"rata_koef_d".$i."_j".$a} = ${"total_koef_d".$i."_j".$a} / 4;
+    }
+}
+
+//prediksi total energi per 30 menit
+for ($i = 1; $i <= 7; $i++) {
+    for ($a=1; $a <= 48 ; $a++) { 
+     ${"totalrata_koef_d".$i} += ${"rata_koef_d".$i."_j".$a};
+    }
+}
+for ($i = 1; $i <= 7; $i++) {
+    for ($a=1; $a <= 48 ; $a++) {
+        ${"d".$i."predicbeban_j".$a} = (${"predic_energi_d".$i} * (${"rata_koef_d".$i."_j".$a} / ${"totalrata_koef_d".$i})) * 2;
+    }
 }
 
 
@@ -1533,7 +1585,7 @@ echo '<div class="page-beban">';
 echo '<p>'; 
 
 for ($i = 1; $i <= 7; $i++) {
-    echo ' ' .${"rata_koef_d".$i}. ' ';
+    echo ' ' .round(${"rata_koef_d".$i},3). ' ';
 }
 echo '</p>';
 echo '</div>';  
@@ -1542,11 +1594,50 @@ echo "]";
 echo "<br></br>Prediksi energi harian = [";
 echo '<div class="page-beban">'; 
 for ($i = 1; $i <= 7; $i++) {
-echo ' ' . ${"predic_energi_d".$i};
+echo '( hari ke-'.$i.' = ' . round(${"predic_energi_d".$i}, 2). ' ) ';
 }
 echo '</p>';
 echo '</div>';  
 echo "]";
+
+echo "<br></br>Prediksi beban per 30 menit = [";
+echo '<div class="page-beban">'; 
+echo '<p>'; 
+for ($i = 1; $i <= 7; $i++) {
+    echo 'beban hari ke - '.$i. ' [';
+    echo '<p class = "predic-beban">'; 
+    for ($a=1; $a <= 48 ; $a++) {
+        echo '( jam ke-'.$a.' = '.round(${"d".$i."predicbeban_j".$a}, 2). ' ) ';
+    }
+    echo '</p>'; 
+    echo ']';
+    echo '<br></br>';
+}
+echo '</p>';
+echo '</div>';  
+echo "]";
+
+include 'config/conn.php';
+
+for ($i = 1; $i <= 7; $i++) {
+    echo '<script>alert("Perulangan hari ke '.$i.'")</script>';
+    for ($a = 1; $a <= 48; $a++) {
+        $day = $i;
+        $beban = round(${"d".$i."predicbeban_j".$a}, 2);
+        $query =  "INSERT INTO load_forcasting 
+        VALUES(NULL, '$day', '$beban')";
+
+        $result = mysqli_query($koneksi, $query);
+        
+    if(!$result){
+        die ("Query gagal dijalankan: ".mysqli_error($koneksi).
+            " - ".mysqli_error($koneksi));
+
+    }
+    }
+}
+
+
   }
   ?>
 </div>
