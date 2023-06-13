@@ -139,7 +139,7 @@
   }elseif(@$_GET['p'] == "forcasting"){
     include_once 'admin/dispacher/forcasting.php';
   }elseif(@$_GET['p'] == "data_operasi"){
-    include_once 'admin/super_admin/data_operasi.php';
+    include_once 'admin/data_operasi.php';
   }
 
   //profile

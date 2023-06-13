@@ -34,6 +34,12 @@
         </ul>
       </li>
       <li>
+        <a href="index.php?p=data_operasi">
+          <i class='bx bx-collection' ></i>
+          <span class="link_name">Data Operasi</span>
+        </a>
+      </li>
+      <li>
         <a href="index.php?p=documentation">
           <i class='bx bx-collection' ></i>
           <span class="link_name">Documentation</span>
