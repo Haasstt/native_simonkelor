@@ -66,26 +66,12 @@
     margin: 20px 0px;
     width: 100%;
   }
-  .box-table-data-forecasting{
-    display: flex;
-    justify-content: center;
-    margin: 20px 0px;
-    width: 100%;
-  }
   .table-data-operasi {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  .table-data-forecasting {
     border-collapse: collapse;
     width: 100%;
   }
   .table-data-operasi thead tr th, .table-data-operasi tbody tr td {
     text-align: left;
-    padding: 8px;
-  }
-  .table-data-forecasting thead tr th, .table-data-forecasting tbody tr td {
-    text-align: center;
     padding: 8px;
   }
   
@@ -100,16 +86,4 @@
     font-weight: 400;
     font-size: 12px;
     color: #fff;
-  }
-  .table-data-operasi tbody tr td {
-    background-color:  rgba(217, 217, 217, 0.5);
-    font-weight: 400;
-    font-size: 12px;
-    color: #0f0f0f;
-  }
-  .table-data-forecasting tbody tr td {
-    background-color:  rgba(217, 217, 217, 0.5);
-    font-weight: 400;
-    font-size: 12px;
-    color: #0f0f0f;
   }

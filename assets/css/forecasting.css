@@ -1,3 +1,44 @@
+.box-table-data-forecasting{
+    display: flex;
+    margin: 20px 0px;
+    width: 100%;
+    flex-direction: column;
+  }
+  .title-hasil-forecasting{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #311e69;
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px 0px;
+}
+  .table-forecast{
+    display: flex;
+    width: 100%;
+  }
+  .table-data-forecasting {
+    border-collapse: collapse;
+    width: 15%;
+  }
+  .table-data-forecasting thead tr th, .table-data-forecasting tbody tr td {
+    text-align: center;
+    padding: 8px;
+  }
+  .table-data-operasi tbody tr td {
+    background-color:  rgba(217, 217, 217, 0.5);
+    font-weight: 400;
+    font-size: 12px;
+    color: #0f0f0f;
+  }
+  .table-data-forecasting tbody tr td {
+    background-color:  rgba(217, 217, 217, 0.5);
+    font-weight: 400;
+    font-size: 12px;
+    color: #0f0f0f;
+  }
+
 .page-forecasting{
     width: 100%;
     padding: 20px 50px;
@@ -19,4 +60,4 @@
 }
 .predic-beban{
     padding: 5px 10px
-}
+} 

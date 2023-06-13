@@ -138,6 +138,16 @@
     include_once 'tegangan.php';
   }elseif(@$_GET['p'] == "forcasting"){
     include_once 'admin/dispacher/forcasting.php';
+  }elseif(@$_GET['p'] == "delete_forecast"){
+      $query = mysqli_query($koneksi,"DELETE FROM load_forcasting");
+
+      if ($query) {
+        echo "<script>alert('Data telah dihapus')</script>";
+        echo '<script>window.location.href = "index.php?p=forcasting";</script>';
+
+      }else{
+        echo "<script>alert('erorr')</script>";
+      }
   }elseif(@$_GET['p'] == "data_operasi"){
     include_once 'admin/data_operasi.php';
   }

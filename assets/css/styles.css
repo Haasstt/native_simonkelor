@@ -353,6 +353,18 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+
+.btn-action{
+  padding: 7px 12px;
+  border-radius: 4px;
+}
+.btn-action-center{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 7px 12px;
+  border-radius: 4px;
+}
 .btn-delete{
     background-color: #D9534F;
     color: #fff;
