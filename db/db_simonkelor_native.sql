@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Jun 2023 pada 08.12
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.1.12
+-- Generation Time: Jun 13, 2023 at 12:44 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `beban_gardus`
+-- Table structure for table `beban_gardus`
 --
 
 CREATE TABLE `beban_gardus` (
@@ -44,7 +44,7 @@ CREATE TABLE `beban_gardus` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `beban_kit`
+-- Table structure for table `beban_kit`
 --
 
 CREATE TABLE `beban_kit` (
@@ -70,7 +70,7 @@ CREATE TABLE `beban_kit` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `documentations`
+-- Table structure for table `documentations`
 --
 
 CREATE TABLE `documentations` (
@@ -85,7 +85,7 @@ CREATE TABLE `documentations` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `forums`
+-- Table structure for table `forums`
 --
 
 CREATE TABLE `forums` (
@@ -99,7 +99,7 @@ CREATE TABLE `forums` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `forums`
+-- Dumping data for table `forums`
 --
 
 INSERT INTO `forums` (`id_pesan`, `nama_user`, `judul_forum`, `pesan`, `gambar`, `created_at`, `updated_at`) VALUES
@@ -108,7 +108,7 @@ INSERT INTO `forums` (`id_pesan`, `nama_user`, `judul_forum`, `pesan`, `gambar`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komentars`
+-- Table structure for table `komentars`
 --
 
 CREATE TABLE `komentars` (
@@ -127,7 +127,19 @@ CREATE TABLE `komentars` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `load_forcasting`
+--
+
+CREATE TABLE `load_forcasting` (
+  `id_forecast` int(11) NOT NULL,
+  `hari` int(11) NOT NULL,
+  `beban_prediksi` double(15,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -137,7 +149,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -155,7 +167,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `monitoring_realtimes`
+-- Table structure for table `monitoring_realtimes`
 --
 
 CREATE TABLE `monitoring_realtimes` (
@@ -166,7 +178,7 @@ CREATE TABLE `monitoring_realtimes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `monitoring_realtimes`
+-- Dumping data for table `monitoring_realtimes`
 --
 
 INSERT INTO `monitoring_realtimes` (`id`, `parameter`, `value`, `date`) VALUES
@@ -293,7 +305,7 @@ INSERT INTO `monitoring_realtimes` (`id`, `parameter`, `value`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembangkits`
+-- Table structure for table `pembangkits`
 --
 
 CREATE TABLE `pembangkits` (
@@ -308,18 +320,10 @@ CREATE TABLE `pembangkits` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data untuk tabel `pembangkits`
---
-
-INSERT INTO `pembangkits` (`id_pembangkit`, `nama_pembangkit`, `jenis_pembangkit`, `kepemilikan_aset`, `energi_primer`, `kapasitas`, `DMN`, `created_at`, `updated_at`) VALUES
-(3, 'ULPL KUPANG NIGATA 1', 'PLTD', 'PLN', 'B30', 2.50, 1.50, '2023-03-29 21:28:29', '2023-03-29 21:36:54'),
-(4, 'ULPL KUPANG NIGATA 2', 'PLTD', 'PLN', 'B30', 2.50, 1.50, '2023-03-29 21:31:43', '2023-03-29 21:34:37');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -337,7 +341,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tegangans`
+-- Table structure for table `tegangans`
 --
 
 CREATE TABLE `tegangans` (
@@ -358,7 +362,7 @@ CREATE TABLE `tegangans` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -376,17 +380,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `nama_user`, `nip`, `instansi`, `role`, `email`, `password`, `gambar`, `path`, `created_at`, `updated_at`) VALUES
-(14, 'Nurafiif Almas', 'V3921024', 'UNS', 'Super Admin', 'nurafiifalmas@gmail.com', '25d55ad283aa400af464c76d713c07ad', '20180805_080720.jpg', 'assets/img/foto_profil/20180805_080720.jpg', NULL, NULL),
-(15, 'Syauqi Nur', 'V3921038', 'UNS', 'Super Admin', 'syauqi@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'default_profil.png', '', '2023-06-04 19:36:38', '2023-06-04 19:36:38');
+(26, 'Admin', '1234567891234567', 'Nama Instansi', 'Super Admin', 'superadmin@gmail.com', 'ac497cfaba23c4184cb03b97e8c51e0a', 'default_profil.png', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_registrasis`
+-- Table structure for table `user_registrasis`
 --
 
 CREATE TABLE `user_registrasis` (
@@ -408,26 +411,26 @@ CREATE TABLE `user_registrasis` (
 --
 
 --
--- Indeks untuk tabel `beban_kit`
+-- Indexes for table `beban_kit`
 --
 ALTER TABLE `beban_kit`
   ADD PRIMARY KEY (`date`);
 
 --
--- Indeks untuk tabel `documentations`
+-- Indexes for table `documentations`
 --
 ALTER TABLE `documentations`
   ADD PRIMARY KEY (`id_dokumen`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `forums`
+-- Indexes for table `forums`
 --
 ALTER TABLE `forums`
   ADD PRIMARY KEY (`id_pesan`);
 
 --
--- Indeks untuk tabel `komentars`
+-- Indexes for table `komentars`
 --
 ALTER TABLE `komentars`
   ADD PRIMARY KEY (`id_komentar`),
@@ -435,25 +438,31 @@ ALTER TABLE `komentars`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `load_forcasting`
+--
+ALTER TABLE `load_forcasting`
+  ADD PRIMARY KEY (`id_forecast`);
+
+--
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `monitoring_realtimes`
+-- Indexes for table `monitoring_realtimes`
 --
 ALTER TABLE `monitoring_realtimes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pembangkits`
+-- Indexes for table `pembangkits`
 --
 ALTER TABLE `pembangkits`
   ADD PRIMARY KEY (`id_pembangkit`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -461,80 +470,86 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Indeks untuk tabel `user_registrasis`
+-- Indexes for table `user_registrasis`
 --
 ALTER TABLE `user_registrasis`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user_registrasis_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `documentations`
+-- AUTO_INCREMENT for table `documentations`
 --
 ALTER TABLE `documentations`
   MODIFY `id_dokumen` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `forums`
+-- AUTO_INCREMENT for table `forums`
 --
 ALTER TABLE `forums`
   MODIFY `id_pesan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `komentars`
+-- AUTO_INCREMENT for table `komentars`
 --
 ALTER TABLE `komentars`
   MODIFY `id_komentar` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `load_forcasting`
+--
+ALTER TABLE `load_forcasting`
+  MODIFY `id_forecast` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=673;
+
+--
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `monitoring_realtimes`
+-- AUTO_INCREMENT for table `monitoring_realtimes`
 --
 ALTER TABLE `monitoring_realtimes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1988;
 
 --
--- AUTO_INCREMENT untuk tabel `pembangkits`
+-- AUTO_INCREMENT for table `pembangkits`
 --
 ALTER TABLE `pembangkits`
   MODIFY `id_pembangkit` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT untuk tabel `user_registrasis`
+-- AUTO_INCREMENT for table `user_registrasis`
 --
 ALTER TABLE `user_registrasis`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 DELIMITER $$
 --
--- Event
+-- Events
 --
 CREATE DEFINER=`root`@`localhost` EVENT `beban_kit` ON SCHEDULE EVERY 5 SECOND STARTS '2023-06-03 01:23:28' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
   DECLARE pltuBLK1 DOUBLE;
