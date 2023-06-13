@@ -27,9 +27,9 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="index.php?p=data_operasi">
           <i class='bx bx-collection' ></i>
-          <span class="link_name">Data Tegangan</span>
+          <span class="link_name">Data Operasi</span>
         </a>
       </li>
       <li>

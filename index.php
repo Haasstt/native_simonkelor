@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/documentation.css">
     <link rel="stylesheet" href="assets/css/user.css">
     <link rel="stylesheet" href="assets/css/forecasting.css">
+    <link rel="stylesheet" href="assets/css/data_operasi.css">
 
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
