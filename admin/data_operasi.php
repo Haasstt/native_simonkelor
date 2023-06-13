@@ -57,7 +57,7 @@
             <hr>
             <div class="box-chart-load-stacking-realisasi">
                 <div class="chart-load-stacking-realisasi">
-                    <canvas id=""></canvas>
+                    <canvas id="Mychart"></canvas>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
                 <span class="card-name-right-data-operasi">Produksi Energi Pembangkit</span>
             </div>            
             <hr>
-            <div class="box-table-data-operasi">
+            <div class="box-table-data-operasi-2">
                     
                     <table class="table-data-operasi">
                         <thead>
@@ -136,7 +136,7 @@
             <hr>
             <div class="box-chart-load-stacking-realisasi">
                 <div class="chart-load-stacking-realisasi">
-                    <canvas id=""></canvas>
+                    <canvas id="Mychart_sistem_pembangkit"></canvas>
                 </div>
             </div>
         </div>

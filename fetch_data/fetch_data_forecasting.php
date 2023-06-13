@@ -3,19 +3,19 @@
 
 $today = date("N"); // Mengambil hari ini (1 untuk Senin, 2 untuk Selasa, dst.)
 if ($today == 1) {
-    $hari == 2;
+    $hari = 2;
 } elseif ($today == 2) {
-    $hari == 3;
+    $hari = 3;
 } elseif ($today == 3) {
-    $hari == 4;
+    $hari = 4;
 } elseif ($today == 4) {
-    $hari == 5;
+    $hari = 5;
 } elseif ($today == 5) {
-    $hari == 6;
+    $hari = 6;
 } elseif ($today == 6) {
-    $hari == 7;
+    $hari = 7;
 } elseif ($today == 7) {
-    $hari == 1;
+    $hari = 1;
 }
 $servername = "localhost";
 $username = "root";
