@@ -12,18 +12,21 @@ if (!$conn) {
 }
 
 // Query untuk mengambil data total_beban dari tabel beban_kit
-$tanggalSekarang = date('Y-m-d');
-$sql = "SELECT total_beban FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql = "SELECT * FROM   WHERE 
+parameter LIKE '%PLANT%'"; 
+
 $result = mysqli_query($conn, $sql);
- 
-$data = array();
+
+// Membuat variabel untuk menampung output
+$output1 = '';
+
 while ($row = mysqli_fetch_assoc($result)) {
-  $data[] = $row['total_beban'];
+    $output1 .= '<td>' . $row[' '] .'</td>';
 }
 
-mysqli_close($conn);
+// Menampilkan output
+echo '<tr>'.$output1.'</tr>';
 
-// Mengembalikan data dalam format JSON
-header('Content-Type: application/json');
-echo json_encode($data);
+mysqli_close($conn);
+?>
 ?>

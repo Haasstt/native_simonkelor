@@ -20,8 +20,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
-
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -389,7 +389,5 @@
 
 </body>
 </html>                                       
-
-<script src="assets/js/realtime.js"></script>
-<script src="assets/js/chart-pie.js"></script>
+<!-- <script src="assets/js/chart-pie.js"></script> -->
 <script src="assets/js/index.js"></script>

@@ -120,7 +120,7 @@
             </div>
         </div>
 
-
+<!-- 
         <div class="card-pie">
             <div class="header-card-donnut">
                 <span class="card-name-right">Biaya Energi Sistem Timor</span>
@@ -199,7 +199,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </div>
 
@@ -208,3 +208,4 @@
     </div>
 
 </div>
+<script src="assets/js/realtime.js"></script>

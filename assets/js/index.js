@@ -26,3 +26,4 @@ function sidebar_open() {
   elementSidebar.classList.toggle("sidebar_open");
 }
 
+
