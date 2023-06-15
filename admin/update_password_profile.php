@@ -8,8 +8,8 @@ if (isset($_SESSION['nama'])) {
             <div class="header-box-profile">
                 <div class="judul-header">
                     <span class="name">
-      <a class="a" href="index.php?p=profile">
-                        My Pofile
+                        <a class="a" href="index.php?p=profile">
+                            My Pofile
                         </a></span>
                 </div>
             </div>
@@ -45,42 +45,41 @@ if (isset($_SESSION['nama'])) {
                                     <input name="Submit" type="submit" value="Ubah Password">
                                 </form>
 
-<?php
-if (isset($_POST["Submit"])) {
+                                <?php
+                                if (isset($_POST["Submit"])) {
 
-$pass = mysqli_real_escape_string($koneksi,md5($_POST['passwordlama']));
-$password = $data['password'];
-$passwordbaru = $_POST['passwordbaru'];
-$confirmpasswordbaru = $_POST['confirmpasswordbaru'];
+                                    $pass = mysqli_real_escape_string($koneksi, md5($_POST['passwordlama']));
+                                    $password = $data['password'];
+                                    $passwordbaru = $_POST['passwordbaru'];
+                                    $confirmpasswordbaru = $_POST['confirmpasswordbaru'];
 
-    if ($pass == $password) {
-        if ($passwordbaru == $confirmpasswordbaru) {
-            $updatepassword = md5($passwordbaru);
-            
-            $query = "UPDATE users SET 
+                                    if ($pass == $password) {
+                                        if ($passwordbaru == $confirmpasswordbaru) {
+                                            $updatepassword = md5($passwordbaru);
+
+                                            $query = "UPDATE users SET 
             password ='$updatepassword'
             WHERE user_id ='" . $data['user_id'] . "'";
 
-            $result = mysqli_query($koneksi, $query);
+                                            $result = mysqli_query($koneksi, $query);
 
-            if (!$result) {
-                die("Query gagal dijalankan: " . mysqli_error($koneksi) .
-                    " - " . mysqli_error($koneksi));
-            } else {
-                echo '<script>alert("Password berhasil diubah")</script>';
-                echo '<script>window.location.href = "index.php?p=profile";</script>';  
-                exit();
-            }
-        }else{
-            echo '<script>alert("Konfirmasi password Anda salah, pastikan memasukkan konfirmasi password yang sama dengan password baru Anda")</script>';
-        }
-
-    }else{
-        echo '<script>alert("Password Anda salah")</script>';
-        echo '<script>window.location.href = "index.php?p=update_password_profile";</script>';
-    }
-}
-?>
+                                            if (!$result) {
+                                                die("Query gagal dijalankan: " . mysqli_error($koneksi) .
+                                                    " - " . mysqli_error($koneksi));
+                                            } else {
+                                                echo '<script>alert("Password berhasil diubah")</script>';
+                                                echo '<script>window.location.href = "index.php?p=profile";</script>';
+                                                exit();
+                                            }
+                                        } else {
+                                            echo '<script>alert("Konfirmasi password Anda salah, pastikan memasukkan konfirmasi password yang sama dengan password baru Anda")</script>';
+                                        }
+                                    } else {
+                                        echo '<script>alert("Password Anda salah")</script>';
+                                        echo '<script>window.location.href = "index.php?p=update_password_profile";</script>';
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

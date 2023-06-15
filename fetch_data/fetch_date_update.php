@@ -39,4 +39,3 @@ while ($row = mysqli_fetch_assoc($result)) {
 echo $output1;
 
 mysqli_close($conn);
-?>

@@ -1,59 +1,59 @@
 <?php
 if (isset($_SESSION['nama'])) {
 ?>
-<div class="header header-documentation">
-    <a>Documentation</a>
-</div>
-
-<div class="page-documentation">
-    <div class="row-file">
-        <a href="index.php?p=perencanaan">
-            <div class="box-file-documentation">
-                <i class='bx bxs-folder-open'></i>
-                <span>Dokumen Perencanaan</span>
-            </div>
-        </a>
-        
-        <a href="index.php?p=evaluasi">
-            <div class="box-file-documentation">
-                <i class='bx bxs-folder-open'></i>
-                <span>Dokumen Evaluasi Operasi</span>
-            </div>
-        </a>
-
-        <a href="index.php?p=profil_kelistrikan">
-            <div class="box-file-documentation">
-                <i class='bx bxs-folder-open'></i>
-                <span>Dokumen Profil Kelistrikan</span>
-            </div>
-        </a>
-
+    <div class="header header-documentation">
+        <a>Documentation</a>
     </div>
 
-    <div class="row-file">
+    <div class="page-documentation">
+        <div class="row-file">
+            <a href="index.php?p=perencanaan">
+                <div class="box-file-documentation">
+                    <i class='bx bxs-folder-open'></i>
+                    <span>Dokumen Perencanaan</span>
+                </div>
+            </a>
 
-        <a href="index.php?p=sop_pengoperasian">
-            <div class="box-file-documentation">
-                <i class='bx bxs-folder-open'></i>
-                <span>Dokumen SOP Pengoperasian</span>
-            </div>
-        </a>
-        <a href="index.php?p=singel_line_diagram">
-            <div class="box-file-documentation">
-                <i class='bx bxs-folder-open'></i>
-                <span>Dokumen Single Line Diagram</span>
-            </div>
-        </a>
+            <a href="index.php?p=evaluasi">
+                <div class="box-file-documentation">
+                    <i class='bx bxs-folder-open'></i>
+                    <span>Dokumen Evaluasi Operasi</span>
+                </div>
+            </a>
 
+            <a href="index.php?p=profil_kelistrikan">
+                <div class="box-file-documentation">
+                    <i class='bx bxs-folder-open'></i>
+                    <span>Dokumen Profil Kelistrikan</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="row-file">
+
+            <a href="index.php?p=sop_pengoperasian">
+                <div class="box-file-documentation">
+                    <i class='bx bxs-folder-open'></i>
+                    <span>Dokumen SOP Pengoperasian</span>
+                </div>
+            </a>
+            <a href="index.php?p=singel_line_diagram">
+                <div class="box-file-documentation">
+                    <i class='bx bxs-folder-open'></i>
+                    <span>Dokumen Single Line Diagram</span>
+                </div>
+            </a>
+
+        </div>
     </div>
-</div>
 
 <?php
-        }else {
-            echo '<script>alert("Mohon maaf untuk membuka halaman ini Anda harus login dahulu")</script>';
-            echo '<script>window.location.href = "Login.php";</script>';
-        }
-    ?>
+} else {
+    echo '<script>alert("Mohon maaf untuk membuka halaman ini Anda harus login dahulu")</script>';
+    echo '<script>window.location.href = "Login.php";</script>';
+}
+?>
 <!-- <div class="file_manager">
         <div class="container">
             <div class="row clearfix">

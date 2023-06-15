@@ -25,68 +25,59 @@
             </div>
             <input name="Submit" type="submit" value="Tambahkan">
         </form>
-<?php
+        <?php
 
-include('config/conn.php');
+        include('config/conn.php');
 
-if(isset($_POST['Submit'])){
-    
-    if ($_SESSION['role'] == 'Super Admin') {
+        if (isset($_POST['Submit'])) {
 
-$nama = $_SESSION['nama'];
-$judul = $_POST['judul'];
-$keterangan = $_POST['keterangan'];
-$photo = $_FILES['photo']['name'];
-$tmp = $_FILES['photo']['tmp_name'];
-$path = "assets/img/img_forum/".$photo;
+            if ($_SESSION['role'] == 'Super Admin') {
 
-//query
-if (empty($photo)) {
-    $query =  "INSERT INTO forums (nama_user , judul_forum, pesan, gambar) VALUES('$nama' , '$judul' , '$keterangan' , 'default.jpeg')";
+                $nama = $_SESSION['nama'];
+                $judul = $_POST['judul'];
+                $keterangan = $_POST['keterangan'];
+                $photo = $_FILES['photo']['name'];
+                $tmp = $_FILES['photo']['tmp_name'];
+                $path = "assets/img/img_forum/" . $photo;
 
-    $result = mysqli_query($koneksi, $query);
+                //query
+                if (empty($photo)) {
+                    $query =  "INSERT INTO forums (nama_user , judul_forum, pesan, gambar) VALUES('$nama' , '$judul' , '$keterangan' , 'default.jpeg')";
 
-    if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_error($koneksi).
-            " - ".mysqli_error($koneksi));
+                    $result = mysqli_query($koneksi, $query);
 
-    }
-    else
-    {
-        echo '<script>alert("Forum ditambahkan")</script>';
-        echo '<script>window.location.href = "index.php?p=forum";</script>';
-        exit();
+                    if (!$result) {
+                        die("Query gagal dijalankan: " . mysqli_error($koneksi) .
+                            " - " . mysqli_error($koneksi));
+                    } else {
+                        echo '<script>alert("Forum ditambahkan")</script>';
+                        echo '<script>window.location.href = "index.php?p=forum";</script>';
+                        exit();
+                    }
+                } else {
+                    if (move_uploaded_file($tmp, $path)) {
+                        $query =  "INSERT INTO forums(nama_user , judul_forum, pesan, gambar) VALUES('$nama' , '$judul' , '$keterangan' , '$photo')";
 
-    }
-} else 
-{
-if(move_uploaded_file($tmp, $path)){
-$query =  "INSERT INTO forums(nama_user , judul_forum, pesan, gambar) VALUES('$nama' , '$judul' , '$keterangan' , '$photo')";
+                        $result = mysqli_query($koneksi, $query);
 
-    $result = mysqli_query($koneksi, $query);
+                        if (!$result) {
+                            die("Query gagal dijalankan: " . mysqli_error($koneksi) .
+                                " - " . mysqli_error($koneksi));
+                        } else {
+                            echo '<script>alert("Forum ditambahkan")</script>';
+                            echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
+                            exit();
+                        }
+                    }
+                }
+            } else {
+                echo '<script>alert("Mohon maaf hanya Super Admin yang berhak menambah data ini")</script>';
+                echo '<script>window.location.href = "index.php?p=forum";</script>';
+            }
+        }
 
-    if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_error($koneksi).
-            " - ".mysqli_error($koneksi));
-
-    }
-    else
-    {
-        echo '<script>alert("Forum ditambahkan")</script>';
-        echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
-        exit();
-
-    }
- }
-}
-}else {
-    echo '<script>alert("Mohon maaf hanya Super Admin yang berhak menambah data ini")</script>';
-    echo '<script>window.location.href = "index.php?p=forum";</script>';
-}
-}
-
-mysqli_close($koneksi);
-?>
+        mysqli_close($koneksi);
+        ?>
 
     </div>
 

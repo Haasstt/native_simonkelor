@@ -81,4 +81,3 @@ echo '<div class="box-card">'.$output2.'</div>';
 echo '<div class="box-card">'.$output3.'</div>';
 
 mysqli_close($conn);
-?>

@@ -145,19 +145,6 @@ $(document).ready(function () {
       });
     }, 1000); // Mengambil data setiap 3 detik
   }
-  
-  // function view_select() {
-  //   clearInterval(defaultInterval);
-  //   $.ajax({
-  //     url: "fetch_data/data_operasi/fetch_data_langgam_dataoperasi_bydate.php",
-  //     method: "POST",
-  //     data: { tanggal: selectedValue },
-  //     dataType: "json",
-  //     success: function (data) {
-  //       updateChartData(data);
-  //     },
-  //   });
-  // }
 
   function updateChartBySelection(selectedValue) {
     if (selectedValue === "default") {
@@ -353,18 +340,6 @@ $(document).ready(function () {
     }, 1000); // Mengambil data setiap 3 detik
   }
   
-  // function view_select() {
-  //   clearInterval(defaultInterval);
-  //   $.ajax({
-  //     url: "fetch_data/data_operasi/fetch_data_langgam_dataoperasi_bydate.php",
-  //     method: "POST",
-  //     dataType: "json",
-  //     success: function (data) {
-  //       updateChartData(data);
-  //     },
-  //   });
-  // }
-
   function updateChartBySelection(selectedValue) {
     if (selectedValue === "default") {
       // Jika pilihan default, tampilkan data utama
@@ -391,3 +366,33 @@ $(document).ready(function () {
   
   updateChartBySelection("default");
 });
+
+function updateChartBySelection(selectedValue) {
+  if (selectedValue === "default") {
+    // Jika pilihan default, tampilkan data utama
+    // view_default();   
+  } else {
+    // Jika pilihan default, tampilkan data utama
+  $.ajax({
+    url: 'fetch_data/fetch_data_operasi.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
+    method: 'POST',
+    data: { tanggal: selectedValue },
+    dataType: 'html',
+    success: function(data) {
+      // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+      $('#beban_puncak_rencana').html(data);
+    console.log(data);
+    },
+    error: function(xhr, status, error) {
+      console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+    }
+  });
+  }
+}
+
+$("#tanggal").on("change", function () {
+  updateChartBySelection(this.value);
+});
+
+
+updateChartBySelection("default");

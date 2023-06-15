@@ -12,7 +12,7 @@
         <form class="form" method="POST" enctype="multipart/form-data">
             <div class="group-form">
                 <label for="">Judul Forum</label>
-                <input type="text" name="judul" value="<?php echo $data['judul_forum'];?>">
+                <input type="text" name="judul" value="<?php echo $data['judul_forum']; ?>">
             </div>
             <div class="group-form">
                 <label for="">Keterangan Forum</label>
@@ -24,7 +24,7 @@
             <div class="group-form">
                 <label for="">Sampul yang digunakan</label>
                 <div class="sampul-update">
-                    <img src="assets/img/img_forum/<?php echo $data['gambar'];?>" alt="">
+                    <img src="assets/img/img_forum/<?php echo $data['gambar']; ?>" alt="">
                 </div>
                 <label for="">Pilih sampul baru untuk diubah</label>
                 <p class="keterangan-form">* .jpg, .png, .jpeg</p>
@@ -32,113 +32,98 @@
             </div>
             <input name="Submit" type="submit" value="Ubah data">
         </form>
-<?php
+        <?php
 
-include('config/conn.php');
+        include('config/conn.php');
 
-if(isset($_POST['Submit'])){
-    
-if ($_SESSION['role'] == "Super Admin") {
+        if (isset($_POST['Submit'])) {
 
-$judul = $_POST['judul'];
-$keterangan = $_POST['keterangan'];
-$photo = $_FILES['photo']['name'];
-$tmp = $_FILES['photo']['tmp_name'];
-$path = "assets/img/img_forum/".$photo;
+            if ($_SESSION['role'] == "Super Admin") {
 
-//query
-if (empty($photo)) {
+                $judul = $_POST['judul'];
+                $keterangan = $_POST['keterangan'];
+                $photo = $_FILES['photo']['name'];
+                $tmp = $_FILES['photo']['tmp_name'];
+                $path = "assets/img/img_forum/" . $photo;
 
-    if ($data['judul_forum'] == $judul && $data['pesan'] == $keterangan) {
-        echo '<script>alert("Anda tidak melakukan pengubahan data")</script>';
-        echo '<script>window.location.href = "index.php?p=forum";</script>';
-        exit();
-    }
-			
-    $query = "UPDATE forums SET 
+                //query
+                if (empty($photo)) {
+
+                    if ($data['judul_forum'] == $judul && $data['pesan'] == $keterangan) {
+                        echo '<script>alert("Anda tidak melakukan pengubahan data")</script>';
+                        echo '<script>window.location.href = "index.php?p=forum";</script>';
+                        exit();
+                    }
+
+                    $query = "UPDATE forums SET 
     judul_forum='$judul',
     pesan ='$keterangan'
-    WHERE id_pesan ='".$data['id_pesan']."'";
+    WHERE id_pesan ='" . $data['id_pesan'] . "'";
 
-    $result = mysqli_query($koneksi, $query);
+                    $result = mysqli_query($koneksi, $query);
 
-    if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_error($koneksi).
-            " - ".mysqli_error($koneksi));
+                    if (!$result) {
+                        die("Query gagal dijalankan: " . mysqli_error($koneksi) .
+                            " - " . mysqli_error($koneksi));
+                    } else {
+                        echo '<script>alert("Forum berhasil diubah")</script>';
+                        echo '<script>window.location.href = "index.php?p=forum";</script>';
+                        exit();
+                    }
+                } else {
+                    if ($data['gambar'] == "default.jpeg") {
 
-    }
-    else
-    {
-        echo '<script>alert("Forum berhasil diubah")</script>';
-        echo '<script>window.location.href = "index.php?p=forum";</script>';
-        exit();
+                        move_uploaded_file($tmp, $path);
 
-    }
-} else 
-{
-if($data['gambar'] == "default.jpeg"){
-
-    move_uploaded_file($tmp, $path);
-			
-    $query = "UPDATE forums SET 
+                        $query = "UPDATE forums SET 
     judul_forum='$judul',
     pesan='$keterangan',
     gambar='$photo'
-    WHERE id_pesan='".$data['id_pesan']."'";
+    WHERE id_pesan='" . $data['id_pesan'] . "'";
 
-    $result = mysqli_query($koneksi, $query);
+                        $result = mysqli_query($koneksi, $query);
 
-    if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_error($koneksi).
-            " - ".mysqli_error($koneksi));
+                        if (!$result) {
+                            die("Query gagal dijalankan: " . mysqli_error($koneksi) .
+                                " - " . mysqli_error($koneksi));
+                        } else {
+                            echo '<script>alert("Forum berhasil diubah")</script>';
+                            echo '<script>window.location.href = "index.php?p=forum";</script>';
+                            exit();
+                        }
+                    } else {
 
-    }
-    else
-    {
-        echo '<script>alert("Forum berhasil diubah")</script>';
-        echo '<script>window.location.href = "index.php?p=forum";</script>';
-        exit();
+                        unlink('assets/img/img_forum/' . $data['gambar']);
 
-    }
- }else {
+                        move_uploaded_file($tmp, $path);
 
-    unlink('assets/img/img_forum/'.$data['gambar']);
-
-    move_uploaded_file($tmp, $path);
-			
-    $query = "UPDATE forums SET 
+                        $query = "UPDATE forums SET 
     judul_forum='$judul',
     pesan='$keterangan',
     gambar='$photo'
-    WHERE id_pesan='".$data['id_pesan']."'";
+    WHERE id_pesan='" . $data['id_pesan'] . "'";
 
-    $result = mysqli_query($koneksi, $query);
+                        $result = mysqli_query($koneksi, $query);
 
-    if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_error($koneksi).
-            " - ".mysqli_error($koneksi));
+                        if (!$result) {
+                            die("Query gagal dijalankan: " . mysqli_error($koneksi) .
+                                " - " . mysqli_error($koneksi));
+                        } else {
+                            echo '<script>alert("Forum berhasil diubah")</script>';
+                            echo '<script>window.location.href = "index.php?p=forum";</script>';
+                            exit();
+                        }
+                    }
+                }
+            } else {
+                echo '<script>alert("Mohon maaf hanya Super Admin yang berhak mengubah data ini")</script>';
+                echo '<script>window.location.href = "index.php?p=forum";</script>';
+            }
+        }
 
-    }
-    else
-    {
-        echo '<script>alert("Forum berhasil diubah")</script>';
-        echo '<script>window.location.href = "index.php?p=forum";</script>';
-        exit();
+        mysqli_close($koneksi);
 
-    }
- }
-}
-
-}else {
-    echo '<script>alert("Mohon maaf hanya Super Admin yang berhak mengubah data ini")</script>';
-    echo '<script>window.location.href = "index.php?p=forum";</script>';
-}
-
-}
-
-mysqli_close($koneksi);
-
-?>
+        ?>
 
     </div>
 

@@ -71,4 +71,3 @@ $data = array(
 // Mengembalikan data dalam format JSON
 header('Content-Type: application/json');
 echo json_encode($data);
-?>

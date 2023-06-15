@@ -8,8 +8,8 @@ if (isset($_SESSION['nama'])) {
             <div class="header-box-profile">
                 <div class="judul-header">
                     <span class="name">
-      <a class="a" href="index.php?p=profile">
-                        My Pofile
+                        <a class="a" href="index.php?p=profile">
+                            My Pofile
                         </a></span>
                 </div>
             </div>
@@ -46,69 +46,61 @@ if (isset($_SESSION['nama'])) {
 
                                 <?php
 
-include('config/conn.php');
+                                include('config/conn.php');
 
-if (isset($_POST['Submit'])) {
-    
-$photo = $_FILES['photo']['name'];
-$tmp = $_FILES['photo']['tmp_name'];
-$path = "assets/img/foto_profil/".$photo;
+                                if (isset($_POST['Submit'])) {
+
+                                    $photo = $_FILES['photo']['name'];
+                                    $tmp = $_FILES['photo']['tmp_name'];
+                                    $path = "assets/img/foto_profil/" . $photo;
 
 
-if (empty($photo)) {
-    echo '<script>alert("Anda tidak melakukan pengubahan data")</script>';
-    }else{
-        if ($data['gambar'] == "default_profil.png") {
-            move_uploaded_file($tmp, $path);
-                
-            $query = "UPDATE users SET 
+                                    if (empty($photo)) {
+                                        echo '<script>alert("Anda tidak melakukan pengubahan data")</script>';
+                                    } else {
+                                        if ($data['gambar'] == "default_profil.png") {
+                                            move_uploaded_file($tmp, $path);
+
+                                            $query = "UPDATE users SET 
             gambar = '$photo',
             path = '$path'
-            WHERE user_id ='".$data['user_id']."'";
-        
-            $result = mysqli_query($koneksi, $query);
-        
-            if(!$result){
-                die ("Query gagal dijalankan: ".mysqli_error($koneksi).
-                    " - ".mysqli_error($koneksi));
-        
-            }
-            else
-            {
-                echo '<script>alert("Foto profil diubah")</script>';
-                echo '<script>window.location.href = "index.php?p=profile";</script>';
-                exit();
-        
-            }
-        }else{
-            unlink($data['path']);
-            move_uploaded_file($tmp, $path);
-                
-            $query = "UPDATE users SET 
+            WHERE user_id ='" . $data['user_id'] . "'";
+
+                                            $result = mysqli_query($koneksi, $query);
+
+                                            if (!$result) {
+                                                die("Query gagal dijalankan: " . mysqli_error($koneksi) .
+                                                    " - " . mysqli_error($koneksi));
+                                            } else {
+                                                echo '<script>alert("Foto profil diubah")</script>';
+                                                echo '<script>window.location.href = "index.php?p=profile";</script>';
+                                                exit();
+                                            }
+                                        } else {
+                                            unlink($data['path']);
+                                            move_uploaded_file($tmp, $path);
+
+                                            $query = "UPDATE users SET 
             gambar = '$photo',
             path = '$path'
-            WHERE user_id ='".$data['user_id']."'";
-        
-            $result = mysqli_query($koneksi, $query);
-        
-            if(!$result){
-                die ("Query gagal dijalankan: ".mysqli_error($koneksi).
-                    " - ".mysqli_error($koneksi));
-        
-            }
-            else
-            {
-                echo '<script>alert("Foto profil diubah")</script>';
-                echo '<script>window.location.href = "index.php?p=profile";</script>';
-                exit();
-        
-            }
-        }
-    }
-}
+            WHERE user_id ='" . $data['user_id'] . "'";
 
-mysqli_close($koneksi);
-?>
+                                            $result = mysqli_query($koneksi, $query);
+
+                                            if (!$result) {
+                                                die("Query gagal dijalankan: " . mysqli_error($koneksi) .
+                                                    " - " . mysqli_error($koneksi));
+                                            } else {
+                                                echo '<script>alert("Foto profil diubah")</script>';
+                                                echo '<script>window.location.href = "index.php?p=profile";</script>';
+                                                exit();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                mysqli_close($koneksi);
+                                ?>
                             </div>
                         </div>
                     </div>

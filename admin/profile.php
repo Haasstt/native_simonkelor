@@ -8,8 +8,8 @@ if (isset($_SESSION['nama'])) {
             <div class="header-box-profile">
                 <div class="judul-header">
                     <span class="name">
-      <a class="a" href="index.php?p=profile">
-                        My Pofile
+                        <a class="a" href="index.php?p=profile">
+                            My Pofile
                         </a></span>
                 </div>
             </div>

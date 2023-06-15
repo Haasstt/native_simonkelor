@@ -1,22 +1,4 @@
 <?php
-
-$today = date("N"); // Mengambil hari ini (1 untuk Senin, 2 untuk Selasa, dst.)
-if ($today == 1) {
-    $hari = 2;
-} elseif ($today == 2) {
-    $hari = 3;
-} elseif ($today == 3) {
-    $hari = 4;
-} elseif ($today == 4) {
-    $hari = 5;
-} elseif ($today == 5) {
-    $hari = 6;
-} elseif ($today == 6) {
-    $hari = 7;
-} elseif ($today == 7) {
-    $hari = 1;
-}
-
 // Koneksi ke database
 $servername = "localhost";
 $username = "root";
@@ -29,20 +11,33 @@ if (!$conn) {
   die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-// Query untuk mengambil data total_beban dari tabel beban_kit
-if (isset($_GET['simpan'])) {
-    $cari = $_GET['cari'];
+$date = $_POST['tanggal'];
 
-    $sql_beban_real = "SELECT total_beban FROM beban_kit WHERE DATE(tanggal) = '$cari'";
-    $sql_beban_forecast = "SELECT beban_prediksi FROM load_forcasting WHERE hari = $hari";
-    $sql_beban_puncak_forecast = "SELECT MAX(beban_prediksi) as nilai_tertinggi FROM load_forcasting WHERE hari = $hari";
-    $sql_beban_puncak_sebenarnya = "SELECT MAX(total_beban) as nilai_tertinggi_sebenarnya FROM beban_kit WHERE DATE(tanggal) = '$cari'";
-} else {
-$sql_beban_real = "SELECT total_beban FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
-$sql_beban_forecast = "SELECT beban_prediksi FROM load_forcasting WHERE hari = $hari";
-$sql_beban_puncak_forecast = "SELECT MAX(beban_prediksi) as nilai_tertinggi FROM load_forcasting WHERE hari = $hari";
-$sql_beban_puncak_sebenarnya = "SELECT MAX(total_beban) as nilai_tertinggi_sebenarnya FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+
+$sql_langgam = "SELECT total_beban FROM beban_kit WHERE DATE(tanggal) = '$date'";
+$result_langgam = mysqli_query($conn, $sql_langgam);
+ 
+$data_langgam = array();
+while ($row = mysqli_fetch_assoc($result_langgam)) {
+  $data_langgam[] = $row['total_beban'];
 }
+
+$sql_forecast = "SELECT beban_prediksi FROM load_forcasting WHERE DATE(tanggal) = '$date'";
+$result_forecast = mysqli_query($conn, $sql_forecast);
+
+$data_forecast = array();
+while ($row = mysqli_fetch_assoc($result_forecast)) {
+  $data_forecast[] = $row['beban_prediksi'];
+}
+
+
+// Query untuk mengambil data total_beban dari tabel beban_kit
+
+$sql_beban_real = "SELECT total_beban FROM beban_kit WHERE DATE(tanggal) = '$date'";
+$sql_beban_forecast = "SELECT beban_prediksi FROM load_forcasting WHERE DATE(tanggal) = '$date'";
+$sql_beban_puncak_forecast = "SELECT MAX(beban_prediksi) as nilai_tertinggi FROM load_forcasting WHERE DATE(tanggal) = '$date'";
+$sql_beban_puncak_sebenarnya = "SELECT MAX(total_beban) as nilai_tertinggi_sebenarnya FROM beban_kit WHERE DATE(tanggal) = '$date'";
+
 $result = mysqli_query($conn, $sql_beban_puncak_forecast);
 $result2 = mysqli_query($conn, $sql_beban_puncak_sebenarnya);
 $result3 = mysqli_query($conn, $sql_beban_real);
@@ -96,5 +91,3 @@ echo '<tr>'.$output3.'</tr>';
 echo '<tr>'.$output4.'</tr>';
 
 mysqli_close($conn);
-
-?>

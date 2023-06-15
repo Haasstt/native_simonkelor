@@ -1,21 +1,4 @@
 <?php
-$today = date("N"); // Mengambil hari ini (1 untuk Senin, 2 untuk Selasa, dst.)
-if ($today == 1) {
-    $hari = 2;
-} elseif ($today == 2) {
-    $hari = 3;
-} elseif ($today == 3) {
-    $hari = 4;
-} elseif ($today == 4) {
-    $hari = 5;
-} elseif ($today == 5) {
-    $hari = 6;
-} elseif ($today == 6) {
-    $hari = 7;
-} elseif ($today == 7) {
-    $hari = 1;
-}
-
 // Koneksi ke database
 $servername = "localhost";
 $username = "root";
@@ -28,6 +11,7 @@ if (!$conn) {
   die("Koneksi gagal: " . mysqli_connect_error());
 }
 
+$valuecurrentDate = date("y-m-d");
 
 $sql_langgam = "SELECT total_beban FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
 $result_langgam = mysqli_query($conn, $sql_langgam);
@@ -38,7 +22,7 @@ while ($row = mysqli_fetch_assoc($result_langgam)) {
 }
 
 
-$sql_forecast = "SELECT beban_prediksi FROM load_forcasting WHERE hari = $hari";
+$sql_forecast = "SELECT beban_prediksi FROM load_forcasting WHERE tanggal = CURDATE()";
 $result_forecast = mysqli_query($conn, $sql_forecast);
 
 $data_forecast = array();
@@ -86,4 +70,3 @@ $data = array(
 // Mengembalikan data dalam format JSON
 header('Content-Type: application/json');
 echo json_encode($data);
-?>

@@ -1,13 +1,13 @@
-<div class="header">        
+<div class="header">
     <a>Realtime</a>
     <div id="date">
-        
+
     </div>
 </div>
 
 <div class="main-realtime">
 
-    <div class="main-right"> 
+    <div class="main-right">
 
         <div class="card-langgam">
             <div class="header-card-langgam">
@@ -25,22 +25,22 @@
         <div class="card-donnut">
             <div class="header-card-donnut">
                 <span class="card-name-right">Bauran Energi Sistem Timor</span>
-            </div>            
+            </div>
             <hr>
             <div class="box-chart-donut">
 
                 <div class="donut">
                     <div id="chart-donut"></div>
                     <div class='legends-donut'>
-                    <span class="kuning"><i class='bx bxs-circle'></i> Batubara</span>
-                    <span class="biru-muda"><i class='bx bxs-circle'></i> HFO</span>
-                    <span class="biru-tua"><i class='bx bxs-circle'></i> HSD</span>
-                    <span class="orange"><i class='bx bxs-circle'></i> Surya</span>
+                        <span class="kuning"><i class='bx bxs-circle'></i> Batubara</span>
+                        <span class="biru-muda"><i class='bx bxs-circle'></i> HFO</span>
+                        <span class="biru-tua"><i class='bx bxs-circle'></i> HSD</span>
+                        <span class="orange"><i class='bx bxs-circle'></i> Surya</span>
                     </div>
                 </div>
 
                 <div class="box-table">
-                    
+
                     <table class="table-donut">
                         <thead>
                             <tr>
@@ -112,6 +112,42 @@
                                 <td>14.81</td>
                                 <td>15.57</td>
                             </tr>
+                            <tr>
+                                <td>PLTS IPP ATAMBUA (PT.LEN)</td>
+                                <td>Surya</td>
+                                <td>14.81</td>
+                                <td>15.57</td>
+                            </tr>
+                            <tr>
+                                <td>PLTS IPP ATAMBUA (PT.LEN)</td>
+                                <td>Surya</td>
+                                <td>14.81</td>
+                                <td>15.57</td>
+                            </tr>
+                            <tr>
+                                <td>PLTS IPP ATAMBUA (PT.LEN)</td>
+                                <td>Surya</td>
+                                <td>14.81</td>
+                                <td>15.57</td>
+                            </tr>
+                            <tr>
+                                <td>PLTS IPP ATAMBUA (PT.LEN)</td>
+                                <td>Surya</td>
+                                <td>14.81</td>
+                                <td>15.57</td>
+                            </tr>
+                            <tr>
+                                <td>PLTS IPP ATAMBUA (PT.LEN)</td>
+                                <td>Surya</td>
+                                <td>14.81</td>
+                                <td>15.57</td>
+                            </tr>
+                            <tr>
+                                <td>PLTS IPP ATAMBUA (PT.LEN)</td>
+                                <td>Surya</td>
+                                <td>14.81</td>
+                                <td>15.57</td>
+                            </tr>
                         </tbody>
 
                     </table>
@@ -120,7 +156,7 @@
             </div>
         </div>
 
-<!-- 
+        <!-- 
         <div class="card-pie">
             <div class="header-card-donnut">
                 <span class="card-name-right">Biaya Energi Sistem Timor</span>

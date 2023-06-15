@@ -8,11 +8,11 @@ if (isset($_SESSION['nama'])) {
             <div class="header-box-profile">
                 <div class="judul-header">
                     <span class="name">
-      <a class="a" href="index.php?p=profile">
-                        My Pofile
+                        <a class="a" href="index.php?p=profile">
+                            My Pofile
                         </a>
                     </span>
-   
+
                 </div>
             </div>
 
@@ -73,7 +73,6 @@ if (isset($_SESSION['nama'])) {
                                         echo '<script>alert("Anda tidak melakukan pengubahan data")</script>';
                                         echo '<script>window.location.href = "index.php?p=profile";</script>';
                                         exit();
-
                                     } else {
 
                                         if ($data['email'] == $email) {
@@ -84,9 +83,9 @@ if (isset($_SESSION['nama'])) {
                                             instansi ='$instansi',
                                             email ='$email'
                                             WHERE user_id ='" . $data['user_id'] . "'";
-    
+
                                             $result = mysqli_query($koneksi, $query);
-    
+
                                             if (!$result) {
                                                 die("Query gagal dijalankan: " . mysqli_error($koneksi) .
                                                     " - " . mysqli_error($koneksi));
@@ -95,7 +94,7 @@ if (isset($_SESSION['nama'])) {
                                                 echo '<script>window.location.href = "index.php?p=profile";</script>';
                                                 exit();
                                             }
-                                        }else{
+                                        } else {
 
                                             $query = "UPDATE users SET 
                                             nama_user='$nama',
@@ -103,9 +102,9 @@ if (isset($_SESSION['nama'])) {
                                             instansi ='$instansi',
                                             email ='$email'
                                             WHERE user_id ='" . $data['user_id'] . "'";
-    
+
                                             $result = mysqli_query($koneksi, $query);
-    
+
                                             if (!$result) {
                                                 die("Query gagal dijalankan: " . mysqli_error($koneksi) .
                                                     " - " . mysqli_error($koneksi));
