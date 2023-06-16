@@ -228,36 +228,108 @@ const chartData_sistempembangkit = {
   datasets: [
     {
       label: "PLTU BOLOK",
-      backgroundColor: "rgba(0, 121, 255, 1)",
-      borderColor: "rgba(0, 121, 255, 1)",
-      pointBackgroundColor: "rgba(0, 121, 255, 1)",
+      backgroundColor: "RGB(0,72,186)",
+      borderColor: "RGB(0,72,186)",
+      pointBackgroundColor: "RGB(0,72,186)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
-      label: "PLTU IPP KPG BARU",
-      backgroundColor: "rgba(0, 223, 162, 1)",
-      borderColor: "rgba(0, 223, 162, 1)",
-      pointBackgroundColor: "rgba(0, 223, 162, 1)",
+      label: "PLTU IPP KUPANG BARU",
+      backgroundColor: "RGB(249,160,50)",
+      borderColor: "RGB(249,160,50)",
+      pointBackgroundColor: "RGB(249,160,50)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "PLTD COGINDO",
-      backgroundColor: "rgba(246, 250, 112, 1)",
-      borderColor: "rgba(246, 250, 112, 1)",
-      pointBackgroundColor: "rgba(246, 250, 112, 1)",
+      backgroundColor: "rgb(240,249,108)",
+      borderColor: "rgb(240,249,108)",
+      pointBackgroundColor: "rgb(240,249,108)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
-      label: "PLTMG KPG PEAKER",
+      label: "PLTMG KUPANG PEAKER",
+      backgroundColor: "rgb(145,249,147)",
+      borderColor: "rgb(145,249,147)",
+      pointBackgroundColor: "rgb(145,249,147)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+    },
+    {
+      label: "PLTS IPP KUPANG",
+      backgroundColor: "rga(124,205,244)",
+      borderColor: "rgb(124,205,244)",
+      pointBackgroundColor: "rgb(124,205,244)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+    },
+    {
+      label: "PLTS IPP ATAMBUA",
       backgroundColor: "rgba(255, 0, 96, 1)",
       borderColor: "rgba(255, 0, 96, 1)",
       pointBackgroundColor: "rgba(255, 0, 96, 1)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+    },
+    {
+      label: "ULPL KUPANG NIGATA(PLANT)",
+      backgroundColor: "rgb(132, 167, 161)",
+      borderColor: "rgb(132, 167, 161)",
+      pointBackgroundColor: "rgb(132, 167, 161)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+    },
+    {
+      label: "ULPL KUPANG MAK(PLANT)",
+      backgroundColor: "rgb(46, 138, 153)",
+      borderColor: "rgb(46, 138, 153)",
+      pointBackgroundColor: "rgb(46, 138, 153)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+    },
+    {
+      label: "ULPL ATAMBUA CAT 2",
+      backgroundColor: "rgb(31, 110, 140)",
+      borderColor: "rgb(31, 110, 140)",
+      pointBackgroundColor: "rgb(31, 110, 140)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+    },
+    {
+      label: "ULPL ATAMBUA MWM",
+      backgroundColor: "rgb(14, 41, 84)",
+      borderColor: "rgb(14, 41, 84)",
+      pointBackgroundColor: "rgb(14, 41, 84)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+    },
+    {
+      label: "ULPL ATAMBUA SWD(PLANT)",
+      backgroundColor: "rgb(9, 27, 56)",
+      borderColor: "rgb(9, 27, 56)",
+      pointBackgroundColor: "rgb(9, 27, 56)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+    },
+    {
+      label: "PLTU TIMOR",
+      backgroundColor: "RGB(0, 128, 0)",
+      borderColor: "RGB(0, 128, 0)",
+      pointBackgroundColor: "RGB(0, 128, 0)",
       data: [],
       tension: 0.5,
       fill: true,
@@ -271,7 +343,7 @@ $(document).ready(function () {
     data: chartData_sistempembangkit,
     options: {
       legend:{
-        display: false,
+        display: true,
       },
       scales: {
         x: {
@@ -312,6 +384,14 @@ $(document).ready(function () {
     chart_pembangkit.data.datasets[1].data = langgamData.pltu_ipp_kupang;
     chart_pembangkit.data.datasets[2].data = langgamData.pltd_cogindo;
     chart_pembangkit.data.datasets[3].data = langgamData.pltmg_kupang;
+    chart_pembangkit.data.datasets[4].data = langgamData.plts_ipp_kpng;
+    chart_pembangkit.data.datasets[5].data = langgamData.plts_ipp_atmb;
+    chart_pembangkit.data.datasets[6].data = langgamData.ulpl_kpng_ngt;
+    chart_pembangkit.data.datasets[7].data = langgamData.ulpl_kpng_mak;
+    chart_pembangkit.data.datasets[8].data = langgamData.ulpl_atmb_cat2;
+    chart_pembangkit.data.datasets[9].data = langgamData.ulpl_atmb_mwm;
+    chart_pembangkit.data.datasets[10].data = langgamData.ulpl_atmb_swd;
+    chart_pembangkit.data.datasets[11].data = langgamData.pltu_timor;
     chart_pembangkit.update();
   }
 
