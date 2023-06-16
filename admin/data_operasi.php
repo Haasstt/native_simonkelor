@@ -13,7 +13,7 @@
         ?>
         <select name="tanggal" id="tanggal" onchange="updateChartBySelection(this.value)">
             <option value="<?php echo $nilaicurrentDate ?>" <?php if ($valuecurrentDate == $valuecurrentDate) echo 'selected="selected"'; ?>>
-                <?php echo $currentDate ?>
+                Hari ini
             </option>
             <?php
 
