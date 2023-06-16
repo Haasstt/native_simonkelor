@@ -42,7 +42,7 @@
 
                 //query
                 if (empty($photo)) {
-                    $query =  "INSERT INTO forums (nama_user , judul_forum, pesan, gambar) VALUES('$nama' , '$judul' , '$keterangan' , 'default.jpeg')";
+                    $query =  "INSERT INTO forums (nama_user , judul_forum, pesan, gambar) VALUES('$nama' , '$judul' , '$keterangan' , 'default.png')";
 
                     $result = mysqli_query($koneksi, $query);
 
@@ -65,7 +65,7 @@
                                 " - " . mysqli_error($koneksi));
                         } else {
                             echo '<script>alert("Forum ditambahkan")</script>';
-                            echo '<script>window.location.href = "index.php?p=forum_superadmin";</script>';
+                            echo '<script>window.location.href = "index.php?p=forum";</script>';
                             exit();
                         }
                     }

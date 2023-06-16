@@ -74,7 +74,7 @@ if (isset($_SESSION['nama'])) {
                             ?>
                                 <div class="box-me">
                                     <div class="box-delete">
-                                        <a onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="index.php?p=delete_komentar&id=<?php echo $data['id_komentar'] ?>"><i class='bx bx-trash'></i></a>
+                                        <a onclick="return confirm('Apakah Anda yakin ingin menghapus pesan ini?')" href="index.php?p=delete_komentar&id=<?php echo $data['id_komentar'] ?>"><i class='bx bx-trash'></i></a>
                                     </div>
 
                                     <div class="box-massage">
@@ -220,7 +220,7 @@ if (isset($_SESSION['nama'])) {
         $size = $_FILES['file']['size'];
         $tmp = $_FILES['file']['tmp_name'];
         $pathfoto = "assets/img/foto_komentar/" . $file;
-        $pathdoc = "assets/file/ /" . $file;
+        $pathdoc = "assets/file/file_komentar/" . $file;
         $fileTypefoto = pathinfo($pathfoto, PATHINFO_EXTENSION);
         $fileTypedoc = pathinfo($pathdoc, PATHINFO_EXTENSION);
 
@@ -251,7 +251,6 @@ VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$pathf
                         " - " . mysqli_error($koneksi));
                 } else {
                     move_uploaded_file($tmp, $pathfoto);
-                    echo '<script>alert("Forum ditambahkan")</script>';
                     echo '<script>window.location.href = "index.php?p=forum_komentar&id=' . $id_forum . '";</script>';
                     exit();
                 }
@@ -266,7 +265,6 @@ VALUES('$id_forum' , '$id_user' , '$komentar', '$file', '$fileTypefoto', '$pathf
                         " - " . mysqli_error($koneksi));
                 } else {
                     move_uploaded_file($tmp, $pathdoc);
-                    echo '<script>alert("Forum ditambahkan")</script>';
                     echo '<script>window.location.href = "index.php?p=forum_komentar&id=' . $id_forum . '";</script>';
                     exit();
                 }

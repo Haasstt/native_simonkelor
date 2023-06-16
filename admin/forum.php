@@ -51,7 +51,7 @@ if (isset($_SESSION['nama'])) {
                     WHERE 
                     nama_user like '%" . $cari . "%' OR judul_forum like '%" . $cari . "%' OR pesan like '%" . $cari . "%'");
             } else {
-                $query = mysqli_query($koneksi, "SELECT * FROM forums ORDER BY updated_at DESC");
+                $query = mysqli_query($koneksi, "SELECT * FROM forums ORDER BY id_pesan DESC");
             }
             while ($row = mysqli_fetch_assoc($query)) {
             ?>

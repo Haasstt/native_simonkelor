@@ -71,7 +71,7 @@
                         exit();
                     }
                 } else {
-                    if ($data['gambar'] == "default.jpeg") {
+                    if ($data['gambar'] == "default.png") {
 
                         move_uploaded_file($tmp, $path);
 

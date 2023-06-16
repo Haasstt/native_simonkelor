@@ -235,19 +235,54 @@ include 'config/conn.php';
       if ($_SESSION['role'] == "Super Admin") {
         $query = mysqli_query($koneksi, "SELECT * FROM forums WHERE id_pesan ='" . $_GET['id'] . "'");
         $foto_lama = mysqli_fetch_array($query);
+        $query_komentar = mysqli_query($koneksi, "SELECT * FROM komentars WHERE id_forum = '" . $_GET['id'] . "'");
+        $cek_data = mysqli_num_rows($query_komentar);
 
-        if ($foto_lama['gambar'] == "default.jpeg") {
-          $query = mysqli_query($koneksi, "DELETE FROM forums WHERE id_pesan ='" . $_GET['id'] . "'");
-        } else {
-          unlink('assets/img/img_forum/' . $foto_lama['gambar']);
-          $query = mysqli_query($koneksi, "DELETE FROM forums WHERE id_pesan ='" . $_GET['id'] . "'");
-        }
+        if ($cek_data > 0) {
+          while ($data = mysqli_fetch_assoc($query_komentar)) {
 
-        if ($query) {
-          echo "<script>alert('Data telah dihapus')</script>";
-          echo "<script>location='index.php?p=forum'</script>";
+            if ($data['path'] == NULL) {
+            } else {
+              unlink($data['path']);
+            }
+
+          }
+
+          $query_hapus_komentar = mysqli_query($koneksi, "DELETE FROM komentars WHERE id_forum = '" . $_GET['id'] . "'");
+
+          if ($query_hapus_komentar) {
+
+            if ($foto_lama['gambar'] == "default.png") {
+              $query_hapus = mysqli_query($koneksi, "DELETE FROM forums WHERE id_pesan ='" . $_GET['id'] . "'");
+            } else {
+              unlink('assets/img/img_forum/' . $foto_lama['gambar']);
+              $query_hapus = mysqli_query($koneksi, "DELETE FROM forums WHERE id_pesan ='" . $_GET['id'] . "'");
+            }
+  
+            if ($query_hapus) {
+              echo "<script>alert('Data telah dihapus')</script>";
+              echo "<script>location='index.php?p=forum'</script>";
+            } else {
+              echo "<script>alert('erorr')</script>";
+            }
+          }
+
+          # code...
         } else {
-          echo "<script>alert('erorr')</script>";
+
+          if ($foto_lama['gambar'] == "default.png") {
+            $query_hapus = mysqli_query($koneksi, "DELETE FROM forums WHERE id_pesan ='" . $_GET['id'] . "'");
+          } else {
+            unlink('assets/img/img_forum/' . $foto_lama['gambar']);
+            $query_hapus = mysqli_query($koneksi, "DELETE FROM forums WHERE id_pesan ='" . $_GET['id'] . "'");
+          }
+
+          if ($query_hapus) {
+            echo "<script>alert('Data telah dihapus')</script>";
+            echo "<script>location='index.php?p=forum'</script>";
+          } else {
+            echo "<script>alert('erorr')</script>";
+          }
         }
       } else {
         echo "<script>alert('Mohon maaf hanya Super Admin yang berhak menghapus data ini')</script>";
