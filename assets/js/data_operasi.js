@@ -228,81 +228,81 @@ const chartData_sistempembangkit = {
   datasets: [
     {
       label: "PLTU BOLOK",
-      backgroundColor: "RGB(0,72,186)",
-      borderColor: "RGB(0,72,186)",
-      pointBackgroundColor: "RGB(0,72,186)",
+      backgroundColor: "rgb(0, 121, 255)",
+      borderColor: "rgb(0, 121, 255)",
+      pointBackgroundColor: "rgb(0, 121, 255)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "PLTU IPP KUPANG BARU",
-      backgroundColor: "RGB(249,160,50)",
-      borderColor: "RGB(249,160,50)",
-      pointBackgroundColor: "RGB(249,160,50)",
+      backgroundColor: "rgb(0, 223, 162)",
+      borderColor: "rgb(0, 223, 162)",
+      pointBackgroundColor: "rgb(0, 223, 162)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "PLTD COGINDO",
-      backgroundColor: "rgb(240,249,108)",
-      borderColor: "rgb(240,249,108)",
-      pointBackgroundColor: "rgb(240,249,108)",
+      backgroundColor: "rgb(246, 250, 112)",
+      borderColor: "rgb(246, 250, 112)",
+      pointBackgroundColor: "rgb(246, 250, 112)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "PLTMG KUPANG PEAKER",
-      backgroundColor: "rgb(145,249,147)",
-      borderColor: "rgb(145,249,147)",
-      pointBackgroundColor: "rgb(145,249,147)",
+      backgroundColor: "rgb(255, 0, 96)",
+      borderColor: "rgb(255, 0, 96)",
+      pointBackgroundColor: "rgb(255, 0, 96)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "PLTS IPP KUPANG",
-      backgroundColor: "rga(124,205,244)",
-      borderColor: "rgb(124,205,244)",
-      pointBackgroundColor: "rgb(124,205,244)",
+      backgroundColor: "rgb(8, 217, 214)",
+      borderColor: "rgb(8, 217, 214)",
+      pointBackgroundColor: "rgb(8, 217, 214)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "PLTS IPP ATAMBUA",
-      backgroundColor: "rgba(255, 0, 96, 1)",
-      borderColor: "rgba(255, 0, 96, 1)",
-      pointBackgroundColor: "rgba(255, 0, 96, 1)",
+      backgroundColor: "rgb(255, 201, 150)",
+      borderColor: "rgb(255, 201, 150)",
+      pointBackgroundColor: "rgb(255, 201, 150)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "ULPL KUPANG NIGATA(PLANT)",
-      backgroundColor: "rgb(132, 167, 161)",
-      borderColor: "rgb(132, 167, 161)",
-      pointBackgroundColor: "rgb(132, 167, 161)",
+      backgroundColor: "rgb(143, 67, 238)",
+      borderColor: "rgb(143, 67, 238)",
+      pointBackgroundColor: "rgb(143, 67, 238)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "ULPL KUPANG MAK(PLANT)",
-      backgroundColor: "rgb(46, 138, 153)",
-      borderColor: "rgb(46, 138, 153)",
-      pointBackgroundColor: "rgb(46, 138, 153)",
+      backgroundColor: "rgb(154, 32, 140)",
+      borderColor: "rgb(154, 32, 140)",
+      pointBackgroundColor: "rgb(154, 32, 140)",
       data: [],
       tension: 0.5,
       fill: true,
     },
     {
       label: "ULPL ATAMBUA CAT 2",
-      backgroundColor: "rgb(31, 110, 140)",
-      borderColor: "rgb(31, 110, 140)",
-      pointBackgroundColor: "rgb(31, 110, 140)",
+      backgroundColor: "rgb(255, 109, 40)",
+      borderColor: "rgb(255, 109, 40)",
+      pointBackgroundColor: "rgb(255, 109, 40)",
       data: [],
       tension: 0.5,
       fill: true,
@@ -318,9 +318,9 @@ const chartData_sistempembangkit = {
     },
     {
       label: "ULPL ATAMBUA SWD(PLANT)",
-      backgroundColor: "rgb(9, 27, 56)",
-      borderColor: "rgb(9, 27, 56)",
-      pointBackgroundColor: "rgb(9, 27, 56)",
+      backgroundColor: "rgb(136, 74, 57)",
+      borderColor: "rgb(136, 74, 57)",
+      pointBackgroundColor: "rgb(136, 74, 57)",
       data: [],
       tension: 0.5,
       fill: true,
@@ -344,6 +344,7 @@ $(document).ready(function () {
     options: {
       legend:{
         display: true,
+        position: "right",
       },
       scales: {
         x: {
@@ -448,10 +449,25 @@ $(document).ready(function () {
 });
 
 let defaultInterval;
+let defaultInterval2;
 
 function view_default() {
   $.ajax({
     url: "fetch_data/data_operasi/fetch_data_overview.php",
+    method: "POST",
+    dataType: 'html',
+    success: function(data) {
+      // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+      $('#beban_puncak_rencana').html(data);
+    console.log(data);
+    },
+    error: function(xhr, status, error) {
+      console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+    }
+  });
+
+  $.ajax({
+    url: "fetch_data/data_operasi/fetch_data_energi_pembangkit.php",
     method: "POST",
     dataType: 'html',
     success: function(data) {
@@ -471,6 +487,22 @@ function view_default() {
       success: function(data) {
         // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
         $('#beban_puncak_rencana').html(data);
+      console.log(data);
+      },
+      error: function(xhr, status, error) {
+        console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+      }
+    });
+  }, 1000);
+
+  defaultInterval2 = setInterval(function () {
+    $.ajax({
+      url: "fetch_data/data_operasi/fetch_data_energi_pembangkit.php",
+      method: "POST",
+      dataType: 'html',
+      success: function(data) {
+        // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+        $('#beban_energi_pembangkit').html(data);
       console.log(data);
       },
       error: function(xhr, status, error) {

@@ -222,7 +222,7 @@
 
                 <div class="page-data-forecast">
                     <?php
-                    $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting");
+                    $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting GROUP BY id_forecast DESC");
 
                     $grouped_data = array_chunk(mysqli_fetch_all($query, MYSQLI_ASSOC), 48);
                     $currentDate = date("d F Y");
@@ -232,30 +232,30 @@
                         $tanggal = date('Y-m-d', strtotime($group[0]['tanggal']));
                     ?>
 
-                        <table class="table-data-forecasting">
-                            <thead>
+                    <table class="table-data-forecasting">
+                        <thead>
+                            <tr>
+                                <th><?php echo $formattedDate ?></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <?php
+                            $no = 1;
+                            $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE DATE(tanggal) = '$tanggal'");
+                            $cek_data = mysqli_num_rows($query);
+                            while ($r = mysqli_fetch_assoc($query)) {
+                            ?>
                                 <tr>
-                                    <th><?php echo $formattedDate ?></th>
+                                    <td><?php echo $r['beban_prediksi'] ?></td>
                                 </tr>
-                            </thead>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
 
-                            <tbody>
-
-                                <?php
-                                $no = 1;
-                                $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE DATE(tanggal) = '$tanggal'");
-                                $cek_data = mysqli_num_rows($query);
-                                while ($r = mysqli_fetch_assoc($query)) {
-                                ?>
-                                    <tr>
-                                        <td><?php echo $r['beban_prediksi'] ?></td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-
-                        </table>
+                    </table>
                     <?php
                     }
                     ?>

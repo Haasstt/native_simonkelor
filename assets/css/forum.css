@@ -35,7 +35,7 @@ border-bottom: rgb(233, 233, 233) solid 2px;
 border-radius: 8px 8px 0px 0px;
 }
 .button-add{
-    background-color:rgb(9, 71, 169);
+    background-color:#311e69;
     border-radius: 50px;
     color: white;
     padding: 10px 20px;
@@ -46,7 +46,7 @@ border-radius: 8px 8px 0px 0px;
 }
 .button-add:hover{
     background-color:rgb(211, 225, 249);
-    color: rgb(9, 71, 169);
+    color: #311e69;
 }
 .search-forum{
     display: flex;
@@ -80,7 +80,7 @@ border-radius: 8px 8px 0px 0px;
     appearance: none; 
 }
 .submit-search{
-    background-color:rgb(9, 71, 169);
+    background-color:#311e69;
     border-radius: 50px;
     color: white;
     padding: 10px;
@@ -99,7 +99,7 @@ border-radius: 8px 8px 0px 0px;
 	padding: 0 14px;
 	cursor: pointer;
 	color: #fff;
-    background-color:rgb(9, 71, 169);
+    background-color:#311e69;
     border-radius: 50px;
 }
 .header-search-wrapper .search-form-main {
@@ -194,7 +194,7 @@ border-radius: 8px 8px 0px 0px;
     font-size: 12pt;
 }
 .menu-list li:hover{
-    background-color: #412692;
+    background-color: #311e69;
 }
 .menu-list a:hover{
     color: #ffffff;
@@ -295,7 +295,7 @@ border-radius: 8px 8px 0px 0px;
     text-decoration: none;
 }
 .button-komentar:hover{
-    background-color:rgb(9, 71, 169);
+    background-color:#311e69;
     color: white;
 }
 

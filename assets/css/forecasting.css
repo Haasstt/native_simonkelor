@@ -79,14 +79,19 @@
     color: #fff;
   }
   .table-data-forecasting thead tr th{
-    padding: 25px 0px;
-    margin: 0px 10px;
+    height: 100px;
+    width: 100px;
+  }
+  .table-data-forecasting tbody tr td{
+    width: 100px;
+    /* background-color: #311e69; */
   }
   .table-data-forecasting-waktu thead tr th{
-    padding: 33.8px 0px;
+    height: 100px;
   }
   .page-data-forecast {
     display: flex;
+    flex-direction: row-reverse;
     width: 1200px;
     overflow: auto;
   }

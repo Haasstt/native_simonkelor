@@ -39,6 +39,22 @@ $sql2 = "SELECT pltd_cogindo FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
 $result2 = mysqli_query($conn, $sql2);
 $sql3 = "SELECT pltmg_kpng FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
 $result3 = mysqli_query($conn, $sql3);
+$sql4 = "SELECT plts_ipp_kpng FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$result4 = mysqli_query($conn, $sql4);
+$sql5 = "SELECT plts_ipp_atmb FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$result5 = mysqli_query($conn, $sql5);
+$sql6 = "SELECT ulpl_kpng_ngt FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$result6 = mysqli_query($conn, $sql6);
+$sql7 = "SELECT ulpl_kpng_mak FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$result7 = mysqli_query($conn, $sql7);
+$sql8 = "SELECT ulpl_atmb_cat2 FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$result8 = mysqli_query($conn, $sql8);
+$sql9 = "SELECT ulpl_atmb_mwm FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$result9 = mysqli_query($conn, $sql9);
+$sql10 = "SELECT ulpl_atmb_swd FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$result10 = mysqli_query($conn, $sql10);
+$sql11 = "SELECT 	pltu_timor1, 	pltu_timor2 FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$result11 = mysqli_query($conn, $sql11);
  
 $data_pembangkit_pltu_bolok = array();
 while ($row = mysqli_fetch_assoc($result)) {
@@ -56,6 +72,39 @@ $data_pembangkit_pltmg_kupang = array();
 while ($row = mysqli_fetch_assoc($result3)) {
   $data_pembangkit_pltmg_kupang[] = round($row['pltmg_kpng'], 2);
 }
+$data_pembangkit_plts_ipp_kpng = array();
+while ($row = mysqli_fetch_assoc($result4)) {
+  $data_pembangkit_plts_ipp_kpng[] = round($row['plts_ipp_kpng'], 2);
+}
+$data_pembangkit_plts_ipp_atmb = array();
+while ($row = mysqli_fetch_assoc($result5)) {
+  $data_pembangkit_plts_ipp_atmb[] = round($row['plts_ipp_atmb'], 2);
+}
+$data_pembangkit_ulpl_kpng_ngt = array();
+while ($row = mysqli_fetch_assoc($result6)) {
+  $data_pembangkit_ulpl_kpng_ngt[] = round($row['ulpl_kpng_ngt'], 2);
+}
+$data_pembangkit_ulpl_kpng_mak = array();
+while ($row = mysqli_fetch_assoc($result7)) {
+  $data_pembangkit_ulpl_kpng_mak[] = round($row['ulpl_kpng_mak'], 2);
+}
+$data_pembangkit_ulpl_atmb_cat2 = array();
+while ($row = mysqli_fetch_assoc($result8)) {
+  $data_pembangkit_ulpl_atmb_cat2[] = round($row['ulpl_atmb_cat2'], 2);
+}
+$data_pembangkit_ulpl_atmb_mwm = array();
+while ($row = mysqli_fetch_assoc($result9)) {
+  $data_pembangkit_ulpl_atmb_mwm[] = round($row['ulpl_atmb_mwm'], 2);
+}
+$data_pembangkit_ulpl_atmb_swd = array();
+while ($row = mysqli_fetch_assoc($result10)) {
+  $data_pembangkit_ulpl_atmb_swd[] = round($row['ulpl_atmb_swd'], 2);
+}
+$data_pembangkit_pltu_timor = array();
+while ($row = mysqli_fetch_assoc($result11)) {
+  $data_pembangkit_pltu_timor[] = round($row['pltu_timor1'] + $row['pltu_timor2'], 2);
+}
+
 mysqli_close($conn);
 
 $data = array(
@@ -64,7 +113,15 @@ $data = array(
     'pltu_bolok' => $data_pembangkit_pltu_bolok,
     'pltu_ipp_kupang' => $data_pembangkit_pltu_ipp_kupang,
     'pltd_cogindo' => $data_pembangkit_pltd_cogindo,
-    'pltmg_kupang' => $data_pembangkit_pltmg_kupang
+    'pltmg_kupang' => $data_pembangkit_pltmg_kupang,
+    'plts_ipp_kpng' => $data_pembangkit_plts_ipp_kpng,
+    'plts_ipp_atmb' => $data_pembangkit_plts_ipp_atmb,
+    'ulpl_kpng_ngt' => $data_pembangkit_ulpl_kpng_ngt,
+    'ulpl_kpng_mak' => $data_pembangkit_ulpl_kpng_mak,
+    'ulpl_atmb_cat2' => $data_pembangkit_ulpl_atmb_cat2,
+    'ulpl_atmb_mwm' => $data_pembangkit_ulpl_atmb_mwm,
+    'ulpl_atmb_swd' => $data_pembangkit_ulpl_atmb_swd,
+    'pltu_timor' => $data_pembangkit_pltu_timor
   );
 
 // Mengembalikan data dalam format JSON

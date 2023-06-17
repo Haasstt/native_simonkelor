@@ -107,63 +107,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>PLTU BOLOK (PLANT)</td>
-                        <td>15.00</td>
-                        <td>358.20</td>
-                        <td>89.24</td>
-                        <td>Batubara</td>
-                        <td>22.87</td>
-                    </tr>
-                    <tr>
-                        <td>PLTU IPP KUPANG BARU (PLANT)</td>
-                        <td>15.00</td>
-                        <td>358.20</td>
-                        <td>89.24</td>
-                        <td>Batubara</td>
-                        <td>22.87</td>
-                    </tr>
-                    <tr>
-                        <td>PLTD COGINDO (PLANT)</td>
-                        <td>15.00</td>
-                        <td>358.20</td>
-                        <td>89.24</td>
-                        <td>Batubara</td>
-                        <td>22.87</td>
-                    </tr>
-                    <tr>
-                        <td>PLTMG KUPANG PEAKER (PLANT)</td>
-                        <td>15.00</td>
-                        <td>358.20</td>
-                        <td>89.24</td>
-                        <td>Batubara</td>
-                        <td>22.87</td>
-                    </tr>
-                    <tr>
-                        <td>PLTS IPP KUPANG</td>
-                        <td>15.00</td>
-                        <td>358.20</td>
-                        <td>89.24</td>
-                        <td>Batubara</td>
-                        <td>22.87</td>
-                    </tr>
-                    <tr>
-                        <td>PLTS IPP ATAMBUA</td>
-                        <td>15.00</td>
-                        <td>358.20</td>
-                        <td>89.24</td>
-                        <td>Batubara</td>
-                        <td>22.87</td>
-                    </tr>
-                    <tr>
-                        <td>ULPL KUPANG NIGATA (PLANT)</td>
-                        <td>15.00</td>
-                        <td>358.20</td>
-                        <td>89.24</td>
-                        <td>Batubara</td>
-                        <td>22.87</td>
-                    </tr>
+                <tbody id="beban_energi_pembangkit">
                 </tbody>
 
             </table>
