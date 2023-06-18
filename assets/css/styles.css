@@ -407,6 +407,17 @@ input[type=submit]:hover {
     font-size: 20pt;
     font-weight: bold;
   }
+  .btn-unduh{
+    margin: 10px;
+  }
+  .btn-edit{
+    display: block;
+    margin: 5px;
+  }
+  .btn-delete{
+    display: block;
+    margin: 5px;
+  }
 }
 
 @media screen and (max-width: 600px) {

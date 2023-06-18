@@ -57,14 +57,14 @@ if (isset($_SESSION['nama'])) {
                                 if ($_SESSION['role'] == 'Pegawai') {
                                 ?>
                                     <td>
-                                        <a class="btn-action btn-unduh" href="index.php?p=dowload_file_documentation&id=<?php echo $data['id_dokumen'] ?>"> <span><i class='bx bxs-download'></i></span> Download</a>
+                                        <a class="btn-action btn-unduh" href="index.php?p=dowload_file_documentation&id=<?php echo $data['id_dokumen'] ?>"> <i class='bx bxs-download'></i><span> Download </span></a>
                                     </td>
                                 <?php
                                 } else {
                                 ?>
                                     <td>
-                                        <a class="btn-action btn-edit" href="index.php?p=form_update_documentation&id=<?php echo $data['id_dokumen'] ?>"> <span><i class='bx bx-edit-alt'></i></span> Edit</a>
-                                        <a class="btn-action btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="index.php?p=documentation_delete&id=<?php echo $data['id_dokumen'] ?>"> <span><i class='bx bx-trash'></i></span> Delete</a>
+                                        <a class="btn-action btn-edit" href="index.php?p=form_update_documentation&id=<?php echo $data['id_dokumen'] ?>"> <i class='bx bx-edit-alt'></i><span> Edit </span></a>
+                                        <a class="btn-action btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="index.php?p=documentation_delete&id=<?php echo $data['id_dokumen'] ?>"> <i class='bx bx-trash'></i><span> Delete </span></a>
                                     </td>
                                 <?php
                                 }
