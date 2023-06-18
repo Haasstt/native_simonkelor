@@ -201,8 +201,8 @@ if (isset($_POST['Submit'])) {
         }
     }
 
-
-    $valuecurrentDate = strtotime('2023-06-18');
+    $tanggalHariIni = date("Y-m-d");
+    $valuecurrentDate = strtotime($tanggalHariIni);
     // $valuecurrentDate = strtotime('+1 day', $valuecurrentDate);
 
     for ($i = 1; $i <= 7; $i++) {

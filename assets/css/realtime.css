@@ -12,6 +12,8 @@ padding: 0px 60px;
 .main-left{
 display: flex;
 flex-direction: column;
+width: 20%;
+align-items: end;
 }
 .box-card{
   padding-bottom: 70px;

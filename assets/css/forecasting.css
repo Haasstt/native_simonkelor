@@ -82,6 +82,15 @@
     height: 100px;
     width: 100px;
   }
+  .table-data-forecasting thead tr th a{
+    color: #fff;
+    font-weight: lighter;
+    font-size: smaller;
+  }
+  .table-data-forecasting thead tr th a:hover{
+    color: #ff0000;
+    text-decoration: underline;
+  }
   .table-data-forecasting tbody tr td{
     width: 100px;
     /* background-color: #311e69; */

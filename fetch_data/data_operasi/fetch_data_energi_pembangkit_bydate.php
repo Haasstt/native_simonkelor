@@ -11,30 +11,31 @@ if (!$conn) {
   die("Koneksi gagal: " . mysqli_connect_error());
 }
 
+$date = $_POST['tanggal'];
 
-$sql = "SELECT 	pltu_blk1, 	pltu_blk2 FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql = "SELECT 	pltu_blk1, 	pltu_blk2 FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result = mysqli_query($conn, $sql);
-$sql1 = "SELECT pltu_ipp_kpng1, pltu_ipp_kpng2 FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql1 = "SELECT pltu_ipp_kpng1, pltu_ipp_kpng2 FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result1 = mysqli_query($conn, $sql1);
-$sql2 = "SELECT pltd_cogindo FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql2 = "SELECT pltd_cogindo FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result2 = mysqli_query($conn, $sql2);
-$sql3 = "SELECT pltmg_kpng FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql3 = "SELECT pltmg_kpng FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result3 = mysqli_query($conn, $sql3);
-$sql4 = "SELECT plts_ipp_kpng FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql4 = "SELECT plts_ipp_kpng FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result4 = mysqli_query($conn, $sql4);
-$sql5 = "SELECT plts_ipp_atmb FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql5 = "SELECT plts_ipp_atmb FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result5 = mysqli_query($conn, $sql5);
-$sql6 = "SELECT ulpl_kpng_ngt FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql6 = "SELECT ulpl_kpng_ngt FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result6 = mysqli_query($conn, $sql6);
-$sql7 = "SELECT ulpl_kpng_mak FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql7 = "SELECT ulpl_kpng_mak FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result7 = mysqli_query($conn, $sql7);
-$sql8 = "SELECT ulpl_atmb_cat2 FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql8 = "SELECT ulpl_atmb_cat2 FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result8 = mysqli_query($conn, $sql8);
-$sql9 = "SELECT ulpl_atmb_mwm FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql9 = "SELECT ulpl_atmb_mwm FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result9 = mysqli_query($conn, $sql9);
-$sql10 = "SELECT ulpl_atmb_swd FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql10 = "SELECT ulpl_atmb_swd FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result10 = mysqli_query($conn, $sql10);
-$sql11 = "SELECT 	pltu_timor1, 	pltu_timor2 FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
+$sql11 = "SELECT 	pltu_timor1, 	pltu_timor2 FROM beban_kit WHERE DATE(tanggal) = '$date'";
 $result11 = mysqli_query($conn, $sql11);
 
 $pltu_bolok = array();
@@ -83,7 +84,7 @@ while ($row = mysqli_fetch_assoc($result10)) {
 }
 $pltu_timor = array();
 while ($row = mysqli_fetch_assoc($result11)) {
-  $data_pembangkit_pltu_timor[] = round($row['pltu_timor1'] + $row['pltu_timor2'], 2);
+  $pltu_timor[] = round($row['pltu_timor1'] + $row['pltu_timor2'], 2);
 }
 
 $dmn_pltu_bolok = 30.00;
@@ -247,7 +248,6 @@ $output12 .= '<td>'.round($l, 2).'</td>';
 $output12 .= '<td>'.round($cf_pltu_timor, 2).'</td>';
 $output12 .= '<td>Batubara</td>';
 $output12 .= '<td>'.round($persentase_pltu_timor, 2).'</td>';
-
 
 // Menampilkan output
 echo '<tr>'.$output1.'</tr>';

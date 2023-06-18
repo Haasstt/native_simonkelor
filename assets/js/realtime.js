@@ -26,6 +26,17 @@ $.ajax({
   }
 });
 
+$.ajax({
+  url: 'fetch_data/fetch_data_tabel_bauran_energi.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
+  method: 'GET',
+  dataType: 'html',
+  success: function(data) {
+    // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+    $('#bauran_energe_timor').html(data);
+  console.log(data);
+  }
+});
+
 
 setInterval(function() {
   $.ajax({
@@ -48,6 +59,19 @@ setInterval(function() {
     success: function(data) {
       // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
       $('#date').html(data);
+    console.log(data);
+    }
+  });
+}, 1000);
+
+setInterval(function() {
+  $.ajax({
+    url: 'fetch_data/fetch_data_tabel_bauran_energi.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
+    method: 'GET',
+    dataType: 'html',
+    success: function(data) {
+      // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+      $('#bauran_energe_timor').html(data);
     console.log(data);
     }
   });

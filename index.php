@@ -129,8 +129,19 @@ include 'config/conn.php';
       include_once 'pembangkit.php';
     } elseif (@$_GET['p'] == "data_tegangan") {
       include_once 'tegangan.php';
+      
     } elseif (@$_GET['p'] == "forcasting") {
       include_once 'admin/dispacher/forcasting.php';
+    } elseif (@$_GET['p'] == "delete_result_forecast") {
+      $query = mysqli_query($koneksi, "DELETE FROM load_forcasting WHERE DATE(tanggal) = '" . $_GET['date'] . "'");
+
+      if ($query) {
+        echo "<script>alert('Data telah dihapus')</script>";
+        echo '<script>window.location.href = "index.php?p=forcasting";</script>';
+      } else {
+        echo "<script>alert('erorr')</script>";
+      }
+      
     } elseif (@$_GET['p'] == "delete_forecast") {
       $query = mysqli_query($koneksi, "DELETE FROM load_forcasting");
 
@@ -140,6 +151,7 @@ include 'config/conn.php';
       } else {
         echo "<script>alert('erorr')</script>";
       }
+      
     } elseif (@$_GET['p'] == "data_operasi") {
       include_once 'admin/data_operasi.php';
     }

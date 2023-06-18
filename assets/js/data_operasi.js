@@ -472,7 +472,7 @@ function view_default() {
     dataType: 'html',
     success: function(data) {
       // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
-      $('#beban_puncak_rencana').html(data);
+      $('#beban_energi_pembangkit').html(data);
     console.log(data);
     },
     error: function(xhr, status, error) {
@@ -519,6 +519,8 @@ function updateChartBySelection(selectedValue) {
   } else {
     // Jika pilihan default, tampilkan data utama
     clearInterval(defaultInterval);
+    clearInterval(defaultInterval2);
+
   $.ajax({
     url: 'fetch_data/data_operasi/fetch_data_overview_bydate.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
     method: 'POST',
@@ -527,6 +529,21 @@ function updateChartBySelection(selectedValue) {
     success: function(data) {
       // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
       $('#beban_puncak_rencana').html(data);
+    console.log(data);
+    },
+    error: function(xhr, status, error) {
+      console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+    }
+  });
+
+  $.ajax({
+    url: 'fetch_data/data_operasi/fetch_data_energi_pembangkit_bydate.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
+    method: 'POST',
+    data: { tanggal: selectedValue },
+    dataType: 'html',
+    success: function(data) {
+      // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+      $('#beban_energi_pembangkit').html(data);
     console.log(data);
     },
     error: function(xhr, status, error) {
@@ -542,3 +559,182 @@ $("#tanggal").on("change", function () {
 
 
 updateChartBySelection("default");
+
+//chartData_loadstacking
+const chartData_loadstacking = {
+  labels: [
+    "00:00",
+    "00:30",
+    "01:00",
+    "01:30",
+    "02:00",
+    "02:30",
+    "03:00",
+    "03:30",
+    "04:00",
+    "04:30",
+    "05:00",
+    "05:30",
+    "06:00",
+    "06:30",
+    "07:00",
+    "07:30",
+    "08:00",
+    "08:30",
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "12:30",
+    "13:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+    "18:30",
+    "19:00",
+    "19:30",
+    "20:00",
+    "20:30",
+    "21:00",
+    "21:30",
+    "22:00",
+    "22:30",
+    "23:00",
+    "23:30",
+  ],
+  datasets: [
+    {
+      label: "Beban Sistem",
+      backgroundColor: "rgba(0, 0, 0, 0.98)",
+      borderColor: "rgba(0, 0, 0, 0.98)",
+      pointBackgroundColor: "rgba(0, 0, 0, 0.98)",
+      data: [27, 27, 27, 27, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2,],
+      tension: 0.5,
+      fill: false
+    },
+    {
+      label: "Batubara",
+      backgroundColor: "rgba(94, 94, 94, 0.8)",
+      borderColor: "rgba(94, 94, 94, 0.8)",
+      pointBackgroundColor: "rgba(94, 94, 94, 0.8)",
+      data: [9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "Gas",
+      backgroundColor: "rgba(255, 119, 0, 0.98)",
+      borderColor: "rgba(255, 119, 0, 0.98)",
+      pointBackgroundColor: "rgba(255, 119, 0, 0.98)",
+      data: [14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14,],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "Panas Bumi",
+      backgroundColor: "rgba(0, 217, 4, 0.98)",
+      borderColor: "rgba(0, 217, 4, 0.98)",
+      pointBackgroundColor: "rgba(0, 217, 4, 0.98)",
+      data: [17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17,],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "Hidro",
+      backgroundColor: "rgba(0, 38, 217, 0.98)",
+      borderColor: "rgba(0, 38, 217, 0.98)",
+      pointBackgroundColor: "rgba(0, 38, 217, 0.98)",
+      data: [18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18,],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "MFO",
+      backgroundColor: "rgba(103, 54, 0, 0.98)",
+      borderColor: "rgba(103, 54, 0, 0.98)",
+      pointBackgroundColor: "rgba(103, 54, 0, 0.98)",
+      data: [22, 21, 21, 21, 22, 21, 21, 21, 21, 22, 21, 21, 21, 22, 21, 21, 21, 21, 22, 21, 21, 21, 22, 21, 21, 21, 21, 22, 21, 21, 21, 22, 21, 21, 21, 21, 22, 21, 21, 21, 22, 21, 21, 21, 21, 22, 21, 21, 21, 22, 21, 21, 21, 21, 22, 21, 21,],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "HSD/B30",
+      backgroundColor: "rgba(126, 75, 0, 0.98)",
+      borderColor: "rgba(126, 75, 0, 0.98)",
+      pointBackgroundColor: "rgba(126, 75, 0, 0.98)",
+      data: [25, 25, 25, 25, 25, 25, 25, 24, 25, 25, 25, 25, 25, 25, 25, 25, 24, 25, 25, 25, 25, 25, 25, 25, 25, 24, 25, 25, 25, 25, 25, 25, 25, 25, 24, 25, 25, 25, 25, 25, 25, 25, 25, 24, 25, 25, 25, 25, 25, 25, 25, 25, 24, 25, 25, 25, 25,],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "Surya dan Bayu",
+      backgroundColor: "rgba(227, 233, 0, 0.98)",
+      borderColor: "rgba(227, 233, 0, 0.98)",
+      pointBackgroundColor: "rgba(227, 233, 0, 0.98)",
+      data: [27, 27, 27,27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27,],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+  ]
+};
+
+const ctxx = document.getElementById("Mychart").getContext("2d");
+$(document).ready(function() {
+  var chart = new Chart(ctxx, {
+    type: "line",
+    data: chartData_loadstacking,
+    options: {
+      legend:{
+        display: false,
+      },
+      scales: {
+        x: {
+          grid: {
+            drawOnChartArea: false,
+          },
+        },
+        y: {
+          ticks: {
+            beginAtZero: true,
+            maxTicksLimit: 10,
+            stepSize: Math.ceil(10 / 5),
+            max: 5,
+          },
+        },
+      },
+      plugins: {
+        title: {
+          display: false
+        }
+      },
+      elements: {
+        line: {
+          tension: 0.4,
+        },
+        point: {
+          radius: 3,
+          hitRadius: 10,
+          hoverRadius: 4,
+          hoverBorderWidth: 3,
+        },
+      },
+    }
+  });
+});

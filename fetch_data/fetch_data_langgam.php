@@ -12,7 +12,6 @@ if (!$conn) {
 }
 
 // Query untuk mengambil data total_beban dari tabel beban_kit
-$tanggalSekarang = date('Y-m-d');
 $sql = "SELECT total_beban FROM beban_kit WHERE DATE(tanggal) = CURDATE()";
 $result = mysqli_query($conn, $sql);
  

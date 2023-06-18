@@ -5,7 +5,7 @@
     <script>
         $(document).ready(function() {
             $('#checkAll').click(function() {
-                $('input[type="checkbox"]:lt(29)').prop('checked', this.checked);
+                $('input[type="checkbox"]').slice(2, 30).prop('checked', this.checked);
             });
         });
     </script>
@@ -25,7 +25,7 @@
                 <tbody>
 
                     <?php
-                    $no = 1;
+                    $no = 0;
                     $query = mysqli_query($koneksi, "SELECT * FROM beban_kit ORDER BY tanggal DESC");
 
                     $grouped_data = array_chunk(mysqli_fetch_all($query, MYSQLI_ASSOC), 48);
@@ -235,7 +235,7 @@
                     <table class="table-data-forecasting">
                         <thead>
                             <tr>
-                                <th><?php echo $formattedDate ?></th>
+                                <th><?php echo $formattedDate ?> <a onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="index.php?p=delete_result_forecast&date=<?php echo $tanggal ?>"><i class='bx bx-trash'></i></a></th>
                             </tr>
                         </thead>
 
@@ -260,158 +260,8 @@
                     }
                     ?>
                 </div>
-                <!-- <table class="table-data-forecasting">
-            <thead>
-                <tr>
-                    <th>Senin</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                
-				<?php
-                $no = 1;
-                $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE hari = 2");
-                $cek_data = mysqli_num_rows($query);
-                while ($r = mysqli_fetch_assoc($query)) {
-                ?>
-                <tr>
-                    <td><?php echo $r['beban_prediksi'] ?></td>
-                </tr>
-				<?php
-                }
-                ?>
-            </tbody>
-
-        </table>
-
-        <table class="table-data-forecasting">
-            <thead>
-                <tr>
-                    <th>Selasa</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                
-				<?php
-                $no = 1;
-                $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE hari = 3");
-                $cek_data = mysqli_num_rows($query);
-                while ($r = mysqli_fetch_assoc($query)) {
-                ?>
-                <tr>
-                    <td><?php echo $r['beban_prediksi'] ?></td>
-                </tr>
-				<?php
-                }
-                ?>
-            </tbody>
-
-        </table>
-
-        <table class="table-data-forecasting">
-            <thead>
-                <tr>
-                    <th>Rabu</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                
-				<?php
-                $no = 1;
-                $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE hari = 4");
-                $cek_data = mysqli_num_rows($query);
-                while ($r = mysqli_fetch_assoc($query)) {
-                ?>
-                <tr>
-                    <td><?php echo $r['beban_prediksi'] ?></td>
-                </tr>
-				<?php
-                }
-                ?>
-            </tbody>
-
-        </table>
-
-        <table class="table-data-forecasting">
-            <thead>
-                <tr>
-                    <th>Kamis</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                
-				<?php
-                $no = 1;
-                $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE hari = 5");
-                $cek_data = mysqli_num_rows($query);
-                while ($r = mysqli_fetch_assoc($query)) {
-                ?>
-                <tr>
-                    <td><?php echo $r['beban_prediksi'] ?></td>
-                </tr>
-				<?php
-                }
-                ?>
-            </tbody>
-
-        </table>
-
-        <table class="table-data-forecasting">
-            <thead>
-                <tr>
-                    <th>Jum'at</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                
-				<?php
-                $no = 1;
-                $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE hari = 6");
-                $cek_data = mysqli_num_rows($query);
-                while ($r = mysqli_fetch_assoc($query)) {
-                ?>
-                <tr>
-                    <td><?php echo $r['beban_prediksi'] ?></td>
-                </tr>
-				<?php
-                }
-                ?>
-            </tbody>
-
-        </table>
-
-        <table class="table-data-forecasting"> 
-            <thead>
-                <tr>
-                    <th>Sabtu</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                
-				<?php
-                $no = 1;
-                $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE hari = 7");
-                $cek_data = mysqli_num_rows($query);
-                while ($r = mysqli_fetch_assoc($query)) {
-                ?>
-                <tr>
-                    <td><?php echo $r['beban_prediksi'] ?></td>
-                </tr>
-				<?php
-                }
-                ?>
-            </tbody>
-
-        </table> -->
-
             </div>
-            <!-- <a class="btn-action-center btn-delete" href="index.php?p=delete_forecast"> Clear Hasil forecast</a> -->
+            <a onclick="return confirm('Apakah Anda yakin ingin menghapus seluruh data forecasting?')" class="btn-action-center btn-delete" href="index.php?p=delete_forecast">Clear Hasil forecast</a>
 
         <?php
         } else {
