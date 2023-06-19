@@ -1,8 +1,8 @@
 <?php
 if ($_SESSION['role'] == 'Super Admin') {
 ?>
-    <div class="header">
-        <a>User Account Aktif > Form Tambah</a>
+    <div class="header sub-header-user">
+        <a href="index.php?p=user_aktif">User Account Aktif > Form Tambah</a>
     </div>
 
     <div class="box-forum">

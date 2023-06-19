@@ -1,7 +1,7 @@
 .header-forum{
     display: flex;
     justify-content: start;
-    padding: 10px 50px;
+    padding: 30px 50px;
   }
   .header-forum a{
     color: #311e69;
@@ -532,8 +532,12 @@ border-radius: 8px 8px 0px 0px;
   
 
   @media (max-width: 900px) {
+    .header-forum{
+        padding: 30px 20px;
+    }
     .box-forum{
-        width: 85%;
+        margin-left: 25px;
+        width: 90%;
         height: 90vh;
     }
     .box-forum .header-forum-content{
@@ -581,6 +585,9 @@ border-radius: 8px 8px 0px 0px;
   }
   
   @media (max-width: 600px) {
+    .header-forum{
+        padding: 20px 20px;
+    }
     .box-forum{
     width: 95%;
     margin: 0px 15px;
@@ -597,7 +604,7 @@ border-radius: 8px 8px 0px 0px;
   @media (max-width: 420px) {
     .box-forum{
         width: 95%;
-        height: 85vh;
+        height: 80vh;
         margin: 0px 10px;
     }
     .box-forum .header-forum-content{

@@ -99,3 +99,46 @@
   .select-data-operasi select{
     width: 60%;
   }
+
+
+  @media (max-width: 900px) {
+    .data-operasi a{
+      margin-top: 0;
+      margin-left: 10px;
+    }
+    .select-data-operasi{
+      width: 40%;
+      margin: 0px 20px;
+    }
+    .chart-langgam-beban-harian{
+      padding: 5px 5px;
+    }
+    .box-chart-langgam-beban-harian{
+      flex-direction: column;
+    }
+    .box-table-data-operasi{
+      width: 100%;
+      padding: 0;
+    }
+    .box-table-data-operasi-2{
+      padding: 0;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .page-data-operasi{
+      padding: 10px 20px;
+    }
+    .data-operasi{
+      justify-content: space-between;
+    }
+    .data-operasi a{
+      font-size: 15pt;
+    }
+    .select-data-operasi{
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 420px) {
+  }

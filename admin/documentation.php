@@ -6,6 +6,7 @@ if (isset($_SESSION['nama'])) {
     </div>
 
     <div class="page-documentation">
+        <div>
         <div class="row-file">
             <a href="index.php?p=perencanaan">
                 <div class="box-file-documentation">
@@ -21,6 +22,10 @@ if (isset($_SESSION['nama'])) {
                 </div>
             </a>
 
+        </div>
+
+        <div class="row-file">
+
             <a href="index.php?p=profil_kelistrikan">
                 <div class="box-file-documentation">
                     <i class='bx bxs-folder-open'></i>
@@ -28,16 +33,19 @@ if (isset($_SESSION['nama'])) {
                 </div>
             </a>
 
-        </div>
-
-        <div class="row-file">
-
             <a href="index.php?p=sop_pengoperasian">
                 <div class="box-file-documentation">
                     <i class='bx bxs-folder-open'></i>
                     <span>Dokumen SOP Pengoperasian</span>
                 </div>
             </a>
+
+        </div>
+
+        </div>
+
+        <div class="row-file file-item">
+
             <a href="index.php?p=singel_line_diagram">
                 <div class="box-file-documentation">
                     <i class='bx bxs-folder-open'></i>
@@ -46,6 +54,7 @@ if (isset($_SESSION['nama'])) {
             </a>
 
         </div>
+
     </div>
 
 <?php

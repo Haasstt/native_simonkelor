@@ -2,7 +2,7 @@
 if (isset($_SESSION['nama'])) {
 ?>
     <div class="header header-documentation">
-        <a>Documentation > Dokumen Profil Kelistrikan</a>
+        <a href="index.php?p=documentation">Documentation > Dokumen Profil Kelistrikan</a>
     </div>
 
     <div class="page-dokumen">

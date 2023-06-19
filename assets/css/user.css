@@ -238,13 +238,16 @@
   padding: 10px 50px;
 }
 .page-user{
+  width: 100%;
     padding: 20px 50px;
-    /* margin-bottom: 50px ; */
 }
 .header-user-title{
   display: flex;
   justify-content: start;
-  padding: 10px 0px;
+}
+.header-user-title a{
+  font-weight: 900;
+  font-size: 16px;
 }
 .header-user-title a{
   color: #311e69;
@@ -292,4 +295,35 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .page-user{
+    padding: 20px 30px;
+  }
+  .content-user{
+    overflow: auto;
+  }
+  .table-user thead tr th {
+    font-size: 12px;
+  }
+  .table-user tbody tr td {
+      padding: 10px 20px;
+      font-size: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-user{
+    padding: 20px 20px;
+  }
+  .header-user{
+    padding-right: 20px;
+  }
+  .sub-header-user a{
+    font-size: 16pt;
+  }
+}
+
+@media (max-width: 420px) {
 }

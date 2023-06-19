@@ -1,11 +1,10 @@
-<div class="header">
+<div class="header data-operasi">
     <a>Data Operasi</a>
 
     <div class="select-data-operasi">
         <label for="tanggal">Select Berdasarkan:</label>
         <?php
         $query = mysqli_query($koneksi, "SELECT * FROM beban_kit ORDER BY tanggal DESC");
-
         $grouped_data = array_chunk(mysqli_fetch_all($query, MYSQLI_ASSOC), 48);
         $valuecurrentDate = strtotime(date("Y-m-d"));
         $nilaicurrentDate = date("Y-m-d", $valuecurrentDate);
@@ -35,7 +34,9 @@
 
     <div class="card-data-operasi">
         <div class="header-card-data-operasi">
-            <span class="card-name-right-data-operasi">Langgam Beban Harian</span>
+            <span class="card-name-right-data-operasi">Langgam Beban Harian 
+                <span class="card-name-right-data-operasi" id="Langgam_tanggal_hari_ini"></span> 
+            </span> 
         </div>
         <hr>
         <div class="box-chart-langgam-beban-harian">
@@ -66,7 +67,9 @@
 
     <div class="card-data-operasi">
         <div class="header-card-data-operasi">
-            <span class="card-name-right-data-operasi">Load Stacking Energi</span>
+            <span class="card-name-right-data-operasi">Load Stacking Energi
+                <span class="card-name-right-data-operasi" id="Load_energi_tanggal_hari_ini"></span> 
+            </span>
         </div>
         <hr>
         <div class="box-chart-load-stacking-energi">
@@ -78,7 +81,9 @@
 
     <div class="card-data-operasi">
         <div class="header-card-data-operasi">
-            <span class="card-name-right-data-operasi">Load Stacking Pembangkit</span>
+            <span class="card-name-right-data-operasi">Load Stacking Pembangkit
+                <span class="card-name-right-data-operasi" id="Load_pembangkit_tanggal_hari_ini"></span> 
+            </span>
         </div>
         <hr>
         <div class="box-chart-load-stacking-energi">
@@ -90,7 +95,8 @@
 
     <div class="card-data-operasi">
         <div class="header-card-data-operasi">
-            <span class="card-name-right-data-operasi">Produksi Energi Pembangkit</span>
+            <span class="card-name-right-data-operasi">Produksi Energi Pembangkit
+                <span class="card-name-right-data-operasi" id="produksi_pembangkit_tanggal_hari_ini"></span> </span>
         </div>
         <hr>
         <div class="box-table-data-operasi-2">

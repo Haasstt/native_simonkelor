@@ -5,12 +5,14 @@
     width: 100%;     
     display: flex;
     justify-content: space-around;
-    flex-direction: column;
 }
 .row-file{
     display: flex;
     justify-content: start;
     padding: 20px;
+}
+.file-item{
+    padding: 20px 0px;
 }
 .box-file-documentation{
     width: 250px;
@@ -97,19 +99,27 @@
 
 
 @media (max-width: 900px) {
-    
+.header-documentation{
+    padding: 20px 10px;
+}
 .page-documentation{
     width: 100%;   
-}
-.row-file{
     flex-direction: column;
 }
-.row-file a{
-    display: flex;
-    justify-content: center;
+.box-documentation-add{
+    height: 25vh;
+}
+.box-documentation{
+    height: 35vh;
+}
+.box-file-documentation{
+    margin: 10px 10px;
+}
+.row-file{
+    padding: 0;
 }
 .page-dokumen{
-    padding: 10px 5px;
+    padding: 10px 20px;
 }
 .table-dokumen thead tr th{
     font-size: 10px;
@@ -120,6 +130,36 @@
 .table-dokumen tbody tr td a span{
     display: none;
 }
+.nama-file-dokumen{
+    width: 100%;
+}
     
-  }
+}
+@media (max-width: 600px) {
+    
+    .page-documentation{
+        width: 100%;   
+        flex-direction: column;
+    }
+    .box-file-documentation{
+        margin: 20px;
+    }
+    .row-file{
+        flex-direction: column;
+        margin: 10px 60px;
+    }
+    .box-documentation-add{
+        height: 35vh;
+    }
+    .box-documentation{
+        height: 40vh;
+    }
+        
+}
+@media (max-width: 600px) {
+    .header-documentation a{
+        font-size: 16pt;
+    }
+        
+}
   

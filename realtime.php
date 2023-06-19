@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header header-realtime">
     <a>Realtime</a>
     <div id="date">
 

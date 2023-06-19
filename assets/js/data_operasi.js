@@ -343,8 +343,7 @@ $(document).ready(function () {
     data: chartData_sistempembangkit,
     options: {
       legend:{
-        display: true,
-        position: "right",
+        display: false,
       },
       scales: {
         x: {
@@ -453,6 +452,23 @@ let defaultInterval2;
 
 function view_default() {
   $.ajax({
+    url: "fetch_data/data_operasi/date_data_operasi.php",
+    method: "POST",
+    dataType: 'html',
+    success: function(data) {
+      // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+      $('#Langgam_tanggal_hari_ini').html(data);
+      $('#Load_energi_tanggal_hari_ini').html(data);
+      $('#Load_pembangkit_tanggal_hari_ini').html(data);
+      $('#produksi_pembangkit_tanggal_hari_ini').html(data);
+    console.log(data);
+    },
+    error: function(xhr, status, error) {
+      console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+    }
+  });
+
+  $.ajax({
     url: "fetch_data/data_operasi/fetch_data_overview.php",
     method: "POST",
     dataType: 'html',
@@ -520,6 +536,24 @@ function updateChartBySelection(selectedValue) {
     // Jika pilihan default, tampilkan data utama
     clearInterval(defaultInterval);
     clearInterval(defaultInterval2);
+
+    $.ajax({
+      url: 'fetch_data/data_operasi/date_data_operasi.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
+      method: 'POST',
+      data: { tanggal: selectedValue },
+      dataType: 'html',
+      success: function(data) {
+        // Menampilkan data monitoring ke dalam elemen dengan id "monitoring-data"
+      $('#Langgam_tanggal_hari_ini').html(data);
+      $('#Load_energi_tanggal_hari_ini').html(data);
+      $('#Load_pembangkit_tanggal_hari_ini').html(data);
+      $('#produksi_pembangkit_tanggal_hari_ini').html(data);
+      console.log(data);
+      },
+      error: function(xhr, status, error) {
+        console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+      }
+    });
 
   $.ajax({
     url: 'fetch_data/data_operasi/fetch_data_overview_bydate.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring

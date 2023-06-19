@@ -6,10 +6,10 @@ if (
 ) {
 ?>
     <div class="header header-documentation">
-        <a>Documentation > Form Tambah</a>
+        <a href="index.php?p=documentation">Documentation > Form Tambah</a>
     </div>
 
-    <div class="box-forum">
+    <div class="box-forum box-documentation-add">
 
         <div class="content-forum-add">
 

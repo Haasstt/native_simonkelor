@@ -410,13 +410,17 @@ input[type=submit]:hover {
   .btn-unduh{
     margin: 10px;
   }
-  .btn-edit{
-    display: block;
-    margin: 5px;
-  }
+  .btn-edit,
   .btn-delete{
+    margin: 10px;
     display: block;
-    margin: 5px;
+  }
+  .header a{
+    margin-top: 10px;
+    margin-left: 0px;
+    color: #311e69;
+    font-size: 20pt;
+    font-weight: bold;
   }
 }
 
@@ -447,13 +451,8 @@ input[type=submit]:hover {
   }
   
   .header{
-    padding: 0px 0px;
-  }
-  .header a{
-    margin-left: 0px;
-    color: #311e69;
-    font-size: 20pt;
-    font-weight: bold;
+    justify-content: center;
+    padding: 10px 0px;
   }
 }
 

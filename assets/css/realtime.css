@@ -246,6 +246,10 @@ align-items: end;
 @media (max-width: 900px) {
   .main-realtime{
     width: 100%;
+    justify-content: space-between;
+  }
+  .header-realtime{
+    padding: 0;
   }
   .main-right{
   width: 75%;
@@ -310,6 +314,9 @@ align-items: end;
 }
 
 @media (max-width: 600px) {
+  .header-realtime{
+    justify-content: space-between;
+  }
   .main-realtime{
     width: 100%;
   }
@@ -381,9 +388,6 @@ align-items: end;
 }
 
 @media (max-width: 420px) {
-  .main-realtime{
-    width: 100%;
-  }
   .main-right{
   width: 75%;
   padding: 0px 10px;
