@@ -21,7 +21,7 @@ if (isset($_POST['Submit'])) {
 
     // Menampilkan hasil query
     while ($row = mysqli_fetch_assoc($query)) {
-        $data_beban[] = rtrim($row['total_beban'], 0);
+        $data_beban[] = $row['total_beban'];
     }
 
     // Jumlah data per penjumlahan
@@ -134,7 +134,7 @@ if (isset($_POST['Submit'])) {
             $hari = 1;
         }
         $index = ceil(($i + 1) / $data_per_jumlah_mingguan);
-        ${"koef_d" . $hari . "_m" . $index} = round($energi_harian[$i] / ${"energi_m2" . $index}, 6);
+        ${"koef_d" . $hari . "_m" . $index} = round($energi_harian[$i] / ${"energi_m" . $index}, 6);
         // ${"koef_d".$hari."_m".$index} = $energi_harian[$i] / ${"energi_m" . $index};
         $hari++;
     }
@@ -201,7 +201,7 @@ if (isset($_POST['Submit'])) {
         }
     }
 
-    $tanggalHariIni = date("Y-m-d");
+    $tanggalHariIni = date("2023-06-12");
     $valuecurrentDate = strtotime($tanggalHariIni);
     // $valuecurrentDate = strtotime('+1 day', $valuecurrentDate);
 
