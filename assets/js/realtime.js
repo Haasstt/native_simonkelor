@@ -204,7 +204,7 @@ setInterval(function() {
       method: 'POST',
       dataType: 'json',
       success: function(data) {
-        chart.data.datasets[0].data = data;
+        chart.data.datasets[0].data = data.langgam_beban;
         chart.update();
       }
     });
@@ -215,96 +215,149 @@ setInterval(function() {
         method: 'POST',
         dataType: 'json',
         success: function(data) {
-          chart.data.datasets[0].data = data;
+          chart.data.datasets[0].data = data.langgam_beban;
           chart.update();
         }
       });
     }, 1000); // Mengambil data setiap 3 detik
   });
+  
+  $(document).ready(function() {
+  
+    createChart('chart-donut', myChartData2);
 
-//chart
+    });
 
-const Color = d3.scaleOrdinal()
-  .range(['#F4BE37', '#5388D8', '#0D2535', '#FF9F40', '#888']);
+const myChartData2 = {
+  type: 'doughnut',
+  data: {
+      labels: ["Batubara", "B30", "MFO", "Surya"],
+      datasets: [{
+          data: [70.73, 10.12, 10.15, 9],
+          backgroundColor: [
+              'rgb(244, 190, 55)',
+              'rgb(83, 136, 216)',
+              'rgb(13, 37, 53)',
+              'rgb(255, 159, 64)'
+          ],
+          borderColor: [
+            'rgb(244, 190, 55)',
+            'rgb(83, 136, 216)',
+            'rgb(13, 37, 53)',
+            'rgb(255, 159, 64)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+    
+      title: {
+        display: false,
+      },
+    animation: {
+        animateScale: true,
+        animateRotate: true
+      },
+    responsive: true,
+    maintainAspectRatio: false,
+      
+    legend: {
+      display: false,
+      },
+      cutoutPercentage: 70,
+  }
+};
+
+function createChart(chartId, chartData) {
+  const ctx = document.getElementById(chartId);
+  const myChart = new Chart(ctx, {
+    type: chartData.type,
+    data: chartData.data,
+    options: chartData.options,
+  });
+};
+
+// const Color = d3.scaleOrdinal()
+//   .range(['#F4BE37', '#5388D8', '#0D2535', '#FF9F40', '#888']);
 
 
-// Donut Chart
-const donutContainer = d3.select("#chart-donut");
-const donutWidth = 250;
-const donutHeight = 250;
-const donutRadius = Math.min(donutWidth, donutHeight) / 2;
+// // Donut Chart
+// const donutContainer = d3.select("#chart-donut");
+// const donutWidth = 250;
+// const donutHeight = 250;
+// const donutRadius = Math.min(donutWidth, donutHeight) / 2;
 
-const innerRadius = 80;
-const outerRadius = Math.min(donutWidth, donutHeight) / 2;
+// const innerRadius = 80;
+// const outerRadius = Math.min(donutWidth, donutHeight) / 2;
 
-const donutSvg = donutContainer.append("svg")
-  .attr("width", donutWidth)
-  .attr("height", donutHeight)
-  .append("g")
-  .attr("transform", `translate(${donutWidth / 2}, ${donutHeight / 2})`);
+// const donutSvg = donutContainer.append("svg")
+//   .attr("width", donutWidth)
+//   .attr("height", donutHeight)
+//   .append("g")
+//   .attr("transform", `translate(${donutWidth / 2}, ${donutHeight / 2})`);
 
-const donutData = [
-  { value: 40 },
-  { value: 10 },
-  { value: 30 },
-  { value: 20 }
-];
+// const donutData = [
+//   { value: 40 },
+//   { value: 10 },
+//   { value: 30 },
+//   { value: 20 }
+// ];
 
-const donutArc = d3.arc()
-  .innerRadius(innerRadius)
-  .outerRadius(outerRadius);
+// const donutArc = d3.arc()
+//   .innerRadius(innerRadius)
+//   .outerRadius(outerRadius);
 
-const donutPie = d3.pie()
-  .value(d => d.value);
+// const donutPie = d3.pie()
+//   .value(d => d.value);
 
-const donutArcs = donutSvg.selectAll("arc")
-  .data(donutPie(donutData))
-  .enter()
-  .append("g");
+// const donutArcs = donutSvg.selectAll("arc")
+//   .data(donutPie(donutData))
+//   .enter()
+//   .append("g");
 
-donutArcs.append("path")
-  .attr("d", donutArc)
-  .attr("fill", (d, i) => Color(i));
+// donutArcs.append("path")
+//   .attr("d", donutArc)
+//   .attr("fill", (d, i) => Color(i));
 
-// Pie Chart
-const pieContainer = d3.select("#chart-pie");
-const pieWidth = 250;
-const pieHeight = 250;
-const pieRadius = Math.min(pieWidth, pieHeight) / 2;
+// // Pie Chart
+// const pieContainer = d3.select("#chart-pie");
+// const pieWidth = 250;
+// const pieHeight = 250;
+// const pieRadius = Math.min(pieWidth, pieHeight) / 2;
 
-const pieSvg = pieContainer.append("svg")
-  .attr("width", pieWidth)
-  .attr("height", pieHeight)
-  .append("g")
-  .attr("transform", `translate(${pieWidth / 2}, ${pieHeight / 2})`);
+// const pieSvg = pieContainer.append("svg")
+//   .attr("width", pieWidth)
+//   .attr("height", pieHeight)
+//   .append("g")
+//   .attr("transform", `translate(${pieWidth / 2}, ${pieHeight / 2})`);
 
-const pieData = [
-  { value: 30 },
-  { value: 25 },
-  { value: 25 },
-  { value: 20 }
-];
+// const pieData = [
+//   { value: 30 },
+//   { value: 25 },
+//   { value: 25 },
+//   { value: 20 }
+// ];
 
-const pieArc = d3.arc()
-  .innerRadius(0)
-  .outerRadius(pieRadius);
+// const pieArc = d3.arc()
+//   .innerRadius(0)
+//   .outerRadius(pieRadius);
 
-const piePie = d3.pie()
-  .value(d => d.value);
+// const piePie = d3.pie()
+//   .value(d => d.value);
 
-const pieArcs = pieSvg.selectAll("arc")
-  .data(piePie(pieData))
-  .enter()
-  .append("g");
+// const pieArcs = pieSvg.selectAll("arc")
+//   .data(piePie(pieData))
+//   .enter()
+//   .append("g");
 
-pieArcs.append("path")
-  .attr("d", pieArc)
-  .attr("fill", (d, i) => Color(i));
+// pieArcs.append("path")
+//   .attr("d", pieArc)
+//   .attr("fill", (d, i) => Color(i));
 
-pieArcs.append("text")
-  .attr("transform", d => `translate(${pieArc.centroid(d)})`)
-  .attr("text-anchor", "middle")
-  .text(d => d.data.label);
+// pieArcs.append("text")
+//   .attr("transform", d => `translate(${pieArc.centroid(d)})`)
+//   .attr("text-anchor", "middle")
+//   .text(d => d.data.label);
 
 
 

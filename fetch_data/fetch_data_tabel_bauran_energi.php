@@ -41,13 +41,6 @@ while ($row = mysqli_fetch_assoc($result2)) {
     $output1 .= '<td>' . $row['value']. '</td>';
     $output1 .= '<td>' . round($row['value'] / $total_seluruh_beban * 100, 2). '</td>';
     $output1 .= '</tr>';
-  }elseif (strpos($row['parameter'], 'PLTS') !== false) {
-    $output1 .= '<tr>';
-    $output1 .= '<td>' . $row['parameter'] . '</td>';
-    $output1 .= '<td>Surya</td>';
-    $output1 .= '<td>' . $row['value']. '</td>';
-    $output1 .= '<td>' . round($row['value'] / $total_seluruh_beban * 100, 2). '</td>';
-    $output1 .= '</tr>';
   }elseif (strpos($row['parameter'], 'PLTD') !== false) {
     $output1 .= '<tr>';
     $output1 .= '<td>' . $row['parameter'] . '</td>';
@@ -75,6 +68,7 @@ while ($row = mysqli_fetch_assoc($result2)) {
 
 // Menampilkan output
 echo $output1;
+
 // echo '<div class="box-card">'.$output2.'</div>';
 // echo '<div class="box-card">'.$output3.'</div>';
 

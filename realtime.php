@@ -30,14 +30,14 @@
             <div class="box-chart-donut">
 
                 <div class="donut">
-                    <div id="chart-donut"></div>
+                    <canvas id="chart-donut"></canvas>
                     <div class='legends-donut'>
                         <span class="kuning"><i class='bx bxs-circle'></i> Batubara</span>
-                        <span class="biru-muda"><i class='bx bxs-circle'></i> HFO</span>
-                        <span class="biru-tua"><i class='bx bxs-circle'></i> HSD</span>
+                        <span class="biru-muda"><i class='bx bxs-circle'></i> B30</span>
+                        <span class="biru-tua"><i class='bx bxs-circle'></i> MFO</span>
                         <span class="orange"><i class='bx bxs-circle'></i> Surya</span>
                     </div>
-                </div>
+                </div> 
 
                 <div class="box-table">
 
