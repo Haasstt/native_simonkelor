@@ -30,7 +30,9 @@
             <div class="box-chart-donut">
 
                 <div class="donut">
+                    <div class="chart-donut"> 
                     <canvas id="chart-donut"></canvas>
+                    </div>
                     <div class='legends-donut'>
                         <span class="kuning"><i class='bx bxs-circle'></i> Batubara</span>
                         <span class="biru-muda"><i class='bx bxs-circle'></i> B30</span>

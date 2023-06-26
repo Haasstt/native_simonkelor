@@ -108,6 +108,9 @@ align-items: end;
 .card-biru{
   background-color: #311e69;
 }
+.card-orange{
+  background-color: #FF9F40;
+}
 .card-kuning{
   background-color: #FFCC00;
 }
@@ -201,6 +204,12 @@ align-items: end;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+.chart-donut{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 50px;
 }
 .legends-donut{
   width: 100%;
@@ -348,6 +357,9 @@ align-items: end;
   align-items: center;
 }
 
+.chart-donut{
+  padding: 10px;
+}
 .box-table{
   padding-left: 0px;
   margin: 0px 0px;

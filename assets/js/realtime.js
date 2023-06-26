@@ -162,11 +162,12 @@ setInterval(function() {
             },
           },
           y: {
+            min: 0,
+            max: 140,
+            beginAtZero: true,
             ticks: {
-              beginAtZero: true,
-              maxTicksLimit: 10,
-              stepSize: Math.ceil(10 / 5),
-              max: 5,
+              min: 0,
+              max: 2
             },
           },
         },
@@ -221,19 +222,13 @@ setInterval(function() {
       });
     }, 1000); // Mengambil data setiap 3 detik
   });
-  
-  $(document).ready(function() {
-  
-    createChart('chart-donut', myChartData2);
-
-    });
 
 const myChartData2 = {
   type: 'doughnut',
   data: {
       labels: ["Batubara", "B30", "MFO", "Surya"],
       datasets: [{
-          data: [70.73, 10.12, 10.15, 9],
+          data: [],
           backgroundColor: [
               'rgb(244, 190, 55)',
               'rgb(83, 136, 216)',
@@ -268,14 +263,46 @@ const myChartData2 = {
   }
 };
 
-function createChart(chartId, chartData) {
-  const ctx = document.getElementById(chartId);
-  const myChart = new Chart(ctx, {
-    type: chartData.type,
-    data: chartData.data,
-    options: chartData.options,
+const ctxx = document.getElementById("chart-donut");
+$(document).ready(function() {
+var myChart = new Chart(ctxx, {
+    type: myChartData2.type,
+    data: myChartData2.data,
+    options: myChartData2.options,
   });
-};
+    
+  $.ajax({
+    url: 'fetch_data/fetch_data_forecasting.php',
+    method: 'POST',
+    dataType: 'json',
+    success: function(data) {
+      myChart.data.datasets[1].data = data;
+      myChart.update();
+    }
+  });
+  
+  $.ajax({
+    url: 'fetch_data/fetch_data_langgam.php',
+    method: 'POST',
+    dataType: 'json',
+    success: function(data) {
+      myChart.data.datasets[0].data = data.data_chart_donut;
+      myChart.update();
+    }
+  });
+  
+  setInterval(function() {
+    $.ajax({
+      url: 'fetch_data/fetch_data_langgam.php',
+      method: 'POST',
+      dataType: 'json',
+      success: function(data) {
+        myChart.data.datasets[0].data = data.data_chart_donut;
+        myChart.update();
+      }
+    });
+  }, 1000); // Mengambil data setiap 3 detik
+});
 
 // const Color = d3.scaleOrdinal()
 //   .range(['#F4BE37', '#5388D8', '#0D2535', '#FF9F40', '#888']);

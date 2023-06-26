@@ -23,17 +23,22 @@ parameter LIKE '%PLTU BOLOK%' OR
 parameter LIKE '%PLTU IPP%'
 ";
 $sql3 = "SELECT * FROM monitoring_realtimes WHERE 
+parameter LIKE '%PLTS%' 
+";
+$sql4 = "SELECT * FROM monitoring_realtimes WHERE 
 parameter LIKE '%PLANT%' 
 ";
 
 $result = mysqli_query($conn, $sql);
 $result2 = mysqli_query($conn, $sql2);
 $result3 = mysqli_query($conn, $sql3);
+$result4 = mysqli_query($conn, $sql4);
 
 // Membuat variabel untuk menampung output
 $output1 = '';
 $output2 = '';
 $output3 = '';
+$output4 = '';
 
 while ($row = mysqli_fetch_assoc($result)) {
   if ($row['value'] == 0) {
@@ -68,10 +73,23 @@ while ($row = mysqli_fetch_assoc($result3)) {
     $output3 .= '<span class="card-value">' . $row['value'] . '</span>';
     $output3 .= '</div>';
   }else{
-    $output3 .= '<div class="card-left card-kuning">';
+    $output3 .= '<div class="card-left card-orange">';
     $output3 .= '<span class="card-name">' . $row['parameter'] . '</span>';
     $output3 .= '<span class="card-value">' . $row['value'] . '</span>';
     $output3 .= '</div>';
+  }
+}
+while ($row = mysqli_fetch_assoc($result4)) {
+  if ($row['value'] == 0) {
+    $output4 .= '<div class="card-left card-off">';
+    $output4 .= '<span class="card-name">' . $row['parameter'] . '</span>';
+    $output4 .= '<span class="card-value">' . $row['value'] . '</span>';
+    $output4 .= '</div>';
+  }else{
+    $output4 .= '<div class="card-left card-kuning">';
+    $output4 .= '<span class="card-name">' . $row['parameter'] . '</span>';
+    $output4 .= '<span class="card-value">' . $row['value'] . '</span>';
+    $output4 .= '</div>';
   }
 }
 
@@ -79,5 +97,6 @@ while ($row = mysqli_fetch_assoc($result3)) {
 echo '<div class="box-card">'.$output1.'</div>';
 echo '<div class="box-card">'.$output2.'</div>';
 echo '<div class="box-card">'.$output3.'</div>';
+echo '<div class="box-card">'.$output4.'</div>';
 
 mysqli_close($conn);
