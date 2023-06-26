@@ -2,20 +2,14 @@
     <a>Forescasting</a>
 </div>
 <div class="page-forecasting">
-    <script>
-        $(document).ready(function() {
-            $('#checkAll').click(function() {
-                $('input[type="checkbox"]').slice(2, 30).prop('checked', this.checked);
-            });
-        });
-    </script>
-
+    <div style="margin-bottom: 10px">
+        <span style="color: red;">*Pilih 1 tanggal saja yang ingin Anda prediksi, prediksi akan menghasilkan 7 hari kedepan terhitung dari tanggal yang Anda pilih</span>
+    </div>
     <table class="table-data-beban-a">
         <thead>
             <tr>
                 <th>Tanggal</th>
-                <th>Hari</th>
-                <th>Auto checked <input type="checkbox" id="checkAll"></th>
+                <th>Pilihan</th>
             </tr>
         </thead>
     </table>
@@ -38,7 +32,6 @@
                     ?>
                         <tr>
                             <td><?php echo $formattedDate ?></td>
-                            <td>hari ke-<?php echo $no++ ?></td>
                             <td><input type="checkbox" name="pilihan[]" value="<?php echo $tanggal ?>"></td>
                         </tr>
                     <?php
@@ -54,7 +47,37 @@
 
     <div class="box-table-data-forecasting">
         <span class="title-hasil-forecasting">Hasil Forecasting</span>
+
+   <div class="select-forecast">
+    <label for="tanggal">Cari Berdasarkan Tanggal:</label>
+    <?php
+    $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting ORDER BY tanggal DESC");
+    $grouped_data = array_chunk(mysqli_fetch_all($query, MYSQLI_ASSOC), 48);
+    $valuecurrentDate = strtotime(date("Y-m-d"));
+    $nilaicurrentDate = date("Y-m-d", $valuecurrentDate);
+    $currentDate = date("d F Y", $valuecurrentDate);
+    ?>
+    <form method="POST">
+    <select name="tanggal" id="tanggal">
+        <option value="default">
+            Pilih tanggal
+        </option>
         <?php
+
+        foreach ($grouped_data as $group) {
+            $timestamp = strtotime($group[0]['tanggal']);
+            $formattedDate = date("d F Y", $timestamp);
+            $tanggal = date('Y-m-d', strtotime($group[0]['tanggal']));
+        ?>
+            <option value="<?php echo $tanggal ?>"><?php echo $formattedDate ?></option>
+        <?php
+        }
+        ?>
+    </select>
+    <input type="submit" name="cari" value="Cari">
+</form>
+</div>
+        <?php        
         $no = 1;
         $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting");
         $cek_data = mysqli_num_rows($query);
@@ -220,11 +243,22 @@
 
                 </table>
 
-                <div class="page-data-forecast">
+                <div class="page-data-forecast" id="page-data-forecast">
                     <?php
-                    $query = mysqli_query($koneksi, "SELECT * FROM load_forcasting GROUP BY id_forecast DESC");
+                    if (isset($_POST['cari'])) {
+                        echo '<script>document.getElementById("tabel_forecast").focus();</script>';
+                        $date_select = $_POST['tanggal'];
+                    }else{
+                    $date_select = "";
+                    }
 
-                    $grouped_data = array_chunk(mysqli_fetch_all($query, MYSQLI_ASSOC), 48);
+                    if ($date_select == "") {
+                        $query_forecast = mysqli_query($koneksi, "SELECT * FROM load_forcasting ORDER BY tanggal DESC");
+                    }else{
+                        $query_forecast = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE DATE(tanggal) = '$date_select' ORDER BY tanggal DESC");
+                    }
+
+                    $grouped_data = array_chunk(mysqli_fetch_all($query_forecast, MYSQLI_ASSOC), 48);
                     $currentDate = date("d F Y");
                     foreach ($grouped_data as $group) {
                         $timestamp = strtotime($group[0]['tanggal']);
@@ -232,7 +266,7 @@
                         $tanggal = date('Y-m-d', strtotime($group[0]['tanggal']));
                     ?>
 
-                    <table class="table-data-forecasting">
+                    <table class="table-data-forecasting" id="tabel_forecast">
                         <thead>
                             <tr>
                                 <th><?php echo $formattedDate ?> <a onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" href="index.php?p=delete_result_forecast&date=<?php echo $tanggal ?>"><i class='bx bx-trash'></i></a></th>
@@ -261,7 +295,7 @@
                     ?>
                 </div>
             </div>
-            <a onclick="return confirm('Apakah Anda yakin ingin menghapus seluruh data forecasting?')" class="btn-action-center btn-delete" href="index.php?p=delete_forecast">Clear Hasil forecast</a>
+            <a onclick="return confirm('Apakah Anda yakin ingin menghapus seluruh data forecasting?')" class="btn-action-center btn-delete delete-forecast" href="index.php?p=delete_forecast">Clear Hasil forecast</a>
 
         <?php
         } else {
@@ -289,6 +323,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -298,8 +333,10 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                     </tr>
                     <tr>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -316,5 +353,5 @@
         ?>
 
     </div>
-    <!-- <div class="data-beban"></div> -->
 </div>
+

@@ -10,7 +10,7 @@ if ($_SESSION['role'] == 'Super Admin') {
             <a href="index.php?p=add_user" class="button-add"><i class='bx bx-plus'></i> Baru</a>
         </div>
         <div class="header-user-title">
-            <a>User Account Super Admin</a>
+            <a>User Account Admin</a>
         </div>
         <div class="content-user">
             <table class="table-user">

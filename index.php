@@ -196,7 +196,7 @@ include 'config/conn.php';
       include_once 'admin/update_password_profile.php';
     }
 
-    //dokumentation admin
+    //dokumentation 
     elseif (@$_GET['p'] == "documentation") {
       include_once 'admin/documentation.php';
     } elseif (@$_GET['p'] == "form_add_documentation") {
@@ -278,8 +278,6 @@ include 'config/conn.php';
               echo "<script>alert('erorr')</script>";
             }
           }
-
-          # code...
         } else {
 
           if ($foto_lama['gambar'] == "default.png") {

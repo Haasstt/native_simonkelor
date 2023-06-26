@@ -1,3 +1,11 @@
+const ctxx = document.getElementById("Mychart").getContext("2d");
+const ctxa = document.getElementById("langgam_operasi").getContext("2d");
+const ctxxx = document.getElementById("Mychart_sistem_pembangkit").getContext("2d");
+let chart;
+let chart_energi;
+let chart_pembangkit;
+
+//chartData_langgam_harian
 const chartDataa = {
   labels: [
     "00:00",
@@ -55,6 +63,7 @@ const chartDataa = {
       borderColor: "red",
       data: [],
       backgroundColor: "rgba(255, 0, 0, 0.2)",
+      fill: true,
       borderWidth: 2,
     },
     {
@@ -62,43 +71,35 @@ const chartDataa = {
       borderColor: "blue",
       data: [],   
       backgroundColor: "rgba(0, 0, 255, 0.2)",
+      fill: true,
       borderWidth: 2
     }
   ],
 };
-
-
-const ctxa = document.getElementById("langgam_operasi").getContext("2d");
-const ctxxx = document.getElementById("Mychart_sistem_pembangkit").getContext("2d");
-let chart;
-let chart_pembangkit;
 
 $(document).ready(function () {
   chart = new Chart(ctxa, {
     type: "line",
     data: chartDataa,
     options: {
-      legend: {
-        display: false,
-      },
+      responsive: true,
       scales: {
-        x: {
-          grid: {
-            drawOnChartArea: false,
-          },
-        },
-        y: {
-          ticks: {
-            beginAtZero: true,
-            maxTicksLimit: 10,
-            stepSize: Math.ceil(10 / 5),
-            max: 5,
-          },
-        },
+      y: {
+        min: 0,
+        max: 140,
+        beginAtZero: true,
+        ticks: {
+          min: 0,
+          max: 2
+        } // Mengatur stacked menjadi true
+      },
       },
       plugins: {
         title: {
           display: false,
+        },
+        legend: {
+            display: false,
         },
       },
       elements: {
@@ -160,6 +161,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         updateChartData(data);
+        console.log('langgam_harian : ',data);
       },
     });
     }
@@ -173,7 +175,228 @@ $(document).ready(function () {
   updateChartBySelection("default");
 });
 
-// //chartData_loadstacking
+//chartData_loadstacking_energi
+const chartData_loadstacking = {
+  labels: [
+    "00:00",
+    "00:30",
+    "01:00",
+    "01:30",
+    "02:00",
+    "02:30",
+    "03:00",
+    "03:30",
+    "04:00",
+    "04:30",
+    "05:00",
+    "05:30",
+    "06:00",
+    "06:30",
+    "07:00",
+    "07:30",
+    "08:00",
+    "08:30",
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "12:30",
+    "13:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+    "18:30",
+    "19:00",
+    "19:30",
+    "20:00",
+    "20:30",
+    "21:00",
+    "21:30",
+    "22:00",
+    "22:30",
+    "23:00",
+    "23:30",
+  ],
+  datasets: [
+    {
+      label: "Batubara",
+      backgroundColor: "rgb(57, 62, 70)",
+      borderColor: "rgb(57, 62, 70)",
+      pointBackgroundColor: "rgb(57, 62, 70)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "B30",
+      backgroundColor: "rgb(60, 42, 33)",
+      borderColor: "rgb(60, 42, 33)",
+      pointBackgroundColor: "rgb(60, 42, 33)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "Surya",
+      backgroundColor: "rgb(244, 190, 55)",
+      borderColor: "rgb(244, 190, 55)",
+      pointBackgroundColor: "rgb(244, 190, 55)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "MFO",
+      backgroundColor: "rgb(83, 136, 216)",
+      borderColor: "rgb(83, 136, 216)",
+      pointBackgroundColor: "rgb(83, 136, 216)",
+      data: [],
+      tension: 0.5,
+      fill: true,
+      pointRadius: 0,
+    },
+    {
+      label: "Beban Sistem",
+      backgroundColor: "rgba(0, 0, 0, 0.98)",
+      borderColor: "rgba(0, 0, 0, 0.98)",
+      pointBackgroundColor: "rgba(0, 0, 0, 0.98)",
+      data: [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1],
+      tension: 0.5,
+      fill: false
+    },
+  ]
+};
+
+$(document).ready(function() {
+  chart_energi = new Chart(ctxx, {
+    type: "line",
+    data: chartData_loadstacking,
+    options: {
+      plugins: {
+        title: {
+          display: false
+        },
+        legend: {
+            display: false,
+        },
+      },
+    scales: {
+      x: {
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+      y: {
+        min: 0,
+        max: 140,
+        stacked: true,
+        beginAtZero: true,
+        ticks: {
+          min: 0,
+          max: 2
+        } // Mengatur stacked menjadi true
+      },
+    },
+    elements: {
+      line: {
+        tension: 0.4,
+      },
+      point: {
+        radius: 3,
+        hitRadius: 10,
+        hoverRadius: 4,
+        hoverBorderWidth: 3,
+      },
+    },
+  }
+  });
+
+  function updateChartData(langgamData) {
+    chart_energi.data.datasets[0].data = langgamData.batubara;
+    chart_energi.data.datasets[1].data = langgamData.b30;
+    chart_energi.data.datasets[2].data = langgamData.surya;
+    chart_energi.data.datasets[3].data = langgamData.mfo;
+    chart_energi.update();
+  }
+
+
+  let defaultInterval;
+
+  function view_default() {
+    $.ajax({
+      url: "fetch_data/data_operasi/fetch_data_energi.php",
+      method: "POST",
+      dataType: "json",
+      success: function (data) {
+        updateChartData(data);
+        console.log('load_energi : ',data);
+      },
+      error: function(xhr, status, error) {
+        console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+      }
+    });
+
+    defaultInterval = setInterval(function () {
+      $.ajax({
+        url: "fetch_data/data_operasi/fetch_data_energi.php",
+        method: "POST",
+        dataType: "json",
+        success: function (data) {
+          updateChartData(data);
+          console.log('load_energi : ',data);
+        },
+        error: function(xhr, status, error) {
+          console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+        }
+      });
+    }, 1000); // Mengambil data setiap 3 detik
+  }
+  
+  function updateChartBySelection(selectedValue) {
+    if (selectedValue === "default") {
+      // Jika pilihan default, tampilkan data utama
+      view_default();   
+    } else {
+      // Jika pilihan default, tampilkan data utama
+    clearInterval(defaultInterval);
+    $.ajax({
+      url: "fetch_data/data_operasi/fetch_data_energi_bydate.php",
+      method: "POST",
+      data: { tanggal: selectedValue },
+      dataType: "json",
+      success: function (data) {
+        updateChartData(data);
+        console.log('load_energi : ',data);
+      },
+      error: function(xhr, status, error) {
+        console.error(error); // Menampilkan pesan error jika permintaan AJAX gagal
+      }
+    });
+    }
+  }
+
+  $("#tanggal").on("change", function () {
+    updateChartBySelection(this.value);
+  });
+
+  
+  updateChartBySelection("default");
+});
+
+// //chartData_loadstacking_pembangkit
 const chartData_sistempembangkit = {
   labels: [
     "00:00",
@@ -334,6 +557,15 @@ const chartData_sistempembangkit = {
       tension: 0.5,
       fill: true,
     },
+    {
+      label: "Beban Sistem",
+      backgroundColor: "rgba(0, 0, 0, 0.98)",
+      borderColor: "rgba(0, 0, 0, 0.98)",
+      pointBackgroundColor: "rgba(0, 0, 0, 0.98)",
+      data: [ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 ],
+      tension: 0.5,
+      fill: false
+    },
   ]
 };
 
@@ -342,9 +574,7 @@ $(document).ready(function () {
     type: "line",
     data: chartData_sistempembangkit,
     options: {
-      legend:{
-        display: false,
-      },
+      responsive: true,
       scales: {
         x: {
           grid: {
@@ -352,18 +582,23 @@ $(document).ready(function () {
           },
         },
         y: {
+          min: 0,
+          max: 140,
+          stacked: true,
+          beginAtZero: true,
           ticks: {
-            beginAtZero: true,
-            maxTicksLimit: 10,
-            stepSize: Math.ceil(10 / 5),
-            max: 5,
-          },
+            min: 0,
+            max: 2
+          } // Mengatur stacked menjadi true
         },
       },
       plugins: {
         title: {
           display: false
-        }
+        },
+        legend: {
+            display: false,
+        },
       },
       elements: {
         line: {
@@ -434,6 +669,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         updateChartData(data);
+        console.log('load_pembangkit : ',data);
       },
     });
     }
@@ -446,6 +682,7 @@ $(document).ready(function () {
   
   updateChartBySelection("default");
 });
+
 
 let defaultInterval;
 let defaultInterval2;
@@ -483,7 +720,7 @@ function view_default() {
   });
 
   $.ajax({
-    url: "fetch_data/data_operasi/fetch_data_energi_pembangkit.php",
+    url: "fetch_data/data_operasi/fetch_data_pembangkit.php",
     method: "POST",
     dataType: 'html',
     success: function(data) {
@@ -513,7 +750,7 @@ function view_default() {
 
   defaultInterval2 = setInterval(function () {
     $.ajax({
-      url: "fetch_data/data_operasi/fetch_data_energi_pembangkit.php",
+      url: "fetch_data/data_operasi/fetch_data_pembangkit.php",
       method: "POST",
       dataType: 'html',
       success: function(data) {
@@ -571,7 +808,7 @@ function updateChartBySelection(selectedValue) {
   });
 
   $.ajax({
-    url: 'fetch_data/data_operasi/fetch_data_energi_pembangkit_bydate.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
+    url: 'fetch_data/data_operasi/fetch_data_pembangkit_bydate.php', // Ganti dengan path ke file PHP yang berisi script untuk mengambil data monitoring
     method: 'POST',
     data: { tanggal: selectedValue },
     dataType: 'html',
@@ -591,107 +828,4 @@ $("#tanggal").on("change", function () {
   updateChartBySelection(this.value);
 });
 
-
 updateChartBySelection("default");
-
-//chartData_loadstacking
-const chartData_loadstacking = {
-  ],
-  datasets: [
-    {
-      label: "Batubara",
-      backgroundColor: "rgba(94, 94, 94, 0.8)",
-      borderColor: "rgba(94, 94, 94, 0.8)",
-      pointBackgroundColor: "rgba(94, 94, 94, 0.8)",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,],
-      tension: 0.5,
-      fill: true,
-      pointRadius: 0,
-    },
-    {
-      label: "Gas",
-      backgroundColor: "rgba(255, 119, 0, 0.98)",
-      borderColor: "rgba(255, 119, 0, 0.98)",
-      pointBackgroundColor: "rgba(255, 119, 0, 0.98)",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,],
-      tension: 0.5,
-      fill: true,
-      pointRadius: 0,
-    },
-    {
-      label: "Panas Bumi",
-      backgroundColor: "rgba(0, 217, 4, 0.98)",
-      borderColor: "rgba(0, 217, 4, 0.98)",
-      pointBackgroundColor: "rgba(0, 217, 4, 0.98)",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,],
-      tension: 0.5,
-      fill: true,
-      pointRadius: 0,
-    },
-    {
-      label: "Hidro",
-      backgroundColor: "rgba(0, 38, 217, 0.98)",
-      borderColor: "rgba(0, 38, 217, 0.98)",
-      pointBackgroundColor: "rgba(0, 38, 217, 0.98)",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,],
-      tension: 0.5,
-      fill: true,
-      pointRadius: 0,
-    },
-    {
-      label: "MFO",
-      backgroundColor: "rgba(103, 54, 0, 0.98)",
-      borderColor: "rgba(103, 54, 0, 0.98)",
-      pointBackgroundColor: "rgba(103, 54, 0, 0.98)",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,],
-      tension: 0.5,
-      fill: true,
-      pointRadius: 0,
-    },
-    {
-      label: "HSD/B30",
-      backgroundColor: "rgba(126, 75, 0, 0.98)",
-      borderColor: "rgba(126, 75, 0, 0.98)",
-      pointBackgroundColor: "rgba(126, 75, 0, 0.98)",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,],
-      tension: 0.5,
-      fill: true,
-      pointRadius: 0,
-    },
-    {
-      label: "Surya dan Bayu",
-      backgroundColor: "rgba(227, 233, 0, 0.98)",
-      borderColor: "rgba(227, 233, 0, 0.98)",
-      pointBackgroundColor: "rgba(227, 233, 0, 0.98)",
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,],
-      tension: 0.5,
-      fill: true,
-      pointRadius: 0,
-    },
-    {
-      label: "Beban Sistem",
-      backgroundColor: "rgba(0, 0, 0, 0.98)",
-      borderColor: "rgba(0, 0, 0, 0.98)",
-      pointBackgroundColor: "rgba(0, 0, 0, 0.98)",
-      data: [70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70,],
-      tension: 0.5,
-      fill: false
-    },
-  ]
-};
-
-const ctxx = document.getElementById("Mychart").getContext("2d");
-$(document).ready(function() {
-  var chart = new Chart(ctxx, {
-    type: "line",
-    data: chartData_loadstacking,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-          stacked: true // Mengaktifkan tumpukan dataset pada sumbu y
-        }
-      }
-    }
-  });
-});

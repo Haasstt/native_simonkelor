@@ -9,20 +9,51 @@ if (isset($_POST['Submit'])) {
         echo '<script>window.location.href = "../../index.php?p=forcasting";</script>';
     }
 
+    if (count($a) > 1) {
+        echo "<script>alert('Mohon untuk memilih 1 tanggal saja yang ingin Anda prediksi')</script>";
+        echo '<script>window.location.href = "../../index.php?p=forcasting";</script>';
+    }
+
     // Mengubah array tanggal menjadi string yang dapat digunakan dalam query SQL
-    $tanggal_str = "'" . implode("', '", $a) . "'";
+    $tanggal_str = implode("', '", $a);
+
+    //cek data
+    $query_cek_data = mysqli_query($koneksi, "SELECT * FROM load_forcasting WHERE DATE(tanggal) = '$tanggal_str'");
+    $cek_data = mysqli_num_rows($query_cek_data);
+
+    if ($cek_data > 0) {
+        echo "<script>alert('Hasil prediksi yang sesuai dengan tanggal pilihan Anda sudah tersedia, Anda dapat melihatnya pada Tabel Forecasting')</script>";
+        echo '<script>window.location.href = "../../index.php?p=forcasting";</script>';
+    }else{
+
+    $tanggalHariIni = date("$tanggal_str");
+    $valuecurrentDate = strtotime($tanggalHariIni);
+
+    $date_select = array();
+    for ($i = 1; $i <= 28; $i++) {
+        $valuecurrentDate = strtotime('-1 day', $valuecurrentDate);
+        $date = date("Y-m-d", $valuecurrentDate);
+        $date_select[] = $date;
+    }
+
+    $date_select_str = "'" . implode("', '", $date_select) . "'";
 
     $data_beban = array(); // Array data beban
     $energi_harian = array();
     $energi_mingguan = array();
     $energi_mingguan2 = array();
 
-    $query = mysqli_query($koneksi, "SELECT * FROM beban_kit WHERE DATE(tanggal) IN ($tanggal_str)");
+    $query = mysqli_query($koneksi, "SELECT * FROM beban_kit WHERE DATE(tanggal) IN ($date_select_str)");
 
     // Menampilkan hasil query
     while ($row = mysqli_fetch_assoc($query)) {
-        $data_beban[] = $row['total_beban'];
+        $data_beban[] = rtrim($row['total_beban'], 0);
     }
+
+    if (count($data_beban) < 1344) {
+        echo "<script>alert('Data untuk prediksi tidak lengkap, Kemungkinan ada beberapa data tidak terdaftar')</script>";
+        echo '<script>window.location.href = "../../index.php?p=forcasting";</script>';
+    }else{
 
     // Jumlah data per penjumlahan
     $data_per_jumlah_harian = 48;
@@ -134,7 +165,7 @@ if (isset($_POST['Submit'])) {
             $hari = 1;
         }
         $index = ceil(($i + 1) / $data_per_jumlah_mingguan);
-        ${"koef_d" . $hari . "_m" . $index} = round($energi_harian[$i] / ${"energi_m" . $index}, 6);
+        ${"koef_d" . $hari . "_m" . $index} = round($energi_harian[$i] / ${"energi_m2" . $index}, 6);
         // ${"koef_d".$hari."_m".$index} = $energi_harian[$i] / ${"energi_m" . $index};
         $hari++;
     }
@@ -201,17 +232,16 @@ if (isset($_POST['Submit'])) {
         }
     }
 
-    $tanggalHariIni = date("2023-06-12");
-    $valuecurrentDate = strtotime($tanggalHariIni);
+    // $tanggalHariIni = date("Y-m-d");
+    $tanggal_hasil_forecast = strtotime($tanggalHariIni);
     // $valuecurrentDate = strtotime('+1 day', $valuecurrentDate);
 
     for ($i = 1; $i <= 7; $i++) {
         for ($a = 1; $a <= 48; $a++) {
-            $date = date("Y-m-d", $valuecurrentDate);
-            $day = $i;
+            $date = date("Y-m-d", $tanggal_hasil_forecast);
             $beban = round(${"d" . $i . "predicbeban_j" . $a}, 2);
             $query =  "INSERT INTO load_forcasting 
-        VALUES(NULL, '$day', '$date', '$beban')";
+        VALUES(NULL, '$date', '$beban')";
 
             $result = mysqli_query($koneksi, $query);
 
@@ -223,6 +253,8 @@ if (isset($_POST['Submit'])) {
                 echo '<script>window.location.href = "../../index.php?p=forcasting";</script>';
             }
         }
-        $valuecurrentDate = strtotime('+1 day', $valuecurrentDate);
+        $tanggal_hasil_forecast = strtotime('+1 day', $tanggal_hasil_forecast);
+    }
+}
     }
 }

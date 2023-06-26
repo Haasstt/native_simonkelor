@@ -57,7 +57,7 @@ while ($row = mysqli_fetch_assoc($result3)) {
 while ($row = mysqli_fetch_assoc($result4)) {
   $data_predic += $row['beban_prediksi'];
 }
-$deviasi = ($data - $data_predic) / $data_predic * 100;
+$deviasi = abs(($data - $data_predic) / $data_predic * 100);
 
 // Membuat variabel untuk menampung output
 $output1 = '';

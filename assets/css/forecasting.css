@@ -13,7 +13,7 @@
     width: 100%;
   }
   .table-data-beban thead tr th, .table-data-beban tbody tr td {
-    text-align: left;
+    text-align: center;
     padding: 8px;
   }
   
@@ -30,13 +30,14 @@
     font-size: 12px;
     color: #fff;
     padding: 8px 50px;
-    width: 36%;
+    width: 50%;
   }
   .table-data-beban tbody tr td {
     background-color:  rgba(217, 217, 217, 0.5);
     font-weight: 400;
     font-size: 12px;
     color: #0f0f0f;
+    width: 50%;
   }
 
   .title-hasil-forecasting{
@@ -46,8 +47,7 @@
     line-height: 22px;
     color: #311e69;
     width: 100%;
-    margin-top: 50px;
-    padding: 20px 0px;
+    padding-top: 10px;
 }
   .table-forecast{
     display: flex;
@@ -107,7 +107,7 @@
   .page-data-tableforecast {
     display: flex;
     width: 100%;
-    height: 500px;
+    height: 400px;
     overflow: auto;
   }
 
@@ -133,3 +133,54 @@
 .predic-beban{
     padding: 5px 10px
 } 
+.select-forecast{
+  padding: 10px 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.select-forecast form{
+  display: flex;
+  width: 50%;
+}
+.select-forecast form label{
+  width: 50%;
+}
+.select-forecast form select{
+  margin-left: 10px;
+  width: 40%;
+}
+.select-forecast form input[type=submit]{
+  padding: 10px 10px;
+  margin-left: 10px;
+  width: 10%;
+}
+
+@media (max-width: 900px) {
+  .delete-forecast{
+    display: flex;
+    margin: 10px 0px;
+  }
+  .select-forecast label{
+    width: 37%;
+    font-size: 12px;
+  }
+  .select-forecast select{
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-forecasting{
+    padding: 20px 20px;
+  }
+  .select-forecast label{
+    font-size: 8px;
+  }
+  .select-forecast select{
+    width: 50%;
+  }
+}
+
+@media (max-width: 420px) {
+}
