@@ -31,15 +31,15 @@
                 <form method="POST" class="form" enctype="multipart/form-data">
                     <div class="group-form">
                         <label class="label-email-regis" for="">Full Name</label>
-                        <input class="input-email-regis" type="text" name="nama" placeholder="Full Name">
+                        <input class="input-email-regis" type="text" name="nama" placeholder="Full Name" required>
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">NIP</label>
-                        <input class="input-email-regis" type="text" name="nip" placeholder="NIP">
+                        <input class="input-email-regis" type="text" name="nip" placeholder="NIP" required>
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">Instansi</label>
-                        <input class="input-email-regis" type="text" name="instansi" placeholder="Instansi">
+                        <input class="input-email-regis" type="text" name="instansi" placeholder="Instansi" required>
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">User Role</label>
@@ -52,19 +52,19 @@
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">Email</label>
-                        <input class="input-email-regis" type="email" name="email" placeholder="Username">
+                        <input class="input-email-regis" type="email" name="email" placeholder="Username" required>
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">Foto Profil</label>
-                        <input class="input-email-regis" type="file" name="photo" placeholder="Username">
+                        <input class="input-email-regis" type="file" name="photo" placeholder="Username" required>
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">Password</label>
-                        <input class="input-email-regis" type="password" name="password" placeholder="************">
+                        <input class="input-email-regis" type="password" name="password" placeholder="************" required>
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">Confirmasi Password</label>
-                        <input class="input-email-regis" type="password" name="confirmpassword" placeholder="************">
+                        <input class="input-email-regis" type="password" name="confirmpassword" placeholder="************" required>
                     </div>
                     <div class="group-form-footer-regis">
                         <input class="button-login" type="submit" name="Submit" value="Sign Up">

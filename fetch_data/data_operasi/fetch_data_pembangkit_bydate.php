@@ -100,14 +100,16 @@ $dmn_ulpl_atmb_mwm = 0.52;
 $dmn_ulpl_atmb_swd = 0.55;
 $dmn_pltu_timor = 100.00;
 
-$a = 0;
-$b = 0;
+$total_a = 0;
+$total_b = 0;
 for ($x = 0; $x < count($pltu_bolok); $x++) {
-    $a += $pltu_bolok[$x];
+    $total_a += $pltu_bolok[$x];
 }
 for ($y = 0; $y < count($pltu_ipp_kupang); $y++) {
-    $b += $pltu_ipp_kupang[$y];
+    $total_b += $pltu_ipp_kupang[$y];
 }
+$a = $total_a / 2;
+$b = $total_b / 2;
 $c = $data_pembangkit_pltd_cogindo / 2;
 $d = $data_pembangkit_pltmg_kupang / 2;
 $e = $data_pembangkit_plts_ipp_kpng / 2;
@@ -118,13 +120,14 @@ $i = $data_pembangkit_ulpl_atmb_cat2 / 2;
 $j = $data_pembangkit_ulpl_atmb_mwm / 2;
 $k = $data_pembangkit_ulpl_atmb_swd / 2;
 $l = 0;
+
 for ($z = 0; $z < count($pltu_timor); $z++) {
     $l += $pltu_timor[$z];
 }
 
 $total_energi_pembangkit = $a + $b + $c + $d + $e + $f + $g + $h + $i + $j + $k + $l;
 
-$cf_pltu_bolok =  ($a /($dmn_pltu_bolok * 24)) * 100;
+$cf_pltu_bolok =  ($a / ($dmn_pltu_bolok * 24)) * 100;
 $cf_pltu_ipp_kpg_baru =  ($b /($dmn_pltu_ipp_kpg_baru * 24)) * 100;
 $cf_pltd_cogindo = ($c /($dmn_pltd_cogindo * 24)) * 100;
 $cf_pltmg_kpg = ($d /($dmn_pltmg_kpg * 24)) * 100;
@@ -149,6 +152,7 @@ $persentase_ulpl_atmb_cat2 = ($i / $total_energi_pembangkit) * 100;
 $persentase_ulpl_atmb_mwm = ($j / $total_energi_pembangkit) * 100;
 $persentase_ulpl_atmb_swd = ($k / $total_energi_pembangkit) * 100;
 $persentase_pltu_timor =  ($l / $total_energi_pembangkit) * 100;
+
 
 // Query untuk mengambil data total_beban dari tabel beban_kit
 // Membuat variabel untuk menampung output

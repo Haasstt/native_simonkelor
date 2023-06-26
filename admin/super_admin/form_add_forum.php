@@ -12,7 +12,7 @@
         <form class="form" method="POST" enctype="multipart/form-data">
             <div class="group-form">
                 <label for="">Judul Forum</label>
-                <input type="text" name="judul" placeholder="Judul Forum">
+                <input type="text" name="judul" placeholder="Judul Forum" required>
             </div>
             <div class="group-form">
                 <label for="">Keterangan Forum</label>

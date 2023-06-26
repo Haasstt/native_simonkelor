@@ -20,9 +20,9 @@
     </a>
   </li>
   <li>
-    <a href="#">
-      <i class='bx bxs-notepad'></i>
-      <span class="link_name">Data Pembangkit</span>
+    <a href="index.php?p=data_operasi">
+      <i class='bx bx-collection'></i>
+      <span class="link_name">Data Operasi</span>
     </a>
   </li>
   <li>

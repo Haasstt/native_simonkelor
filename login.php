@@ -36,11 +36,11 @@ include 'config/conn.php';
                 <form method="POST" class="form" enctype="multipart/form-data">
                     <div class="group-form">
                         <label class="label-email-login" for="">Username</label>
-                        <input class="input-email-login" type="email" name="email" placeholder="Username">
+                        <input class="input-email-login" type="email" name="email" placeholder="Username" required>
                     </div>
                     <div class="group-form">
                         <label class="label-email-login" for="">Password</label>
-                        <input class="input-email-login" type="password" name="password" placeholder="************">
+                        <input class="input-email-login" type="password" name="password" placeholder="************" required>
                     </div>
                     <div class="group-form-footer">
                         <input class="button-login" type="submit" name="login" value="Sign In">
