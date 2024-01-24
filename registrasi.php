@@ -45,7 +45,7 @@
                         <label class="label-email-regis" for="">User Role</label>
                         <select name="role" type="text" required>
                             <option>--- Pilih Role ---</option>
-                            <option value="Admin Dispacher">Admin Dispacher</option>
+                            <option value="Admin Dispacher">Admin Dispatcher</option>
                             <option value="Admin Pembangkit">Admin Pembangkit</option>
                             <option value="Pegawai">Pegawai</option>
                         </select>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">Foto Profil</label>
-                        <input class="input-email-regis" type="file" name="photo" placeholder="Username" required>
+                        <input class="input-email-regis" type="file" name="photo" placeholder="Username">
                     </div>
                     <div class="group-form">
                         <label class="label-email-regis" for="">Password</label>

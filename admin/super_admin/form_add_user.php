@@ -27,7 +27,7 @@ if ($_SESSION['role'] == 'Super Admin') {
                     <select name="role" type="text" required>
                         <option>--- Pilih Role ---</option>
                         <option value="Super Admin">Super Admin</option>
-                        <option value="Admin Dispacher">Admin Dispacher</option>
+                        <option value="Admin Dispacher">Admin Dispatcher</option>
                         <option value="Admin Pembangkit">Admin Pembangkit</option>
                         <option value="Pegawai">Pegawai</option>
                     </select>

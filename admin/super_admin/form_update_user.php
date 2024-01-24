@@ -29,7 +29,7 @@ if ($_SESSION['role'] == 'Super Admin') {
                             <?php echo $data['role']; ?>"
                         </option>
                         <option value="Super Admin">Super Admin</option>
-                        <option value="Admin Dispacher">Admin Dispacher</option>
+                        <option value="Admin Dispacher">Admin Dispatcher</option>
                         <option value="Admin Pembangkit">Admin Pembangkit</option>
                         <option value="Pegawai">Pegawai</option>
                     </select>
@@ -80,12 +80,12 @@ if ($_SESSION['role'] == 'Super Admin') {
                     }
 
                     $query = "UPDATE users SET 
-    nama_user='$nama',
-    nip ='$nip',
-    instansi ='$instansi',
-    role ='$role',
-    email ='$email'
-    WHERE user_id ='" . $data['user_id'] . "'";
+        nama_user='$nama',
+        nip ='$nip',
+        instansi ='$instansi',
+        role ='$role',
+        email ='$email'
+        WHERE user_id ='" . $data['user_id'] . "'";
 
                     $result = mysqli_query($koneksi, $query);
 
